@@ -1,0 +1,14 @@
+.HeaderItem {
+  display: block;
+  .name-app {
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bolder;
+    font-size: 2rem;
+  }
+  .post-button {
+    background-color: white;
+    border: black 1px solid;
+    color: black;
+    font-size: 0.8rem;
+  }
+}

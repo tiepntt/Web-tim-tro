@@ -2,7 +2,7 @@ import axios from "axios";
 
 // import { configureFakeBackend } from '../services/fake-backend';
 
-const axiosInstance = axios.create({
+const API = axios.create({
   baseURL: "http://localhost:3001",
   responseType: "json",
 });
@@ -29,13 +29,13 @@ const errorHandler = (error: any) => {
   return Promise.reject({ ...error });
 };
 
-axiosInstance.interceptors.request.use((request) => requestHandler(request));
+API.interceptors.request.use((request) => requestHandler(request));
 
-axiosInstance.interceptors.response.use(
+API.interceptors.response.use(
   (response) => successHandler(response),
   (error) => errorHandler(error)
 );
 
-// configureFakeBackend(axiosInstance);
+// configureFakeBackend(API);
 
-export default axiosInstance;
+export default API;
