@@ -5,7 +5,7 @@ import "./style.scss";
 const HeaderItem = () => {
   return (
     <div className={"HeaderItem"}>
-      <Navbar bg="light" expand="lg">
+      <Navbar className={"navbar-custom"} bg="light" expand="lg">
         <Container>
           <Navbar.Brand href="#home" className={"name-app"}>
             TIMTRO.<small>vn</small>

@@ -1,0 +1,29 @@
+.searh-header {
+  background-color: #262637;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  .input-group-text {
+    background-color: white !important;
+    border: 0 !important;
+  }
+  .input-group-prepend {
+    border: 0 white;
+  }
+  .drop-down {
+    background-color: white;
+    width: 100%;
+    padding: 0;
+    height: 100%;
+    border-radius: 5px;
+    text-align: left;
+  }
+  .drop-down :hover {
+    border: none;
+  }
+  .col-4,
+  .col-12,
+  .col-lg-2,
+  .col-6 {
+    padding: 0 2.5px 0 2.5px;
+  }
+}
