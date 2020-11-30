@@ -1,7 +1,8 @@
 .searh-header {
   background-color: #262637;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  display: block;
   .input-group-text {
     background-color: white !important;
     border: 0 !important;
@@ -13,9 +14,12 @@
     background-color: white;
     width: 100%;
     padding: 0;
+    padding-left: 10px;
     height: 100%;
+    font-size: 0.95rem;
     border-radius: 5px;
     text-align: left;
+    font-family: Helvetica;
   }
   .drop-down :hover {
     border: none;
@@ -24,6 +28,13 @@
   .col-12,
   .col-lg-2,
   .col-6 {
+
     padding: 0 2.5px 0 2.5px;
+  }
+  .col-12,.col-6 {
+    padding-left: 2px;
+    height: 40px;
+    margin-top: 2px;
+    margin-bottom: 2px;
   }
 }

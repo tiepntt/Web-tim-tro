@@ -1,11 +1,14 @@
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { InputBase, makeStyles } from "@material-ui/core";
-import FormControl from "@material-ui/core/FormControl/FormControl";
-import IconButton from "@material-ui/core/IconButton/IconButton";
-import MenuItem from "@material-ui/core/MenuItem/MenuItem";
-import Paper from "@material-ui/core/Paper/Paper";
-import Select from "@material-ui/core/Select/Select";
+import {
+  IconButton,
+  InputBase,
+  MenuItem,
+  Paper,
+  Select,
+} from "@material-ui/core";
+import makeStyles from "@material-ui/core/styles/makeStyles";
+
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import "./style.scss";
@@ -55,33 +58,37 @@ const SearchHeader = (props: Props) => {
             </Paper>
           </Col>
           <Col lg={2} xs={6}>
-            <Select label="Age" className={"drop-down"} value={20}>
-              <MenuItem value={10}>None</MenuItem>
-              <MenuItem value={10}>Ten</MenuItem>
+            <Select label="Distric" className={"drop-down"} value={1}>
+              <MenuItem value={1}>Khu vực</MenuItem>
+              <MenuItem value={2}>Cầu Giấy</MenuItem>
+              <MenuItem value={3}>Đống Đa</MenuItem>
+              <MenuItem value={4}>Hà Đông</MenuItem>
+            </Select>
+          </Col>
+          <Col lg={2} xs={6}>
+            <Select label="price" className={"drop-down"} value={10}>
+              <MenuItem value={10} disabled={true}>
+                Giá thuê
+              </MenuItem>
+              <MenuItem value={1}>1-2tr</MenuItem>
+              <MenuItem value={20}>2-4tr</MenuItem>
+              <MenuItem value={30}>{">4tr"}</MenuItem>
+            </Select>
+          </Col>
+          <Col lg={2} xs={6}>
+            <Select label="Age" className={"drop-down"} value={10}>
+              <MenuItem value={10}>Diện tích</MenuItem>
+              <MenuItem value={1}>Ten</MenuItem>
               <MenuItem value={20}>Twenty</MenuItem>
               <MenuItem value={30}>Thirty</MenuItem>
             </Select>
           </Col>
           <Col lg={2} xs={6}>
-            <Select label="Age" className={"drop-down"} value={20}>
-              <MenuItem value={10}>None</MenuItem>
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
-            </Select>
-          </Col>
-          <Col lg={2} xs={6}>
-            <Select label="Age" className={"drop-down"} value={20}>
-              <MenuItem value={10}>None</MenuItem>
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
-            </Select>
-          </Col>
-          <Col lg={2} xs={6}>
-            <Select label="Age" className={"drop-down"} value={20}>
-              <MenuItem value={10}>None</MenuItem>
-              <MenuItem value={10}>Ten</MenuItem>
+            <Select label="Age" className={"drop-down"} value={10}>
+              <MenuItem value={10} disabled={true}>
+                Loại hình
+              </MenuItem>
+              <MenuItem value={1}>Ten</MenuItem>
               <MenuItem value={20}>Twenty</MenuItem>
               <MenuItem value={30}>Thirty</MenuItem>
             </Select>
