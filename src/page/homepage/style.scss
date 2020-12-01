@@ -1,4 +1,16 @@
 .Home {
   display: block;
-  text-align: center;
+  // text-align: center;
+  .content{
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .row{
+    padding: 0;
+    margin: 0;
+    .col-lg-0,
+    .col-12{
+      padding: 0;
+    }
+  }
 }

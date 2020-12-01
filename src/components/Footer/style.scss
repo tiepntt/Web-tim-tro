@@ -1,0 +1,23 @@
+.Footer {
+  text-align: left;
+  width: 100%;
+  height: auto;
+  background-color: #f8f9fa;
+  .header-footer {
+    margin-bottom: 5px;
+  }
+  .contactIcon {
+    margin-bottom: 10px;
+    .contactIcon-item {
+      white-space: nowrap;
+      margin-right: 10px;
+    }
+  }
+  .contact-fild {
+    margin-bottom: 5px;
+  }
+
+  .name-app {
+    margin-bottom: 10px;
+  }
+}

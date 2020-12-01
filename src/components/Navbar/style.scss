@@ -1,5 +1,11 @@
 .HeaderItem {
-  display: block;
+  top: 0;
+  width: 100%;
+  padding: 0;
+  // display: block;
+  .navbar-custom {
+    padding: 0 !important;
+  }
   .name-app {
     font-family: "Times New Roman", Times, serif;
     font-weight: bolder;
