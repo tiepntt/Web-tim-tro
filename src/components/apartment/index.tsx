@@ -8,7 +8,9 @@ import {
 } from "@material-ui/core";
 import React from "react";
 import { ApartmentItem } from "../../containers/apartment/apartmentItem";
+import { PaginationItem } from "../../containers/pagination";
 import "./style.scss";
+
 interface Props {}
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -19,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(2),
   },
   margin: {
-    margin: theme.spacing(1),
     width: "100%",
   },
 }));
@@ -60,6 +61,7 @@ const BootstrapInput = withStyles((theme) => ({
 
 export const Apartment = (props: Props) => {
   const classes = useStyles();
+
   return (
     <div className="apartment-list">
       <div className="apartment-title">
@@ -68,10 +70,10 @@ export const Apartment = (props: Props) => {
 
       <ul>
         <div className="result row">
-          <div className="result-tag col-md-9">
+          <div className="col-lg-9  col-8 result-tag ">
             Kết quả <b>1 - 15</b> trong <b>1124142</b>
           </div>
-          <div className="filter col-md-3 right">
+          <div className="filter col-lg-3 col-4   right">
             <FormControl className={classes.margin}>
               <Select
                 labelId="demo-customized-select-label"
@@ -100,6 +102,9 @@ export const Apartment = (props: Props) => {
           <ApartmentItem avatar="https://cloud.mogi.vn/images/2020/07/22/376/44bdbe8040e54218ba9c2bd5f3080d2a.jpg" />
         </li>
       </ul>
+      <div className="pagination-tag">
+        <PaginationItem pageActive={1} lastPage={10} />
+      </div>
     </div>
   );
 };

@@ -39,7 +39,7 @@ const SearchHeader = (props: Props) => {
   const classes = useStyles();
   return (
     <div className="searh-header">
-      <Container>
+      <Container className="container-header">
         <Row>
           <Col lg={4} xs={12}>
             <Paper component="form" className={classes.root}>

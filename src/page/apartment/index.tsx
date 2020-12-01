@@ -1,25 +1,22 @@
-// @flow
-import * as React from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { Container, Row } from "react-bootstrap";
 import { Apartment } from "../../components/apartment";
+import { ApartmentDetailItem } from "../../components/apartment-detail-item";
 import Footer from "../../components/Footer";
 import HeaderItem from "../../components/Navbar";
 import SearchHeader from "../../components/search-header";
 import { SideBar } from "../../components/sibar";
 
-import "./style.scss";
-type Props = {};
-export const HomePage = (props: Props) => {
-  const dispatch = useDispatch();
+interface Props {}
+
+export const ApartmentDetail = (props: Props) => {
   return (
-    <div className={"Home"}>
+    <div className={"apartment-detail"}>
       <HeaderItem />
-      <SearchHeader />
       <Container className="content">
         <Row>
           <div className="col-lg-8 col-12">
-            <Apartment />
+            <ApartmentDetailItem />
           </div>
           <div className="col-lg-4 col-12">
             <SideBar />
