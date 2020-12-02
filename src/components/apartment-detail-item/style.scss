@@ -5,10 +5,26 @@
   .carousel-control-prev-icon {
     color: black !important;
   }
+  .carousel-item {
+    width: 100%;
+    height: 500px;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      margin: auto;
+      display: block;
+    }
+  }
   .info {
+    padding-left: 10px;
     > div {
       margin-top: 20px;
     }
+
     .title {
       font-weight: bold;
       font-size: 1.3rem;
@@ -38,7 +54,7 @@
       }
     }
   }
-  .content {
+  .info-content {
     .item-info {
       display: flex;
       .item-title {
@@ -58,8 +74,9 @@
     width: 100%;
     height: 100%;
     position: relative;
-    padding: 10px 5px;
+    padding: 10px 5px !important;
     border-bottom: 1px gray dashed;
+    border-top: 1px gray dashed;
 
     display: flex;
     .user {
@@ -96,6 +113,48 @@
           margin-top: 10px;
           font-weight: bold;
         }
+      }
+    }
+  }
+  .review-share {
+    text-align: center;
+    margin-top: 10px;
+    padding: 10px 5px !important;
+
+    ul {
+      display: flex;
+      text-decoration: none;
+      list-style: none;
+      padding: 0;
+
+      li {
+        padding: 0;
+      }
+    }
+    .review {
+      display: flex;
+
+      .review-item {
+        cursor: pointer;
+        border-radius: 20px;
+        padding: 7px 20px;
+        border: 1px solid gray;
+        margin-right: 10px;
+      }
+    }
+    .share {
+      margin-right: 10px;
+    }
+  }
+  .info-main {
+    .content {
+      width: 100%;
+    }
+  }
+  @media only screen and (max-width: 200px) {
+    .review-share {
+      ul {
+        display: unset;
       }
     }
   }

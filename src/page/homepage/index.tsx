@@ -1,5 +1,6 @@
 // @flow
 import * as React from "react";
+import { useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Apartment } from "../../components/apartment";
@@ -12,6 +13,9 @@ import "./style.scss";
 type Props = {};
 export const HomePage = (props: Props) => {
   const dispatch = useDispatch();
+  useEffect(() => {
+    document.title = "Trang chủ";
+  }, []);
   return (
     <div className={"Home"}>
       <HeaderItem />

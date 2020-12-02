@@ -1,16 +1,27 @@
 import {
   faAngleLeft,
   faAngleRight,
+  faComment,
+  faExclamationTriangle,
+  faHeart,
   faPhone,
   faPhoneAlt,
+  faSave,
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Avatar, Chip, makeStyles } from "@material-ui/core";
+import { MessageOutlined } from "@material-ui/icons";
 import draftToHtml from "draftjs-to-html";
 import React, { useState } from "react";
 import { Carousel, Col, Image, Row } from "react-bootstrap";
 import ReactHtmlParser from "react-html-parser";
+import {
+  FacebookIcon,
+  FacebookMessengerIcon,
+  FacebookMessengerShareButton,
+  FacebookShareButton,
+} from "react-share";
 import "./style.scss";
 interface Props {}
 const text = `<div class="prop-info-content">
@@ -80,8 +91,8 @@ export const ApartmentDetailItem = (props: Props) => {
           </Carousel.Item>
           <Carousel.Item>
             <Image
-              className="d-block w-100"
-              src="https://cloud.mogi.vn/images/2020/11/03/456/82ee2b80fe4243e1a238bca87babb205.jpg"
+              className="d-block w-100 "
+              src="https://cloud.mogi.vn/images/2020/11/28/071/97e2bbc228584a54b0a3a0a159ee9e5f.jpg"
               alt="Third slide"
               thumbnail
             />
@@ -89,7 +100,7 @@ export const ApartmentDetailItem = (props: Props) => {
           <Carousel.Item>
             <Image
               className="d-block w-100"
-              src="https://cloud.mogi.vn/images/2020/11/03/456/82ee2b80fe4243e1a238bca87babb205.jpg"
+              src="https://cloud.mogi.vn/images/2020/11/25/527/f1e37361b9514c4a9e197aea07c83155.jpg"
               alt="Third slide"
               thumbnail
             />
@@ -108,7 +119,7 @@ export const ApartmentDetailItem = (props: Props) => {
         </div>
         <div className="info-main">
           <div className="title">Thông tin chính</div>
-          <div className="content">
+          <div className="info-content">
             <Row>
               <Col md={6} xs={12}>
                 <div className="item-info">
@@ -241,7 +252,57 @@ export const ApartmentDetailItem = (props: Props) => {
           </div>
         </div>
       </div>
-      <div></div>
+      <div className="row review-share ">
+        <div className="col-md-9 col-12 review ">
+          <ul>
+            <li>
+              <Chip
+                className={classes.location}
+                label="Lưu"
+                component="a"
+                clickable
+                variant="outlined"
+              />
+            </li>
+            <li>
+              <Chip
+                className={classes.location}
+                label="Bình luận"
+                component="a"
+                clickable
+                variant="outlined"
+                color="primary"
+              />
+            </li>
+            <li>
+              <Chip
+                className={classes.location}
+                label="Báo cáo"
+                component="a"
+                clickable
+                variant="outlined"
+                color="secondary"
+              />
+            </li>
+          </ul>
+        </div>
+        <div className="col-md-3 col-12 icon-share">
+          <FacebookShareButton
+            url="https://github.com/NguyenThaiTiep"
+            quote={"Nguyen Thai Tiep"}
+            className="share"
+          >
+            <FacebookIcon size={48} round={true} />
+          </FacebookShareButton>
+          <FacebookMessengerShareButton
+            url={"https://github.com/NguyenThaiTiep"}
+            title={"please click me"}
+            appId="100008957765110"
+          >
+            <FacebookMessengerIcon size={48} round />
+          </FacebookMessengerShareButton>
+        </div>
+      </div>
     </div>
   );
 };

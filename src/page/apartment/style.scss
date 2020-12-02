@@ -8,6 +8,7 @@
     padding: 0;
     padding-top: 10px;
     padding-bottom: 10px;
+    text-align: left;
   }
   .row {
     padding: 0;
@@ -20,5 +21,16 @@
     .col-12 {
       padding: 0;
     }
+  }
+  .title {
+    font-weight: bold;
+    text-align: left;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+}
+@media only screen and (max-width: 950px) {
+  .sidebar-component {
+    display: none;
   }
 }

@@ -1,0 +1,22 @@
+.Register {
+  .content {
+    min-height: 50vh;
+    display: block;
+    .icon {
+      display: flex;
+      position: relative;
+      margin-top: 20px;
+      .icon-pre {
+        position: absolute;
+        left: 0;
+      }
+      .icon-next {
+        position: absolute;
+        right: 0;
+      }
+    }
+    .views {
+      overflow: hidden;
+    }
+  }
+}
