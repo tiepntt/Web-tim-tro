@@ -3,11 +3,9 @@ import { Button, Form } from "react-bootstrap";
 
 interface Props {
   role?: number;
-  onNext?: () => void;
 }
 
-export const InfoInput = (props: Props) => {
-  const { role, onNext } = props;
+export const Contact = (props: Props) => {
   return (
     <div>
       <Form>
@@ -39,7 +37,7 @@ export const InfoInput = (props: Props) => {
             maxLength={20}
           />
         </Form.Group>
-        <Button onClick={onNext}>Tiếp</Button>
+        <Button>Tiếp</Button>
       </Form>
     </div>
   );

@@ -19,6 +19,7 @@ import { SelectRole } from "../../components/Register/selectRole";
 import NavigationIcon from "@material-ui/icons/Navigation";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import { InfoInput } from "../../components/Register/Info";
+import { Contact } from "../../components/Register/Contact";
 interface Props {}
 
 const useStyles = makeStyles((theme) => ({
@@ -51,7 +52,11 @@ export const Register = (props: Props) => {
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
-  const tutorialSteps = [<SelectRole onSelect={handleNext} />, <InfoInput />];
+  const tutorialSteps = [
+    <SelectRole onSelect={handleNext} />,
+    <InfoInput onNext={handleNext} />,
+    <Contact />,
+  ];
   const maxSteps = tutorialSteps.length;
   const handleStepChange = (step: any) => {
     setActiveStep(step);
@@ -61,19 +66,17 @@ export const Register = (props: Props) => {
     <div className={"Register"}>
       <HeaderItem />
       <Container className="content">
-        <div className={classes.root}>
-          <SwipeableViews
-            draggable={false}
-            axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-            index={activeStep}
-            onChangeIndex={handleStepChange}
-            className="views"
-          >
-            {tutorialSteps.map((step, index) => (
-              <div key={index}>{step}</div>
-            ))}
-          </SwipeableViews>
-        </div>
+        <SwipeableViews
+          draggable={false}
+          axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+          index={activeStep}
+          onChangeIndex={handleStepChange}
+          className="views"
+        >
+          {tutorialSteps.map((step, index) => (
+            <div key={index}>{step}</div>
+          ))}
+        </SwipeableViews>
       </Container>
       <Footer />
     </div>

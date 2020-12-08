@@ -1,6 +1,5 @@
 .Register {
   .content {
-    min-height: 50vh;
     display: block;
     .icon {
       display: flex;
@@ -16,7 +15,7 @@
       }
     }
     .views {
-      overflow: hidden;
+
     }
   }
 }
