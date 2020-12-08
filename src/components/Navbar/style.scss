@@ -17,4 +17,26 @@
     color: black;
     font-size: 0.8rem;
   }
+  text-align: center;
+  .avatar-group {
+    text-decoration: none;
+    text-decoration-color: beige;
+    color: #009177;
+    width: 100px;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    .name {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      margin-right: 10px;
+    }
+  }
+  @media only screen and (max-width: 800px) {
+    .avatar-group {
+      margin-left: 43%;
+    }
+  }
 }

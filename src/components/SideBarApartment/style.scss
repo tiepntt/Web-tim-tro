@@ -1,0 +1,28 @@
+.sibar-apartment {
+  padding: 5px 5px;
+  border-radius: 5px;
+  border: 1px solid #d3d3d3;
+  > .user-box {
+    .avatar {
+      margin-right: 10px;
+    }
+    line-height: 23px;
+    .name {
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .time {
+      color: gray;
+    }
+    > .user-info {
+      display: flex;
+    }
+    > .contact {
+      margin-top: 10px;
+      > .contact-item {
+        padding: 1px 35px;
+        font-size: 15px;
+      }
+    }
+  }
+}

@@ -1,32 +1,49 @@
-.apartment-list{
+.apartment-list {
+  text-align: left;
+  ul {
+    list-style: none;
+    padding: 0;
+    li {
+      padding: 5px;
+    }
+  }
+  .apartment-title {
+    padding: 10px 5px 10px 5px;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  .result {
+    display: flex;
+    background-color: #f1f4f6;
+    padding: 10px 0 10px 10px;
+    .result-tag {
+      margin-top: auto;
+      margin-bottom: auto;
+      font-size: 1rem;
+      padding-left: 5px;
+    }
+    .right {
+      position: relative;
+      margin-right: 0;
+    }
+  }
 
-    ul{
-        list-style: none;
-        padding: 0;
-        li{
-             padding: 5px;
-        }
-    }
-    .apartment-title{
-        padding: 10px 5px 10px 5px;
-        font-size: 1.2rem;
-        font-weight: inherit;
-    }
-    .result{
-        display: flex;
-        background-color: #F1f4f6;
-        padding: 10px 0 10px 10px;
-        .result-tag {
-            margin-top: auto;
-            margin-bottom: auto;
-            font-size: 1rem;
-        }
-    }
-    .col,
-    .col-lg-9{
-        padding: 0
-    }
-    .row{
-        padding: 0;
-    }
+  .col,
+  .col-sm-8,
+  .col-8,
+  .col-4,
+  .col-lg-8,
+  .col-lg-3,
+  .col-sm-4,
+  .col-lg-9 {
+    padding: 0;
+  }
+  .row {
+    padding: 0;
+  }
+  .pagination-tag {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
 }

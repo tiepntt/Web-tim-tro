@@ -19,7 +19,7 @@ export const ApartmentItem = (props: Props) => {
   const { avatar } = props;
   return (
     <div className="apartment-item">
-      <a href="#">
+      <a href="/apartment">
         <div className="props-img">
           <Image src={avatar} className="apartment-avatar" />
         </div>

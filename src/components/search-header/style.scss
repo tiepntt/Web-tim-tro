@@ -1,7 +1,7 @@
 .searh-header {
   background-color: #262637;
-  padding-top: 2px;
-  padding-bottom: 2px;
+  text-align: center;
+  padding-right: 1px;
   display: block;
   .input-group-text {
     background-color: white !important;
@@ -21,6 +21,7 @@
     text-align: left;
     font-family: Helvetica;
   }
+
   .drop-down :hover {
     border: none;
   }
@@ -28,13 +29,16 @@
   .col-12,
   .col-lg-2,
   .col-6 {
-
-    padding: 0 2.5px 0 2.5px;
+    padding: 0;
   }
-  .col-12,.col-6 {
+  .col-12,
+  .col-6 {
     padding-left: 2px;
     height: 40px;
     margin-top: 2px;
     margin-bottom: 2px;
+  }
+  .container {
+    padding: 0;
   }
 }
