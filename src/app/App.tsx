@@ -7,6 +7,7 @@ import { HomePage } from "../page/homepage";
 import { ApartmentDetail } from "../page/apartment";
 import { Login } from "../page/Login";
 import { Register } from "../page/Register";
+import { ProfilePage } from "../page/profile";
 
 const history = createBrowserHistory();
 function App() {
@@ -16,7 +17,7 @@ function App() {
         <Route exact path="/home" component={HomePage} />
         <Route exact path="/apartment" component={ApartmentDetail} />
         <Route exact path="/apartment/create" component={ApartmentDetail} />
-        <Route exact path="/profile" component={ApartmentDetail} />
+        <Route exact path="/profile" component={ProfilePage} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Redirect from="/" to="/home" />
