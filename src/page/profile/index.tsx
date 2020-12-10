@@ -1,21 +1,21 @@
-import React from "react";
-import { Container, Row } from "react-bootstrap";
+import React, { useState } from "react";
 import Footer from "../../components/Footer";
 import HeaderItem from "../../components/Navbar";
-import { Profile } from "../../components/Profile";
-import "./style.scss";
-import SearchHeader from "../../components/search-header";
+
+import "react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css";
+import { DashboardLayout } from "../../components/Profile/Layout";
 
 interface Props {}
 
 export const ProfilePage = (props: Props) => {
   return (
-    <div className={"profile-page"}>
+    <div className={"ProfilePage"}>
       <HeaderItem />
-      <div className="content row">
-        <div className="col-md-10 col-12">
-          <Profile />
-        </div>
+
+      <div className=" container-fluid content">
+        <DashboardLayout>
+          <h2>Home Page</h2>
+        </DashboardLayout>
       </div>
       <Footer />
     </div>
