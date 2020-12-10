@@ -74,7 +74,7 @@ export const NavSidebar = (props: Props) => {
   return (
     // <React.Fragment>
     <>
-      <div>
+      <div className="navbar-profile">
         <div className={"vertical-nav bg-white " + getClass()} id="sidebar">
           <div className="py-4 px-3 mb-4 bg-light">
             <div className="media d-flex align-items-center">
@@ -101,7 +101,7 @@ export const NavSidebar = (props: Props) => {
                 <li className={"nav-item " + getActiveClass(item.itemId)}>
                   <div
                     // href={item.itemId}
-                    className={"nav-link text-dark font-italic d-flex "}
+                    className={"nav-link  d-flex "}
                     onClick={() => {
                       history.push(item.itemId);
                       setActiveNavbar(item.itemId);
