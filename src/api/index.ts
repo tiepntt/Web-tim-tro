@@ -3,7 +3,7 @@ import axios from "axios";
 // import { configureFakeBackend } from '../services/fake-backend';
 
 const API = axios.create({
-  baseURL: "http://localhost:3001",
+  baseURL: "http://localhost:3000",
   responseType: "json",
 });
 

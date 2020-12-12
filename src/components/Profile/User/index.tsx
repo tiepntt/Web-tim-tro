@@ -1,165 +1,138 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { makeStyles } from "@material-ui/core/styles";
-import Box from "@material-ui/core/Box";
-import Collapse from "@material-ui/core/Collapse";
-import IconButton from "@material-ui/core/IconButton";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Typography from "@material-ui/core/Typography";
-import Paper from "@material-ui/core/Paper";
-import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+import * as React from "react";
+import { DataGrid } from "@material-ui/data-grid";
+import { ButtonGroup, Table } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+import "./style.scss";
+import { PaginationItem } from "../../../containers/pagination";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector, useStore } from "react-redux";
+import { RootState } from "../../../store";
 
-const useRowStyles = makeStyles({
-  root: {
-    "& > *": {
-      borderBottom: "unset",
-    },
-  },
-});
-
-function createData(
-  name: any,
-  calories: any,
-  fat: any,
-  carbs: any,
-  protein: any,
-  price: any
-) {
-  return {
-    name,
-    calories,
-    fat,
-    carbs,
-    protein,
-    price,
-    history: [
-      { date: "2020-01-05", customerId: "11091700", amount: 3 },
-      { date: "2020-01-02", customerId: "Anonymous", amount: 1 },
-    ],
-  };
-}
-
-function Row(props: any) {
-  const { row } = props;
-  const [open, setOpen] = React.useState(false);
-  const classes = useRowStyles();
-
-  return (
-    <React.Fragment>
-      <TableRow className={classes.root}>
-        <TableCell>
-          <IconButton
-            aria-label="expand row"
-            size="small"
-            onClick={() => setOpen(!open)}
-          >
-            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-          </IconButton>
-        </TableCell>
-        <TableCell component="th" scope="row">
-          {row.name}
-        </TableCell>
-        <TableCell align="right">{row.calories}</TableCell>
-        <TableCell align="right">{row.fat}</TableCell>
-        <TableCell align="right">{row.carbs}</TableCell>
-        <TableCell align="right">{row.protein}</TableCell>
-      </TableRow>
-      <TableRow>
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-          <Collapse in={open} timeout="auto" unmountOnExit>
-            <Box margin={1}>
-              <Typography variant="h6" gutterBottom component="div">
-                History
-              </Typography>
-              <Table size="small" aria-label="purchases">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Date</TableCell>
-                    <TableCell>Customer</TableCell>
-                    <TableCell align="right">Amount</TableCell>
-                    <TableCell align="right">Total price ($)</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {row.history.map((historyRow: any) => (
-                    <TableRow key={historyRow.date}>
-                      <TableCell component="th" scope="row">
-                        {historyRow.date}
-                      </TableCell>
-                      <TableCell>{historyRow.customerId}</TableCell>
-                      <TableCell align="right">{historyRow.amount}</TableCell>
-                      <TableCell align="right">
-                        {Math.round(historyRow.amount * row.price * 100) / 100}
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </Box>
-          </Collapse>
-        </TableCell>
-      </TableRow>
-    </React.Fragment>
-  );
-}
-
-Row.propTypes = {
-  row: PropTypes.shape({
-    calories: PropTypes.number.isRequired,
-    carbs: PropTypes.number.isRequired,
-    fat: PropTypes.number.isRequired,
-    history: PropTypes.arrayOf(
-      PropTypes.shape({
-        amount: PropTypes.number.isRequired,
-        customerId: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
-      })
-    ).isRequired,
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    protein: PropTypes.number.isRequired,
-  }).isRequired,
-};
-
+const columns = [
+  { field: "id", headerName: "ID", width: 70 },
+  { field: "name", headerName: "Tên", width: 200 },
+  { field: "role", headerName: "Vai trò", width: 200 },
+  { field: "role", headerName: "Vai trò", width: 200 },
+];
 const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0, 3.99),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3, 4.99),
-  createData("Eclair", 262, 16.0, 24, 6.0, 3.79),
-  createData("Cupcake", 305, 3.7, 67, 4.3, 2.5),
-  createData("Gingerbread", 356, 16.0, 49, 3.9, 1.5),
-  createData("Gingerbread", 356, 16.0, 49, 3.9, 1.5),
-  createData("Gingerbread", 356, 16.0, 49, 3.9, 1.5),
-  createData("Gingerbread", 356, 16.0, 49, 3.9, 1.5),
-  createData("Gingerbread", 356, 16.0, 49, 3.9, 1.5),
-  createData("Gingerbread", 356, 16.0, 49, 3.9, 1.5),
+  {
+    id: 1,
+    name: "Snow",
+    email: "Nguyenthaitiep206@gmail.com",
+    role: "Jon",
+    manager: "Tiep",
+  },
+  {
+    id: 2,
+    name: "Lannister",
+    email: "Nguyenthaitiep206@gmail.com",
+    role: "Cersei",
+    manager: "Tiep",
+  },
+  {
+    id: 3,
+    name: "Lannister",
+    email: "Nguyenthaitiep206@gmail.com",
+    role: "Jaime",
+    manager: 45,
+  },
+  {
+    id: 4,
+    name: "Stark",
+    email: "Nguyenthaitiep206@gmail.com",
+    role: "Arya",
+    manager: 16,
+  },
+  {
+    id: 5,
+    name: "Targaryen",
+    email: "Nguyenthaitiep206@gmail.com",
+    role: "Daenerys",
+    manager: null,
+  },
+  {
+    id: 6,
+    name: "Melisandre",
+    email: "Nguyenthaitiep206@gmail.com",
+    role: null,
+    manager: 150,
+  },
+  {
+    id: 7,
+    name: "Clifford",
+    email: "Nguyenthaitiep206@gmail.com",
+    role: "Ferrara",
+    manager: 44,
+  },
+  {
+    id: 8,
+    name: "Frances",
+    email: "Nguyenthaitiep206@gmail.com",
+    role: "Rossini",
+    manager: 36,
+  },
+  {
+    id: 9,
+    name: "Roxie",
+    email: "Nguyenthaitiep206@gmail.com",
+    role: "Harvey",
+    manager: 65,
+  },
 ];
 
 export const User = () => {
+  const user = useSelector((state: RootState) => state.UserReducer);
+  const dispatch = useDispatch();
+  const [users, setUsers] = useState([]);
+  const [page, setpage] = useState(1);
+  const getAllUser = () => {};
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
   return (
-    <TableContainer component={Paper}>
-      <Table aria-label="collapsible table">
-        <TableHead>
-          <TableRow>
-            <TableCell />
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <Row key={row.name} row={row} />
-          ))}
-        </TableBody>
+    <>
+      <Table striped bordered hover className="user-table">
+        <thead>
+          <tr className={"text-center"}>
+            <th>#</th>
+            <th>Tên</th>
+            <th>Email</th>
+            <th>Vai tro</th>
+            <th>Quan ly</th>
+            <th>#</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.length > 0
+            ? rows.map((item, index) => {
+                return (
+                  <tr key={index}>
+                    <td>{index}</td>
+                    <td>{item.name}</td>
+                    <td>{item.email}</td>
+                    <td>{item.role}</td>
+                    <td>{item.manager}</td>
+
+                    <td>
+                      <div className="d-flex">
+                        <div className={"icon-item"}>
+                          <FontAwesomeIcon icon={faEdit} color={"green"} />
+                        </div>
+                        <div className={"icon-item"} onClick={() => {}}>
+                          <FontAwesomeIcon icon={faTrash} color={"red"} />
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })
+            : null}
+        </tbody>
       </Table>
-    </TableContainer>
+      <div className="pagination">
+        <PaginationItem pageActive={page} lastPage={10} />
+      </div>
+    </>
   );
 };

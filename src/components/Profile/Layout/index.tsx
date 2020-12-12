@@ -5,6 +5,7 @@ import { Button } from "react-bootstrap";
 import { Route, Switch } from "react-router";
 import { ApartmentProfile } from "../Apartment";
 import { BodyWrapper } from "../BodyWrapper";
+import { HeaderFilter } from "../header-filter";
 import { InfoProfile } from "../Info";
 import { NavSidebar } from "../NavSideBar";
 import { User } from "../User";
@@ -12,6 +13,26 @@ import "./style.scss";
 interface Props {
   children: any;
 }
+const filter = {
+  title: "Select",
+  data: [
+    {
+      key: "Tất cả",
+      value: 0,
+      event: true,
+    },
+    {
+      key: "A-Z",
+      value: 1,
+      event: true,
+    },
+    {
+      key: "Sớm nhất",
+      value: 2,
+      event: true,
+    },
+  ],
+};
 
 export const DashboardLayout = (props: Props) => {
   const { children } = props;
@@ -23,14 +44,12 @@ export const DashboardLayout = (props: Props) => {
 
         <div className="flex flex-col flex-1 overflow-hidden main-content">
           <main className="content">
-            <Button
-              className="btn-light"
-              onClick={() => {
+            <HeaderFilter
+              onTogle={() => {
                 setActiveNav(!activeNav);
               }}
-            >
-              <FontAwesomeIcon icon={faBars} color="#009177" />
-            </Button>
+              filter={filter}
+            />
             <section className="sm:flex-row flex flex-col flex-2">
               <div
                 className="content-box"
