@@ -57,6 +57,83 @@ const items = [
     ],
   },
 ];
+const NavData = [
+  {
+    title: "Thông tin chính",
+    items: [
+      {
+        title: "Thống kê",
+        itemId: "/profile",
+        elemBefore: () => <Icon name="coffee" />,
+      },
+      {
+        title: "Thông tin cá nhân",
+        itemId: "/profile/info",
+        elemBefore: () => <Icon name="coffee" />,
+      },
+    ],
+  },
+  {
+    title: "Phòng trọ",
+    items: [
+      {
+        title: "Bài đăng",
+        itemId: "/profile/post",
+        elemBefore: () => <Icon name="coffee" />,
+      },
+      {
+        title: "Bài đăng yêu thích",
+        itemId: "/profile/apartment",
+        elemBefore: () => <Icon name="coffee" />,
+      },
+    ],
+  },
+  {
+    title: "Người dùng",
+    items: [
+      {
+        title: "Admin",
+        itemId: "/profile/user/admin",
+        elemBefore: () => <Icon name="coffee" />,
+      },
+      {
+        title: "Người cho thuê",
+        itemId: "/profile/user/owner",
+        elemBefore: () => <Icon name="coffee" />,
+      },
+      {
+        title: "Người đi thuê",
+        itemId: "/profile/user/renter",
+        elemBefore: () => <Icon name="coffee" />,
+      },
+    ],
+  },
+  {
+    title: "Hỗ trợ",
+    items: [
+      {
+        title: "Chat với admin",
+        itemId: "/profile/support",
+        elemBefore: () => <Icon name="coffee" />,
+      },
+    ],
+  },
+  {
+    title: "Quản lý dữ liệu",
+    items: [
+      {
+        title: "Tỉnh thành",
+        itemId: "/profile/data/location",
+        elemBefore: () => <Icon name="coffee" />,
+      },
+      {
+        title: "Phòng trọ",
+        itemId: "/profile/data/apartment",
+        elemBefore: () => <Icon name="coffee" />,
+      },
+    ],
+  },
+];
 export const NavSidebar = (props: Props) => {
   const history = useHistory();
   const location = useLocation();
@@ -92,31 +169,33 @@ export const NavSidebar = (props: Props) => {
               </div>
             </div>
           </div>
-          <p className="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">
-            Thông tin chính
-          </p>
-          <ul className="nav flex-column bg-white mb-0">
-            {items.map((item) => {
-              return (
-                <li className={"nav-item " + getActiveClass(item.itemId)}>
-                  <div
-                    // href={item.itemId}
-                    className={"nav-link  d-flex "}
-                    onClick={() => {
-                      history.push(item.itemId);
-                      setActiveNavbar(item.itemId);
-                    }}
-                  >
-                    {item.elemBefore()}
-                    <span>{item.title}</span>
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
-          <p className="text-gray font-weight-bold text-uppercase px-3 small py-4 mb-0">
-            Khác
-          </p>
+          {NavData.map((nav) => {
+            return (
+              <div className="nav-item-header">
+                <p className="text-gray font-weight-bold text-uppercase  small title-nav">
+                  {nav.title}
+                </p>
+                <ul className="nav flex-column bg-white mb-0">
+                  {nav.items.map((item) => {
+                    return (
+                      <li className={"nav-item " + getActiveClass(item.itemId)}>
+                        <div
+                          className={"nav-link  d-flex "}
+                          onClick={() => {
+                            history.push(item.itemId);
+                            setActiveNavbar(item.itemId);
+                          }}
+                        >
+                          {item.elemBefore()}
+                          <span>{item.title}</span>
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            );
+          })}
         </div>
         {/* End vertical navbar */}{" "}
       </div>

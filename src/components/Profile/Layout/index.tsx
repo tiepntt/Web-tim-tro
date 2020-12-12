@@ -70,7 +70,13 @@ export const DashboardLayout = (props: Props) => {
                   <Route exact path="/profile/info">
                     <InfoProfile />
                   </Route>
-                  <Route exact path="/profile/user">
+                  <Route exact path="/profile/user/admin">
+                    <User />
+                  </Route>
+                  <Route exact path="/profile/user/renter">
+                    <User />
+                  </Route>
+                  <Route exact path="/profile/user/owner">
                     <User />
                   </Route>
                   <Route exact path="/profile/data/location">

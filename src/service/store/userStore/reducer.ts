@@ -1,15 +1,22 @@
-import { ActionStore } from "..";
+import AccountResponseDto from "../../../api/admin/authenticate/dto/accountResponse";
 import { LocalStorageService } from "../../localStorage";
-import { ActionUser } from "./action";
+import { ActionUser, IActionUser } from "./action";
 
 const initialState = {
   token: "",
-};
-export const UserReducer = (state = initialState, action: ActionStore) => {
-  switch (action.type) {
+  account: {},
+} as AccountResponseDto;
+export const UserReducer = (state = initialState, action: {}) => {
+  let actionEmit = action as IActionUser;
+  switch ((actionEmit as IActionUser).type) {
     case ActionUser.UserLoginSave: {
-      LocalStorageService.save({ key: "token", data: action.payload });
-      return state;
+      let newState = { ...state };
+      LocalStorageService.save({
+        key: "token",
+        data: actionEmit.payload.token,
+      });
+      newState = { ...state, account: actionEmit.payload.account };
+      return newState;
     }
     default:
       return state;

@@ -4,12 +4,15 @@ import "./style.scss";
 interface Props {
   pageActive?: number;
   lastPage?: number;
+  onPageChange?: (page: number) => void;
 }
 
 export const PaginationItem = (props: Props) => {
-  const { pageActive, lastPage } = props;
+  const { pageActive, lastPage, onPageChange } = props;
 
-  const changePage = (page: number) => {};
+  const changePage = (page: number) => {
+    if (onPageChange) onPageChange(page);
+  };
   return (
     <Pagination className={"pagination-item justify-content-center"}>
       <Pagination.Prev
@@ -19,7 +22,7 @@ export const PaginationItem = (props: Props) => {
         }}
       />
       {(pageActive as any) >= (lastPage as any) - 1 &&
-      (pageActive as any) != 1 ? (
+      (pageActive as any) > 2 ? (
         <Pagination.Ellipsis />
       ) : null}
       {(pageActive as any) - 1 > 1 ? <Pagination.Ellipsis /> : null}
@@ -70,7 +73,7 @@ export const PaginationItem = (props: Props) => {
         <Pagination.Ellipsis />
       ) : null}
       <Pagination.Next
-        disabled={pageActive == lastPage}
+        disabled={pageActive === lastPage}
         onClick={() => changePage((pageActive as any) + 1)}
       />
     </Pagination>

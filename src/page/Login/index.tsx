@@ -5,8 +5,8 @@ import { useHistory } from "react-router";
 import { AuthApi } from "../../api/admin/authenticate";
 import Footer from "../../components/Footer";
 import HeaderItem from "../../components/Navbar";
+import { ActionUserDispatch } from "../../service/store/userStore/action";
 import { handleToast } from "../../service/Toast";
-import { ActionUserDispath } from "../../service/Toast/store/userStore/action";
 import { RootState } from "../../store";
 import "./style.scss";
 interface Props {}
@@ -21,16 +21,15 @@ export const Login = (props: Props) => {
   });
   const login = () => {
     AuthApi.login(account).then(async (response) => {
-      if (response.data.status == 200) {
-        await dispatch(ActionUserDispath(response.data));
+      if (response.data.status === 200) {
+        await dispatch(ActionUserDispatch(response.data));
+        // history.goBack();
       } else {
         handleToast(response.data);
       }
     });
   };
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
+  useEffect(() => {}, [user]);
   return (
     <div className={"Login"}>
       <HeaderItem />

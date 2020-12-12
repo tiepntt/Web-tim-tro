@@ -1,118 +1,76 @@
 import * as React from "react";
-import { DataGrid } from "@material-ui/data-grid";
-import { ButtonGroup, Table } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import "./style.scss";
 import { PaginationItem } from "../../../containers/pagination";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector, useStore } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
-
-const columns = [
-  { field: "id", headerName: "ID", width: 70 },
-  { field: "name", headerName: "Tên", width: 200 },
-  { field: "role", headerName: "Vai trò", width: 200 },
-  { field: "role", headerName: "Vai trò", width: 200 },
-];
-const rows = [
-  {
-    id: 1,
-    name: "Snow",
-    email: "Nguyenthaitiep206@gmail.com",
-    role: "Jon",
-    manager: "Tiep",
-  },
-  {
-    id: 2,
-    name: "Lannister",
-    email: "Nguyenthaitiep206@gmail.com",
-    role: "Cersei",
-    manager: "Tiep",
-  },
-  {
-    id: 3,
-    name: "Lannister",
-    email: "Nguyenthaitiep206@gmail.com",
-    role: "Jaime",
-    manager: 45,
-  },
-  {
-    id: 4,
-    name: "Stark",
-    email: "Nguyenthaitiep206@gmail.com",
-    role: "Arya",
-    manager: 16,
-  },
-  {
-    id: 5,
-    name: "Targaryen",
-    email: "Nguyenthaitiep206@gmail.com",
-    role: "Daenerys",
-    manager: null,
-  },
-  {
-    id: 6,
-    name: "Melisandre",
-    email: "Nguyenthaitiep206@gmail.com",
-    role: null,
-    manager: 150,
-  },
-  {
-    id: 7,
-    name: "Clifford",
-    email: "Nguyenthaitiep206@gmail.com",
-    role: "Ferrara",
-    manager: 44,
-  },
-  {
-    id: 8,
-    name: "Frances",
-    email: "Nguyenthaitiep206@gmail.com",
-    role: "Rossini",
-    manager: 36,
-  },
-  {
-    id: 9,
-    name: "Roxie",
-    email: "Nguyenthaitiep206@gmail.com",
-    role: "Harvey",
-    manager: 65,
-  },
-];
+import { RoleAdmin } from "../../../libs/constants/role";
+import { ManagerApi } from "../../../api/admin/manager";
+import { handleToast } from "../../../service/Toast";
+import { UserGetDto } from "../../../api/user/user/dto";
+import { Table } from "react-bootstrap";
 
 export const User = () => {
-  const user = useSelector((state: RootState) => state.UserReducer);
-  const dispatch = useDispatch();
-  const [users, setUsers] = useState([]);
-  const [page, setpage] = useState(1);
-  const getAllUser = () => {};
+  const user = useSelector((state: RootState) => state.UserReducer.account);
+  const [users, setUsers] = useState({ data: [] as UserGetDto[], count: 0 });
+  const [conditionFilter, setFilter] = useState({
+    page: 1,
+    take: 10,
+    skip: 0,
+    options: true,
+  });
+  const onPageChange = (page: number) => {
+    let old = { ...conditionFilter };
+    setFilter({ ...conditionFilter, page: page, skip: (page - 1) * old.take });
+  };
+  const getAllUser = () => {
+    switch (user?.role?.code) {
+      case RoleAdmin.ADMIN:
+        break;
+      case RoleAdmin.OWNER:
+        break;
+      case RoleAdmin.MANAGER:
+        ManagerApi.getEmployments(conditionFilter).then((response) => {
+          if (response.data.status !== 200) {
+            handleToast(response.data);
+            return;
+          }
+          setUsers({
+            data: response.data.result.result,
+            count: response.data.result.count,
+          });
+        });
+        break;
+    }
+  };
   useEffect(() => {
-    console.log(user);
-  }, [user]);
+    getAllUser();
+  }, [conditionFilter]);
+  useEffect(() => {
+    console.log(users);
+  }, [users]);
   return (
     <>
       <Table striped bordered hover className="user-table">
         <thead>
           <tr className={"text-center"}>
-            <th>#</th>
-            <th>Tên</th>
-            <th>Email</th>
-            <th>Vai tro</th>
-            <th>Quan ly</th>
-            <th>#</th>
+            {["#", "Tên", "Email", "CMND", "Quản lý", "#"].map((item) => (
+              <th>{item}</th>
+            ))}
           </tr>
         </thead>
         <tbody>
-          {rows.length > 0
-            ? rows.map((item, index) => {
+          {users.data.length > 0
+            ? users.data.map((item, index) => {
                 return (
                   <tr key={index}>
-                    <td>{index}</td>
+                    <td>{index + 1}</td>
                     <td>{item.name}</td>
                     <td>{item.email}</td>
-                    <td>{item.role}</td>
-                    <td>{item.manager}</td>
+                    <td>{item.personNo}</td>
+                    <td>{item.userManager?.name}</td>
 
                     <td>
                       <div className="d-flex">
@@ -131,7 +89,11 @@ export const User = () => {
         </tbody>
       </Table>
       <div className="pagination">
-        <PaginationItem pageActive={page} lastPage={10} />
+        <PaginationItem
+          pageActive={conditionFilter.page}
+          lastPage={Math.floor(users.count / conditionFilter.take) + 1}
+          onPageChange={onPageChange}
+        />
       </div>
     </>
   );

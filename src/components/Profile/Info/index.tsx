@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Image } from "react-bootstrap";
+import { UserApi } from "../../../api/user/user";
+import { UserDetailDto } from "../../../api/user/user/dto";
+import { convertDate } from "../../../libs/constants/function/time";
+import { handleToast } from "../../../service/Toast";
 import "./style.scss";
 interface Props {}
 
 export const InfoProfile = (props: Props) => {
+  const [user, setUserInfo] = useState({} as UserDetailDto);
+  useEffect(() => {
+    UserApi.getInfo().then((response) => {
+      if (response.data.status !== 200)
+        return handleToast(response.data.status);
+      setUserInfo(response.data.result);
+    });
+  }, []);
   return (
     <div className="info-profile">
       <div className="main-info">
@@ -13,7 +25,7 @@ export const InfoProfile = (props: Props) => {
             thumbnail
             width={100}
             height={100}
-            src="https://scontent.fhan5-7.fna.fbcdn.net/v/t1.0-9/129840333_830838227740988_4120573807075780201_o.jpg?_nc_cat=103&ccb=2&_nc_sid=09cbfe&_nc_ohc=xaiZ2MnbanAAX8BvElj&_nc_ht=scontent.fhan5-7.fna&oh=e2edb97e674feb17bc51fc16b143610f&oe=5FF8C13C"
+            src={user?.avatar?.url as string}
           />
           <label htmlFor="upload-photo" className="upload-photo">
             <input
@@ -44,7 +56,7 @@ export const InfoProfile = (props: Props) => {
                 <input
                   type="text"
                   className="form-control"
-                  value={"Nguyễn Thái Tiệp"}
+                  value={user?.name}
                 />
               </div>
               <div className="d-flex" style={{ marginTop: 5, marginBottom: 5 }}>
@@ -79,7 +91,7 @@ export const InfoProfile = (props: Props) => {
                   type="text"
                   className="form-control"
                   disabled
-                  value={"1802 1231 231"}
+                  value={user.personNo}
                 />
               </div>
             </div>
@@ -99,7 +111,7 @@ export const InfoProfile = (props: Props) => {
                   type="text"
                   className="form-control"
                   disabled
-                  value={"20/10/2020"}
+                  value={convertDate(user.create_at)}
                 />
               </div>
               <div className="d-flex" style={{ marginTop: 5, marginBottom: 5 }}>
@@ -135,7 +147,7 @@ export const InfoProfile = (props: Props) => {
                   type="text"
                   className="form-control"
                   disabled
-                  value={"Người cho thuê"}
+                  value={user.role?.name}
                 />
               </div>
             </div>
@@ -156,12 +168,12 @@ export const InfoProfile = (props: Props) => {
                     marginTop: 6,
                   }}
                 >
-                  Họ và tên
+                  Số điện thoại 1
                 </label>
                 <input
                   type="text"
                   className="form-control"
-                  value={"Nguyễn Thái Tiệp"}
+                  value={user.contactUser?.phone}
                 />
               </div>
               <div className="d-flex" style={{ marginTop: 5, marginBottom: 5 }}>
@@ -173,12 +185,12 @@ export const InfoProfile = (props: Props) => {
                     marginTop: 6,
                   }}
                 >
-                  Email
+                  Số điện thoại 2
                 </label>
                 <input
                   type="text"
                   className="form-control"
-                  value={"Nguyenthaitiep206@gmail.com"}
+                  value={user.contactUser?.phone}
                 />
               </div>
               <div className="d-flex" style={{ marginTop: 5, marginBottom: 5 }}>
