@@ -12,7 +12,7 @@ export const ProfilePage = (props: Props) => {
     <div className={"ProfilePage"}>
       <HeaderItem />
 
-      <div className=" container-fluid content">
+      <div className=" container content">
         <DashboardLayout>
           <h2>Home Page</h2>
         </DashboardLayout>

@@ -74,7 +74,7 @@ export const NavSidebar = (props: Props) => {
   return (
     // <React.Fragment>
     <>
-      <div>
+      <div className="navbar-profile">
         <div className={"vertical-nav bg-white " + getClass()} id="sidebar">
           <div className="py-4 px-3 mb-4 bg-light">
             <div className="media d-flex align-items-center">
@@ -93,7 +93,7 @@ export const NavSidebar = (props: Props) => {
             </div>
           </div>
           <p className="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">
-            Main
+            Thông tin chính
           </p>
           <ul className="nav flex-column bg-white mb-0">
             {items.map((item) => {
@@ -101,7 +101,7 @@ export const NavSidebar = (props: Props) => {
                 <li className={"nav-item " + getActiveClass(item.itemId)}>
                   <div
                     // href={item.itemId}
-                    className={"nav-link text-dark font-italic d-flex "}
+                    className={"nav-link  d-flex "}
                     onClick={() => {
                       history.push(item.itemId);
                       setActiveNavbar(item.itemId);
@@ -113,63 +113,10 @@ export const NavSidebar = (props: Props) => {
                 </li>
               );
             })}
-            {/* <li className="nav-item">
-              <a
-                href="/profile"
-                className="nav-link text-dark font-italic bg-light"
-              >
-                <i className="fa fa-th-large mr-3 text-primary fa-fw" />
-                Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="#" className="nav-link text-dark font-italic bg-light">
-                <i className="fa fa-th-large mr-3 text-primary fa-fw" />
-                Hi
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="#" className="nav-link text-dark font-italic">
-                <i className="fa fa-cubes mr-3 text-primary fa-fw" />
-                Services
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="#" className="nav-link text-dark font-italic">
-                <i className="fa fa-picture-o mr-3 text-primary fa-fw" />
-                Gallery
-              </a>
-            </li> */}
           </ul>
           <p className="text-gray font-weight-bold text-uppercase px-3 small py-4 mb-0">
-            Charts
+            Khác
           </p>
-          <ul className="nav flex-column bg-white mb-0">
-            <li className="nav-item">
-              <a href="#" className="nav-link text-dark font-italic bg-light">
-                <i className="fa fa-th-large mr-3 text-primary fa-fw" />
-                Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="#" className="nav-link text-dark font-italic bg-light">
-                <i className="fa fa-th-large mr-3 text-primary fa-fw" />
-                Hi
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="#" className="nav-link text-dark font-italic">
-                <i className="fa fa-cubes mr-3 text-primary fa-fw" />
-                Services
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="#" className="nav-link text-dark font-italic">
-                <i className="fa fa-picture-o mr-3 text-primary fa-fw" />
-                Gallery
-              </a>
-            </li>
-          </ul>
         </div>
         {/* End vertical navbar */}{" "}
       </div>

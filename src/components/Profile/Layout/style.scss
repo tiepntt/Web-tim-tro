@@ -1,0 +1,14 @@
+.dashboard {
+  .main-content,
+  main {
+    width: 100%;
+    height: 100%;
+  }
+  .content-box {
+    padding-left: 0 !important;
+  }
+  .main-content {
+    min-height: 200px;
+    padding: 0 20px;
+  }
+}

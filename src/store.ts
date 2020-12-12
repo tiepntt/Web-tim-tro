@@ -1,6 +1,8 @@
 import { combineReducers, createStore } from "redux";
+import { UserReducer } from "./service/Toast/store/userStore/reducer";
 
-const RootReducer = combineReducers({});
+const RootReducer = combineReducers({
+  UserReducer: UserReducer,
+});
 export type RootState = ReturnType<typeof RootReducer>;
-const store = createStore(RootReducer);
-export default store;
+export const store = createStore(RootReducer);
