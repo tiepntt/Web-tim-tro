@@ -71,6 +71,13 @@ export class UserGetDto {
   @Expose()
   @Type((type) => ContactDto)
   contactUser?: ContactDto;
+  @Expose()
+  @Type((type) => UserTitleDto)
+  userManager?: UserTitleDto;
+  @Expose()
+  personNo?: string;
+  @Expose()
+  createAt?: Date;
 }
 
 export class UserTitleDto {
@@ -133,4 +140,6 @@ export class UserDetailDto {
   @Expose()
   @Type(() => AvatarUserDto, {})
   avatar?: AvatarUserDto;
+  @Expose()
+  personNo?: string;
 }

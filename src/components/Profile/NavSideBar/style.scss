@@ -33,6 +33,13 @@ li.nav-item.active {
   overflow: hidden;
 }
 
+.nav-item-header{
+  margin-bottom: 20px;
+  .title-nav {
+    margin-bottom: 10px;
+  }
+}
+
 @media (max-width: 768px) {
   #sidebar {
     margin-left: -19rem;

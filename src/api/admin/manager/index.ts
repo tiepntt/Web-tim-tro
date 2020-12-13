@@ -1,5 +1,14 @@
+import API from "../..";
+
 const baseUrl = "/manager";
-const getEmployments = () => {};
+const getEmployments = (input: {
+  take?: number;
+  skip?: number;
+  key?: string;
+  option?: boolean;
+}) => {
+  return API.get(`${baseUrl}/employments`, { params: input });
+};
 const createEmployment = () => {};
 const assignUserToEmployment = () => {};
 const removeUser = () => {};

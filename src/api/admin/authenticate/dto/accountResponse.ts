@@ -1,10 +1,10 @@
 import { Expose, Type } from "class-transformer";
-import { Account } from "./account";
+import { UserGetDto } from "../../../user/user/dto";
 
 export default class AccountResponseDto {
   @Expose()
   token?: string;
   @Expose()
-  @Type((type) => Account)
-  account?: Account;
+  @Type((type) => UserGetDto)
+  account?: UserGetDto;
 }
