@@ -23,7 +23,7 @@ export const Login = (props: Props) => {
     AuthApi.login(account).then(async (response) => {
       if (response.data.status === 200) {
         await dispatch(ActionUserDispatch(response.data));
-        // history.goBack();
+        history.push("/");
       } else {
         handleToast(response.data);
       }

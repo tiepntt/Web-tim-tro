@@ -9,10 +9,17 @@ const getEmployments = (input: {
 }) => {
   return API.get(`${baseUrl}/employments`, { params: input });
 };
+
 const createEmployment = () => {};
 const assignUserToEmployment = () => {};
 const removeUser = () => {};
-const getAllNewUser = () => {};
+const getAllNewUser = (input: {
+  take: number;
+  skip: number;
+  isApprove: boolean;
+}) => {
+  return API.get(`${baseUrl}/newOwner`, { params: input });
+};
 export const ManagerApi = {
   getEmployments,
   assignUserToEmployment,

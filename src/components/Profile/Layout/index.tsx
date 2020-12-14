@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { Route, Switch } from "react-router";
+import { RoleAdmin } from "../../../libs/constants/role";
 import { ApartmentProfile } from "../Apartment";
 import { BodyWrapper } from "../BodyWrapper";
 import { HeaderFilter } from "../header-filter";
@@ -37,6 +38,17 @@ const filter = {
 export const DashboardLayout = (props: Props) => {
   const { children } = props;
   const [activeNav, setActiveNav] = useState(true);
+  // const header = (
+  //   <HeaderFilter
+  //     onTogle={() => {
+  //       setActiveNav(!activeNav);
+  //     }}
+  //     filter={filter}
+  //   />
+  // );
+  const onTogle = () => {
+    setActiveNav(!activeNav);
+  };
   return (
     <BodyWrapper>
       <div className="flex  bg-gray-200 dashboard">
@@ -44,12 +56,6 @@ export const DashboardLayout = (props: Props) => {
 
         <div className="flex flex-col flex-1 overflow-hidden main-content">
           <main className="content">
-            <HeaderFilter
-              onTogle={() => {
-                setActiveNav(!activeNav);
-              }}
-              filter={filter}
-            />
             <section className="sm:flex-row flex flex-col flex-2">
               <div
                 className="content-box"
@@ -65,19 +71,19 @@ export const DashboardLayout = (props: Props) => {
                     <div>Thống kê</div>
                   </Route>
                   <Route exact path="/profile/post">
-                    <ApartmentProfile />
+                    <ApartmentProfile onTogle={onTogle} />
                   </Route>
                   <Route exact path="/profile/info">
-                    <InfoProfile />
+                    <InfoProfile onTogle={onTogle} />
                   </Route>
                   <Route exact path="/profile/user/admin">
-                    <User />
+                    <User onTogle={onTogle} type={RoleAdmin.ADMIN} />
                   </Route>
                   <Route exact path="/profile/user/renter">
-                    <User />
+                    <User onTogle={onTogle} type={RoleAdmin.RENTER} />
                   </Route>
                   <Route exact path="/profile/user/owner">
-                    <User />
+                    <User onTogle={onTogle} type={RoleAdmin.OWNER} />
                   </Route>
                   <Route exact path="/profile/data/location">
                     <div>Dữ liệu</div>

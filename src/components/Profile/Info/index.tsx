@@ -4,10 +4,14 @@ import { UserApi } from "../../../api/user/user";
 import { UserDetailDto } from "../../../api/user/user/dto";
 import { convertDate } from "../../../libs/constants/function/time";
 import { handleToast } from "../../../service/Toast";
+import { HeaderFilter } from "../header-filter";
 import "./style.scss";
-interface Props {}
+interface Props {
+  onTogle?: () => void;
+}
 
 export const InfoProfile = (props: Props) => {
+  const { onTogle } = props;
   const [user, setUserInfo] = useState({} as UserDetailDto);
   useEffect(() => {
     UserApi.getInfo().then((response) => {
@@ -73,7 +77,7 @@ export const InfoProfile = (props: Props) => {
                 <input
                   type="text"
                   className="form-control"
-                  value={"Nguyenthaitiep206@gmail.com"}
+                  value={user.email}
                 />
               </div>
               <div className="d-flex" style={{ marginTop: 5, marginBottom: 5 }}>
@@ -129,7 +133,7 @@ export const InfoProfile = (props: Props) => {
                   type="text"
                   className="form-control"
                   disabled
-                  value={"Đã xác thực"}
+                  value={user.isApprove ? "Đã xác thực" : "Chưa xác thực"}
                 />
               </div>
               <div className="d-flex" style={{ marginTop: 5, marginBottom: 5 }}>
@@ -190,7 +194,7 @@ export const InfoProfile = (props: Props) => {
                 <input
                   type="text"
                   className="form-control"
-                  value={user.contactUser?.phone}
+                  value={user.contactUser?.phone2}
                 />
               </div>
               <div className="d-flex" style={{ marginTop: 5, marginBottom: 5 }}>

@@ -3,16 +3,19 @@ import { makeStyles } from "@material-ui/core/styles";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import Typography from "@material-ui/core/Typography";
 import "./style.scss";
+import { RoleAdmin } from "../../../libs/constants/role";
 const images = [
   {
     url: process.env.PUBLIC_URL + "/assets/home-search.png",
     title: "Người thuê trọ",
     width: "50%",
+    roleCode: RoleAdmin.RENTER,
   },
   {
     url: process.env.PUBLIC_URL + "/assets/owner.png",
     title: "Chủ nhà trọ",
     width: "50%",
+    roleCode: RoleAdmin.OWNER,
   },
 ];
 
@@ -99,11 +102,18 @@ const useStyles = makeStyles((theme) => ({
 
 interface Props {
   onSelect?: () => void;
+  setRole?: (roleCode: string) => void;
 }
 
 export const SelectRole = (props: Props) => {
   const classes = useStyles();
-  const { onSelect } = props;
+  const { onSelect, setRole } = props;
+  const onSelectRole = (roleCode: string) => {
+    if (setRole) {
+      setRole(roleCode);
+    }
+    if (onSelect) onSelect();
+  };
 
   return (
     <div className="selectRole">
@@ -120,7 +130,9 @@ export const SelectRole = (props: Props) => {
             style={{
               width: image.width,
             }}
-            onClick={onSelect}
+            onClick={() => {
+              onSelectRole(image.roleCode);
+            }}
           >
             <span
               className={classes.imageSrc}

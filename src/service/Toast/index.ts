@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 
-export const handleToast = (input: { code?: number; message?: string }) => {
-  switch (input.code) {
+export const handleToast = (input: { status?: number; message?: string }) => {
+  switch (input.status) {
     case 100:
     case 200:
       success();
@@ -9,6 +9,9 @@ export const handleToast = (input: { code?: number; message?: string }) => {
     case 300:
     case 302:
       founded(input.message);
+      break;
+    case 400:
+      warn(input.message);
       break;
     case 404:
       notFounded(input.message);

@@ -1,11 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { ContactDto } from "../../../api/user/contactUser/dto";
+import { handleToast } from "../../../service/Toast";
 
 interface Props {
-  role?: number;
+  role?: string;
+  setContactUser?: (state: ContactDto) => void;
+  onNext?: () => void;
 }
 
 export const Contact = (props: Props) => {
+  const { role, setContactUser, onNext } = props;
+  const [contact, setContact] = useState({} as ContactDto);
+  useEffect(() => {
+    if (setContactUser) {
+      setContactUser(contact);
+    }
+  }, [contact]);
+  const Next = () => {
+    if (!contact.address || !contact.phone) {
+      return handleToast({ status: 400 });
+    }
+    if (onNext) onNext();
+  };
   return (
     <>
       <div className="title">
@@ -14,34 +31,38 @@ export const Contact = (props: Props) => {
       <div>
         <Form>
           <Form.Group controlId="formBasicEmail">
-            <Form.Label>Họ và tên</Form.Label>
+            <Form.Label>Số điện thoại 1</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Enter username"
+              placeholder="PhoneNumber"
               maxLength={20}
+              onChange={(e) => {
+                setContact({ ...contact, phone: e.target.value });
+              }}
             />
           </Form.Group>
           <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
-          </Form.Group>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label> Mật khẩu</Form.Label>
+            <Form.Label>Số điệnh thoại 2</Form.Label>
             <Form.Control
-              type="text"
-              placeholder="Enter username"
-              maxLength={20}
+              type="phone"
+              placeholder="PhoneNumber"
+              onChange={(e) => {
+                setContact({ ...contact, phone2: e.target.value });
+              }}
             />
           </Form.Group>
           <Form.Group controlId="formBasicEmail">
-            <Form.Label>Số CMND</Form.Label>
+            <Form.Label> Địa chỉ liên lạc</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Enter username"
+              placeholder="VD : số 144 Xuân Thủy, Cầu Giấy, Hà Nội"
               maxLength={20}
+              onChange={(e) => {
+                setContact({ ...contact, address: e.target.value });
+              }}
             />
           </Form.Group>
-          <Button>Tiếp</Button>
+          <Button onClick={Next}>Xong</Button>
         </Form>
       </div>
     </>
