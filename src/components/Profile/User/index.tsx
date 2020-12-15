@@ -132,7 +132,7 @@ export const User = (props: Props) => {
           onPageChange={onPageChange}
         />
       </div>
-      <EmploymentModel show={showModel} handleClose={() => setShow(false)} />
+      <EmploymentModel show={true} handleClose={() => setShow(false)} />
     </>
   );
 };
