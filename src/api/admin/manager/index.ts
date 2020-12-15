@@ -1,4 +1,5 @@
 import API from "../..";
+import { UserAssignDto } from "../../user/user/dto";
 
 const baseUrl = "/manager";
 const getEmployments = (input: {
@@ -11,7 +12,9 @@ const getEmployments = (input: {
 };
 
 const createEmployment = () => {};
-const assignUserToEmployment = () => {};
+const assignUserToEmployment = (input: UserAssignDto) => {
+  return API.post(`${baseUrl}/assignUser`, { input: input });
+};
 const removeUser = () => {};
 const getAllNewUser = (input: {
   take: number;

@@ -1,0 +1,30 @@
+.assignment-modal {
+    padding-right: 0px !important;
+    .admin-item {
+        padding: 5px 10px;
+        .content {
+            vertical-align: middle;
+
+            .avatar-admin {
+                margin-right: 10px;
+            }
+            .phone,
+            .name {
+                font-size: 1.1rem;
+                margin-top: 6px;
+                margin-right: 10px;
+            }
+        }
+        .assignment {
+            cursor: pointer;
+            border-radius: 22px;
+            padding: 8px 15px;
+            color: white;
+            background-color: #009177;
+        }
+    }
+    .suggest {
+        overflow-y: scroll;
+        max-height: 250px;
+    }
+}

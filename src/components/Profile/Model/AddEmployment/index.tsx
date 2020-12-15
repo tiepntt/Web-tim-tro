@@ -1,81 +1,93 @@
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { TextField } from "@material-ui/core";
+import { Avatar, TextField } from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Col, Form, Modal, Row, Table } from "react-bootstrap";
-
+import { Manager } from "socket.io-client";
+import { ManagerApi } from "../../../../api/admin/manager";
+import {
+  UserAssignDto,
+  UserGetDto,
+  UserTitleDto,
+} from "../../../../api/user/user/dto";
+import { handleToast } from "../../../../service/Toast";
+import "./style.scss";
 interface Props {
-  name?: string;
-  email?: string;
-  password?: string;
-  roleCod?: string;
-  personNo?: string;
-  buttonSave?: boolean;
-  buttonEdit?: boolean;
-  bottonRemove?: boolean;
+  userId?: number;
   show?: boolean;
   handleClose?: () => void;
   handleAction?: () => void;
 }
-var myData = [
-  { id: 1, name: "John" },
-  { id: 2, name: "Miles" },
-  { id: 3, name: "Charles" },
-  { id: 4, name: "Herbie" },
-];
 export const EmploymentModel = (props: Props) => {
-  const { show, handleClose, handleAction, buttonEdit } = props;
-  const [singleSelections, setSingleSelections] = useState([]);
+  const { show, handleClose, handleAction, userId } = props;
+  const [users, setUsers] = useState([] as UserGetDto[]);
+  const [condition, setCondition] = useState({
+    take: 5,
+    skip: 0,
+    key: "",
+  });
+  const getUser = () => {
+    setUsers([]);
+    ManagerApi.getEmployments(condition).then((res) => {
+      if (res.data.status !== 200) {
+        return handleToast(res.data);
+      }
+      setUsers(res.data.result.result);
+    });
+  };
+  const assignmentUser = (id: number) => {
+    ManagerApi.assignUserToEmployment({
+      userId: userId,
+      userAdminId: id,
+    } as UserAssignDto).then((res) => {
+      handleToast(res.data);
+      if (res.data.status === 200) {
+        if (handleClose) handleClose();
+      }
+    });
+  };
+  useEffect(() => {
+    getUser();
+  }, [condition]);
+
   return (
-    <Modal show={show}>
+    <Modal show={show} className="assignment-modal">
       <Modal.Header closeButton onClick={handleClose}>
-        <Modal.Title className="text-center">
-          {buttonEdit ? "Chỉnh sửa thông tin" : "Approve"}
-        </Modal.Title>
+        <Modal.Title className="text-center">Approve</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Autocomplete
-          id="combo-box-demo"
-          options={myData}
-          getOptionLabel={(option: any) => {
-            return option.name;
+        <Form.Control
+          placeholder="Tên Nhân viên"
+          onChange={(e) => {
+            console.log(e.target.value);
+
+            setCondition({ ...condition, key: e.target.value });
           }}
-          renderInput={(params: any) => (
-            <TextField {...params} label="Tên Nhân viên" variant="outlined" />
-          )}
         />
-        <Table striped bordered hover className="user-table">
-          <thead>
-            <tr className={"text-center"}>
-              {["#", "Tên"].map((item) => (
-                <th>{item}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {myData.length > 0
-              ? myData.map((item, index) => {
-                  return (
-                    <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>{item.name}</td>
-                      <td>
-                        <div className="d-flex">
-                          <div className={"icon-item"}>
-                            <FontAwesomeIcon icon={faEdit} color={"green"} />
-                          </div>
-                          <div className={"icon-item"} onClick={() => {}}>
-                            <FontAwesomeIcon icon={faTrash} color={"red"} />
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                  );
-                })
-              : null}
-          </tbody>
-        </Table>
+        <div className="suggest">
+          {users
+            ? users.map((item, index) => (
+                <div className="d-flex admin-item">
+                  <div className=" d-flex content" style={{ flexGrow: 1 }}>
+                    <div className="avatar-admin ">
+                      <Avatar src="" />
+                    </div>
+                    <div className="name">{item.name}</div>
+                    <div className="phone">{item.contactUser?.phone}</div>
+                  </div>
+                  <div
+                    className="assignment"
+                    onClick={() => {
+                      assignmentUser(item?.id || 0);
+                    }}
+                  >
+                    Thêm
+                  </div>
+                </div>
+              ))
+            : null}
+        </div>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>

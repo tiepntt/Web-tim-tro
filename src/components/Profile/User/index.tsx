@@ -22,6 +22,7 @@ export const User = (props: Props) => {
   const { onTogle, type } = props;
   const user = useSelector((state: RootState) => state.UserReducer.account);
   const [users, setUsers] = useState({ data: [] as UserGetDto[], count: 0 });
+  const [userSelected, setUserSelected] = useState(0);
   const [conditionFilter, setFilter] = useState({
     page: 1,
     take: 10,
@@ -104,7 +105,20 @@ export const User = (props: Props) => {
                     <td>{item.name}</td>
                     <td>{item.email}</td>
                     <td>{item.personNo}</td>
-                    <td>{item.userManager?.name}</td>
+                    <td>
+                      {item.userManager ? (
+                        item.userManager?.name
+                      ) : (
+                        <div
+                          onClick={(e) => {
+                            setUserSelected(item?.id || 0);
+                            setShow(true);
+                          }}
+                        >
+                          Giao
+                        </div>
+                      )}
+                    </td>
 
                     <td>
                       <div className="d-flex">
@@ -132,7 +146,11 @@ export const User = (props: Props) => {
           onPageChange={onPageChange}
         />
       </div>
-      <EmploymentModel show={true} handleClose={() => setShow(false)} />
+      <EmploymentModel
+        show={showModel}
+        userId={userSelected}
+        handleClose={() => setShow(false)}
+      />
     </>
   );
 };
