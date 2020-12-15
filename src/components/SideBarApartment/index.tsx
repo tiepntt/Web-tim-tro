@@ -32,7 +32,7 @@ export const SideBarApartment = (props: Props) => {
             />
           </div>
           <div className="user-info-title">
-            <div className="name"> Nguyễn Thái Tiệp</div>
+            <a href="/profileUser" data-rb-event-key="/profileUser" className="nav-link"><div className="name"> Nguyễn Thái Tiệp</div></a>
             <div className="time">Đã tham gia 2 năm 10 tháng</div>
           </div>
         </div>

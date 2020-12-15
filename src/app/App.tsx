@@ -10,6 +10,7 @@ import { Register } from "../page/Register";
 import { ProfilePage } from "../page/profile";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { ProfileUser } from "../page/profile-user";
 
 const history = createBrowserHistory();
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="/profile" component={ProfilePage} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+          <Route path="/profileUser" component={ProfileUser} />
           <Redirect from="/" to="/home" />
         </Switch>
       </Router>
