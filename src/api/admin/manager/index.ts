@@ -1,4 +1,5 @@
 import API from "../..";
+import { UserAssignDto } from "../../user/user/dto";
 
 const baseUrl = "/manager";
 const getEmployments = (input: {
@@ -9,10 +10,19 @@ const getEmployments = (input: {
 }) => {
   return API.get(`${baseUrl}/employments`, { params: input });
 };
+
 const createEmployment = () => {};
-const assignUserToEmployment = () => {};
+const assignUserToEmployment = (input: UserAssignDto) => {
+  return API.post(`${baseUrl}/assignUser`, { input: input });
+};
 const removeUser = () => {};
-const getAllNewUser = () => {};
+const getAllNewUser = (input: {
+  take: number;
+  skip: number;
+  isApprove: number;
+}) => {
+  return API.get(`${baseUrl}/newOwner`, { params: input });
+};
 export const ManagerApi = {
   getEmployments,
   assignUserToEmployment,

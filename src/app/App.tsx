@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import "./App.scss";
 import { createBrowserHistory } from "history";
-import { Redirect, Route, Router, Switch } from "react-router-dom";
+import { Redirect, Route, Router, Switch, useHistory } from "react-router-dom";
 import { HomePage } from "../page/homepage";
 import { ApartmentDetail } from "../page/apartment";
 import { Login } from "../page/Login";
@@ -12,7 +12,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ProfileUser } from "../page/profile-user";
 
-const history = createBrowserHistory();
+export const history = createBrowserHistory();
 function App() {
   return (
     <div>

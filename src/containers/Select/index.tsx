@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
-import InputLabel from "@material-ui/core/InputLabel";
+import { makeStyles } from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
-import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import InputBase from "@material-ui/core/InputBase";
+import { EventEmitter } from "events";
 
 interface Props {
-  data?: { event?: any; key?: any; value?: any }[];
+  data?: { title?: any; key?: any; value?: any }[];
+  emiter?: EventEmitter;
+  onSelect?: (index: number) => void;
 }
 
 const useStyles = makeStyles((theme: any) => ({
@@ -26,18 +26,18 @@ const useStyles = makeStyles((theme: any) => ({
   },
 }));
 export const SelectItem = (props: Props) => {
-  const { data } = props;
-
+  const { data, onSelect } = props;
   const classes = useStyles();
-  const [age, setAge] = React.useState("");
+  const [value, setValue] = React.useState(0);
   useEffect(() => {
     if (data) {
-      setAge(data[0].value);
+      setValue(0);
     }
   }, []);
 
   const handleChange = (event: any) => {
-    setAge(event.target.value);
+    setValue(event.target.value);
+    if (onSelect) onSelect(event.target.value);
   };
 
   return data ? (
@@ -45,12 +45,12 @@ export const SelectItem = (props: Props) => {
       <Select
         labelId="demo-simple-select-required-label"
         id="demo-simple-select-required"
-        value={age}
+        value={value}
         onChange={handleChange}
         className={classes.selectEmpty}
       >
-        {data.map((item) => {
-          return <MenuItem value={item.value}>{item.key}</MenuItem>;
+        {data.map((item, index) => {
+          return <MenuItem value={index}>{item.title}</MenuItem>;
         })}
       </Select>
     </FormControl>

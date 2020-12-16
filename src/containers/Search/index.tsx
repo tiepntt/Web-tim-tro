@@ -47,18 +47,24 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
   },
 }));
-interface Props {}
+interface Props {
+  setKey: (key: string) => void;
+}
 
 export const SearchItem = (props: Props) => {
+  const { setKey } = props;
   const classes = useStyles();
-  const [age, setAge] = React.useState("");
-  const handleChange = (event: any) => {
-    setAge(event.target.value);
+  const getKey = (event: any) => {
+    setKey(event.target.value);
   };
   return (
     <div>
       <FormControl className={classes.margin}>
-        <BootstrapInput id="demo-customized-textbox" placeholder="Tìm kiếm" />
+        <BootstrapInput
+          id="demo-customized-textbox"
+          placeholder="Tìm kiếm"
+          onChange={getKey}
+        />
       </FormControl>
     </div>
   );

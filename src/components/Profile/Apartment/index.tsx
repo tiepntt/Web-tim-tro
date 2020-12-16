@@ -2,21 +2,25 @@ import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { SvgIcon } from "@material-ui/core";
 import { Delete, Edit, Remove } from "@material-ui/icons";
-import React from "react";
+import React, { useState } from "react";
 import { ApartmentItem } from "../../../containers/apartment/apartmentItem";
+import { HeaderFilter } from "../header-filter";
 
-interface Props {}
+interface Props {
+  onTogle?: () => void;
+}
 
 export const ApartmentProfile = (props: Props) => {
+  const { onTogle } = props;
+  const [apartments, setApartments] = useState([]);
+  const filter = [];
   return (
     <div>
+      <HeaderFilter onTogle={onTogle} />
       <div className="apartment-info-list " style={{}}>
         <ul>
-          {" "}
           <li>
-            <div className="d-flex">
-              <ApartmentItem avatar="https://cloud.mogi.vn/images/2020/08/18/120/f9bc95cb39d5462887620d0afd860634.jpg" />
-            </div>
+            <ApartmentItem avatar="https://cloud.mogi.vn/images/2020/08/18/120/f9bc95cb39d5462887620d0afd860634.jpg" />
           </li>
           <li>
             <ApartmentItem avatar="https://cloud.mogi.vn/images/2020/11/09/368/2f98c1ec352f419db14344b46415b315.jpg" />

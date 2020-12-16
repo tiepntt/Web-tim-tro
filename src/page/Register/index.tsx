@@ -1,67 +1,79 @@
 import { Button, Fab, makeStyles, Paper, useTheme } from "@material-ui/core";
-import {
-  ArrowBackTwoTone,
-  ArrowForward,
-  KeyboardArrowLeft,
-} from "@material-ui/icons";
-import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Container } from "react-bootstrap";
 import Footer from "../../components/Footer";
 import HeaderItem from "../../components/Navbar";
-
-import MobileStepper from "@material-ui/core/MobileStepper";
-
-import Typography from "@material-ui/core/Typography";
-import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
-import SwipeableViews from "react-swipeable-views";
 import "./style.scss";
 import { SelectRole } from "../../components/Register/selectRole";
-import NavigationIcon from "@material-ui/icons/Navigation";
-import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import { InfoInput } from "../../components/Register/Info";
 import { Contact } from "../../components/Register/Contact";
+import { UserInputDto } from "../../api/user/user/dto";
+import { AuthApi } from "../../api/admin/authenticate";
+import { handleToast } from "../../service/Toast";
+import { ContactDto } from "../../api/user/contactUser/dto";
+import SwipeableViews from "react-swipeable-views";
+import { ContactApi } from "../../api/user/contactUser";
+import { useHistory } from "react-router";
 interface Props {}
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    maxWidth: 1200,
-    flexGrow: 1,
-  },
-  header: {
-    display: "flex",
-    alignItems: "center",
-    height: 50,
-    paddingLeft: theme.spacing(4),
-    backgroundColor: theme.palette.background.default,
-  },
-  extendedIcon: {
-    marginRight: theme.spacing(1),
-    width: 100,
-  },
-}));
-
 export const Register = (props: Props) => {
-  const classes = useStyles();
+  const history = useHistory();
+  const [user, setUser] = useState({} as UserInputDto);
+  const [contactUser, setContact] = useState({} as ContactDto);
+  useEffect(() => {
+    setUser({});
+    setContact({});
+  }, []);
+  const setUserInfo = (state: UserInputDto) => {
+    setUser({ ...user, ...state });
+  };
+  const setUserContact = (state: ContactDto) => {
+    setContact({ ...contactUser, ...state });
+  };
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
-
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
+  const onSelectRole = (roleCode: string) => {
+    setUser({ ...user, roleCode: roleCode });
+  };
+
+  // register
+  const register = () => {
+    AuthApi.resigter(user).then((response) => {
+      handleToast(response.data);
+      if (response.data.status === 200) {
+        setContact({
+          ...contactUser,
+          userId: response.data.result.id,
+          email: user.email,
+        });
+        handleNext();
+      }
+    });
+  };
+  const createContact = () => {
+    ContactApi.create(contactUser).then((response) => {
+      handleToast(response.data);
+      if (response.data.status == 200) {
+        history.push("/login");
+      }
+    });
+  };
   const tutorialSteps = [
-    <SelectRole onSelect={handleNext} />,
-    <InfoInput onNext={handleNext} />,
-    <Contact />,
+    <SelectRole onSelect={handleNext} setRole={onSelectRole} />,
+    <InfoInput onNext={register} stateChange={setUserInfo} />,
+    <Contact setContactUser={setUserContact} onNext={createContact} />,
   ];
   const maxSteps = tutorialSteps.length;
   const handleStepChange = (step: any) => {
     setActiveStep(step);
   };
-
   return (
     <div className={"Register"}>
       <HeaderItem />

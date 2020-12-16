@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { history } from "../app/App";
 // import { configureFakeBackend } from '../services/fake-backend';
 
 const API = axios.create({
@@ -9,6 +9,7 @@ const API = axios.create({
 
 const requestHandler = (request: any) => {
   let token = localStorage.getItem("token");
+
   if (token) {
     // Thêm token vào header nếu user vẫn tồn tại
     request.headers["x-access-token"] = token;
@@ -22,6 +23,9 @@ export const getToken = () => {
 };
 
 const successHandler = (response: any) => {
+  if (response.data.status === 401) {
+    history.push("/login");
+  }
   return response;
 };
 

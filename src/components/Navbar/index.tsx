@@ -1,11 +1,4 @@
-import {
-  Avatar,
-  ClickAwayListener,
-  Grow,
-  MenuItem,
-  MenuList,
-  Paper,
-} from "@material-ui/core";
+import { Avatar } from "@material-ui/core";
 import React from "react";
 
 import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
