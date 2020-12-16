@@ -1,16 +1,8 @@
-import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Avatar, TextField } from "@material-ui/core";
-import Autocomplete from "@material-ui/lab/Autocomplete";
+import { Avatar } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
-import { Button, Col, Form, Modal, Row, Table } from "react-bootstrap";
-import { Manager } from "socket.io-client";
+import { Button, Form, Modal } from "react-bootstrap";
 import { ManagerApi } from "../../../../api/admin/manager";
-import {
-  UserAssignDto,
-  UserGetDto,
-  UserTitleDto,
-} from "../../../../api/user/user/dto";
+import { UserAssignDto, UserGetDto } from "../../../../api/user/user/dto";
 import { handleToast } from "../../../../service/Toast";
 import "./style.scss";
 interface Props {
@@ -18,9 +10,10 @@ interface Props {
   show?: boolean;
   handleClose?: () => void;
   handleAction?: () => void;
+  onSuccess?: () => void;
 }
 export const EmploymentModel = (props: Props) => {
-  const { show, handleClose, handleAction, userId } = props;
+  const { show, handleClose, handleAction, userId, onSuccess } = props;
   const [users, setUsers] = useState([] as UserGetDto[]);
   const [condition, setCondition] = useState({
     take: 5,
@@ -44,6 +37,7 @@ export const EmploymentModel = (props: Props) => {
       handleToast(res.data);
       if (res.data.status === 200) {
         if (handleClose) handleClose();
+        if (onSuccess) onSuccess();
       }
     });
   };

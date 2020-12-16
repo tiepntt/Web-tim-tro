@@ -19,7 +19,7 @@ const removeUser = () => {};
 const getAllNewUser = (input: {
   take: number;
   skip: number;
-  isApprove: boolean;
+  isApprove: number;
 }) => {
   return API.get(`${baseUrl}/newOwner`, { params: input });
 };

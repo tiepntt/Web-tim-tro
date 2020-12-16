@@ -11,15 +11,24 @@ import { ManagerApi } from "../../../api/admin/manager";
 import { handleToast } from "../../../service/Toast";
 import { UserGetDto } from "../../../api/user/user/dto";
 import { Table } from "react-bootstrap";
-import { HeaderFilter } from "../header-filter";
+import { Filter, HeaderFilter } from "../header-filter";
 import { EmploymentModel } from "../Model/AddEmployment";
+import { EventEmitter } from "events";
 interface Props {
   onTogle?: () => void;
   type?: string;
 }
-
+const filter = {
+  tilte: "Lọc theo",
+  data: [
+    { key: "approve", title: "Tất cả", value: -1 },
+    { key: "approve", title: "Đã duyệt", value: 1 },
+    { key: "approve", title: "Chưa duyệt", value: 0 },
+  ],
+};
 export const User = (props: Props) => {
   const { onTogle, type } = props;
+  const eventEmiter = new EventEmitter();
   const user = useSelector((state: RootState) => state.UserReducer.account);
   const [users, setUsers] = useState({ data: [] as UserGetDto[], count: 0 });
   const [userSelected, setUserSelected] = useState(0);
@@ -28,9 +37,17 @@ export const User = (props: Props) => {
     take: 10,
     skip: 0,
     options: true,
-    isApprove: true,
+    isApprove: 1,
     key: "",
   });
+  const onSelectFilter = (index: number) => {
+    setFilter({
+      ...conditionFilter,
+      page: 1,
+      skip: 0,
+      isApprove: filter.data[index].value,
+    });
+  };
   const [showModel, setShow] = useState(false);
   const onPageChange = (page: number) => {
     let old = { ...conditionFilter };
@@ -73,6 +90,7 @@ export const User = (props: Props) => {
     }
   };
   const getAllUserForAdmin = () => {};
+
   useEffect(() => {
     setUsers({ data: [], count: 0 });
     switch (user?.role?.code) {
@@ -87,7 +105,12 @@ export const User = (props: Props) => {
   }, [conditionFilter, type]);
   return (
     <>
-      <HeaderFilter onTogle={onTogle} onSearch={onSearch} />
+      <HeaderFilter
+        onTogle={onTogle}
+        onSearch={onSearch}
+        onSelect={onSelectFilter}
+        filter={filter}
+      />
       <Table striped bordered hover className="user-table">
         <thead>
           <tr className={"text-center"}>
@@ -149,6 +172,7 @@ export const User = (props: Props) => {
       <EmploymentModel
         show={showModel}
         userId={userSelected}
+        onSuccess={getAllUserForManger}
         handleClose={() => setShow(false)}
       />
     </>
