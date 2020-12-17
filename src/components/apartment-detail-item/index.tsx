@@ -23,6 +23,7 @@ import {
   FacebookShareButton,
 } from "react-share";
 import "./style.scss";
+import {CommentItem} from "../../containers/apartment/commentItem";
 interface Props {}
 const text = `<div class="prop-info-content">
 🟢 Khai trương dự án Lotus Apartment<br>
@@ -303,6 +304,7 @@ export const ApartmentDetailItem = (props: Props) => {
           </FacebookMessengerShareButton>
         </div>
       </div>
+
     </div>
   );
 };
