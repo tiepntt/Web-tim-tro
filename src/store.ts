@@ -5,8 +5,14 @@ import { logger } from "redux-logger";
 import { persistReducer, persistStore } from "redux-persist";
 import { UserReducer } from "./service/store/userStore/reducer";
 import storage from "redux-persist/lib/storage";
+import { ApartmentReducer } from "./service/store/apartment/reducer";
+import { CommonReducer } from "./service/store/common/reducer";
+import { AddressReducer } from "./service/store/adress/reducer";
 const RootReducer = combineReducers({
   UserReducer: UserReducer,
+  Apartment: ApartmentReducer,
+  Common: CommonReducer,
+  Address: AddressReducer,
 });
 const persistConfig = {
   key: "root",
