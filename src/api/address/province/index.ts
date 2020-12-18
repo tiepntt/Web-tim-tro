@@ -1,6 +1,6 @@
 import API from "../..";
 
-const baseUrl = "/address/province/";
+const baseUrl = "/province/";
 const getAll = () => {
   return API.get(baseUrl);
 };

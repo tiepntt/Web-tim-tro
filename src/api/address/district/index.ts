@@ -1,10 +1,10 @@
 import { NumberLiteralType } from "typescript";
 import API from "../..";
 
-const baseUrl = "/address/district/";
+const baseUrl = "/district/";
 
-const getAllByProvinceId = (provinceId: number) => {
-  return;
+const getAllByProvinceId = (provinceId?: number) => {
+  return API.get(baseUrl + provinceId);
 };
 const getById = (id: number) => {
   return;
