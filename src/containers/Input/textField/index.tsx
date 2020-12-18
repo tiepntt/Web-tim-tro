@@ -15,8 +15,10 @@ interface Props {
 }
 const useStyles = makeStyles((theme: any) => ({
   textField: {
+    margin: theme.spacing(1),
     marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
+    marginRight: theme.spacing(2),
+
     fontSize: "20px",
   },
 }));

@@ -101,8 +101,17 @@ const items = [
     />
   </div>,
 ];
-interface Props {}
+interface Props {
+  data?: any[];
+}
 
 export const CarausolFooter = (props: Props) => {
-  return <AliceCarousel mouseTracking items={items} responsive={respoinsive} />;
+  const { data } = props;
+  return (
+    <AliceCarousel
+      mouseTracking
+      items={data || items}
+      responsive={respoinsive}
+    />
+  );
 };
