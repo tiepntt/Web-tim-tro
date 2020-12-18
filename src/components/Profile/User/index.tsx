@@ -18,6 +18,7 @@ interface Props {
   onTogle?: () => void;
   type?: string;
 }
+
 const filter = {
   tilte: "Lọc theo",
   data: [

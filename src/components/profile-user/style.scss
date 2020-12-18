@@ -1,10 +1,33 @@
 .remark {
-  font-family: "Times New Roman", Times, serif;
-  font-size: 25px;
-  line-height: 30px;
+  font-size: 20px;
+  padding: 15px;
+  margin-left: 50px;
+  text-align: left;
   .name{
     font-size: 35px;
-    line-height: 40px;
     font-weight: bold;
   }
+  .phone {
+    border-width: 2px;
+    text-align: center;
+    padding: 3px ;
+    margin-top: 20px;
+    border-color: #aaaaaa;
+    border-radius: 10px;
+  }
+  .time{
+    color: grey;
+  }
+
 }
+.avatarUser {
+  width:200px;
+  height:200px;
+  overflow: hidden;
+  border-radius:50%;
+  position: center;
+}
+
+
+
+

@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="10a5876c-0b97-4fbe-ba31-0c8342b71602" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/profile-user/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/profile-user/style.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/page/profile-user/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/page/profile-user/style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SideBarApartment/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SideBarApartment/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Footer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Footer/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/User/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/User/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/profile-user/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/profile-user/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/profile-user/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/profile-user/style.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +32,29 @@
   </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="2" />
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="minh" />
+                    <option name="lastUsedInstant" value="1608229787" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="development" />
+                    <option name="lastUsedInstant" value="1608229766" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
   </component>
   <component name="ProjectId" id="1lQOMPK4YYfwz6bc93NEc27MU8h" />
   <component name="ProjectViewState">
@@ -64,7 +87,9 @@
       <workItem from="1607792208380" duration="2168000" />
       <workItem from="1607992131175" duration="1407000" />
       <workItem from="1608055390409" duration="998000" />
-      <workItem from="1608056413792" duration="6086000" />
+      <workItem from="1608056413792" duration="6248000" />
+      <workItem from="1608218921458" duration="11831000" />
+      <workItem from="1608259796747" duration="498000" />
     </task>
     <servers />
   </component>
