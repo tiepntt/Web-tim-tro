@@ -5,7 +5,7 @@ import { EditorState, convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
 import htmlToDraft from "html-to-draftjs";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-
+import "./style.scss";
 interface Props {}
 
 export const EditorComponent = (props: Props) => {
@@ -21,14 +21,19 @@ export const EditorComponent = (props: Props) => {
     };
   };
   return (
-    <div>
-      <Editor
-        editorState={state}
-        toolbarClassName="toolbarClassName"
-        wrapperClassName="wrapperClassName"
-        editorClassName="editorClassName"
-        onEditorStateChange={onEditorStateChange}
-      />
+    <div className="text-editor">
+      <label className="label">Mô tả</label>
+      <div className="main">
+        <Editor
+          toolbarHidden
+          placeholder="Viết một bài thật hay nào"
+          editorState={state}
+          toolbarClassName="toolbarClassName"
+          wrapperClassName="wrapperClassName"
+          editorClassName="editorClassName"
+          onEditorStateChange={onEditorStateChange}
+        />
+      </div>
     </div>
   );
 };
