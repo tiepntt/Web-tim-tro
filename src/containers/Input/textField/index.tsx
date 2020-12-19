@@ -3,11 +3,11 @@ import { AccountCircle, Label } from "@material-ui/icons";
 import React from "react";
 import "./style.scss";
 interface Props {
-  onChange?: () => {};
+  onChange?: (e: any) => void;
   disable?: boolean;
   label: string;
   placeholder?: string;
-  value?: string;
+  value?: any;
   type?: string;
   start?: any;
   required?: boolean;
@@ -36,7 +36,9 @@ export const TextFieldInput = (props: Props) => {
     required,
   } = props;
   const classes = useStyles();
-  const onInputChange = (e: any) => {};
+  const onInputChange = (e: any) => {
+    if (onChange) onChange(e.target.value);
+  };
   return (
     <div className="text-field-input">
       <TextField
@@ -48,6 +50,7 @@ export const TextFieldInput = (props: Props) => {
         style={{ margin: 8 }}
         placeholder={placeholder}
         fullWidth
+        onChange={onInputChange}
         InputProps={{
           startAdornment: (
             <InputAdornment position="end">{start}</InputAdornment>

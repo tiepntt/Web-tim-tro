@@ -1,6 +1,7 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 import { AddApartment } from "../../components/addApartment";
+import { ApartmentDetailItem } from "../../components/apartment-detail-item";
 import Footer from "../../components/Footer";
 import HeaderItem from "../../components/Navbar";
 
@@ -14,7 +15,9 @@ export const AddApartmentPage = (props: Props) => {
         <div className="col-xl-6">
           <AddApartment />
         </div>
-        <div className="col-xl-6">Review</div>
+        <div className="col-xl-6">
+          <ApartmentDetailItem />
+        </div>
       </div>
 
       <Footer />
