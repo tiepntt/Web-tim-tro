@@ -15,6 +15,8 @@ export const apartmentLoader = (store: Store) => {
   });
   TypeApi.getAllToiletType().then((res) => {
     if (res.data.status === 200) {
+      console.log("hi");
+
       store.dispatch(CommonAction.updateToiletType(res.data.result));
     }
   });

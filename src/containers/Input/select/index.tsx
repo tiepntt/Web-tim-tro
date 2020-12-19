@@ -3,11 +3,12 @@ import React, { useEffect, useState } from "react";
 import { FormControl } from "react-bootstrap";
 
 interface Props {
-  input?: { name?: string; title?: string }[];
+  input: { name?: string; title?: string; id?: number }[];
   onSelect?: (index: number) => void;
   label?: string;
   disable?: boolean;
   value?: number;
+  flex?: boolean;
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -15,25 +16,29 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
   },
   selectLabel: {
+    display: "block",
     fontSize: "18px",
     fontWeight: "bold",
+    width: "100px",
     lineHeight: "8px",
+    marginTop: "10px",
+    textAlign: "left",
+  },
+  selectFlex: {
+    margin: theme.spacing(1),
+    display: "flex",
   },
 }));
 
 export const InputSelect = (props: Props) => {
-  const { input, onSelect } = props;
-  const [value, setValue] = useState(0);
+  const { input, onSelect, value } = props;
   const onChange = (e: any) => {
-    setValue(e.target.value);
     if (onSelect) onSelect(e.target.value);
   };
-  useEffect(() => {
-    if (!props.value) setValue(0);
-  }, []);
+
   const classes = useStyles();
   return (
-    <div className={classes.select}>
+    <div className={props.flex ? classes.selectFlex : classes.select}>
       <InputLabel
         id="demo-simple-select-helper-label"
         className={classes.selectLabel}
@@ -43,14 +48,16 @@ export const InputSelect = (props: Props) => {
       <Select
         labelId="demo-simple-select-helper-label"
         id="demo-simple-select-helper"
-        value={value}
+        value={value || (input ? input[0]?.id : 0)}
         onChange={onChange}
         fullWidth
         disabled={props.disable}
       >
         {input
           ? input.map((item, index) => (
-              <MenuItem value={index}>{item.name || item.title}</MenuItem>
+              <MenuItem value={item.id || index}>
+                {item.name || item.title}
+              </MenuItem>
             ))
           : null}
       </Select>

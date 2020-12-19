@@ -1,9 +1,9 @@
 import { NumberLiteralType } from "typescript";
 import API from "../..";
 
-const baseUrl = "/address/ward/";
-const getAllByProvinceId = (DistrictId: number) => {
-  return;
+const baseUrl = "/location";
+const getAllByProvinceId = (provinceId?: number) => {
+  return API.get(`${baseUrl}/getAllByProvince/${provinceId}`);
 };
 const getAllByDistrictId = (DistrictId: number) => {
   return;
@@ -20,7 +20,7 @@ const update = (input: any) => {
 const remove = () => {
   return;
 };
-export const DistrictApi = {
+export const LocationApi = {
   remove,
   getById,
   create,

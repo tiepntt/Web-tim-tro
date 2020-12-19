@@ -42,7 +42,7 @@ export const UploadImage = (props: Props) => {
           thumbnail
         />
         <div className="icon" onClick={() => drop(index)}>
-          <BackspaceIcon fontSize="large" />
+          <BackspaceIcon />
         </div>
       </div>
     );

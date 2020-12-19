@@ -26,7 +26,7 @@ export const CommonReducer = (
       return { ...oldState, apartmentTypes: apartmentTypes, state: true };
     case UPDATE_KITCHEN_TYPE:
       let kitchenTypes = action.payload as KitchenTypeDto[];
-      return { ...state, kitchenType: kitchenTypes, state: true };
+      return { ...state, kitchenTypes: kitchenTypes, state: true };
     case UPDATE_TOILET_TYPE:
       let toiletTypes = action.payload as ToiletTypeDto[];
       return { ...state, toiletTypes: toiletTypes, state: true };
