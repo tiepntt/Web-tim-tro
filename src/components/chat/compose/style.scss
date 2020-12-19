@@ -4,7 +4,7 @@
   align-items: center;
   background: white;
   border-top: 1px solid #eeeef1;
-  position: fixed;
+  position: absolute;
   width: calc(100% - 20px);
   bottom: 0px;
 }
@@ -25,8 +25,9 @@
   background: none;
 }
 
-.compose-input::placeholder {
-  opacity: 0.3;
+.compose-input ::placeholder {
+  text-decoration-color: brown;
+  opacity: 0.1;
 }
 
 .compose .toolbar-button {
