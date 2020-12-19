@@ -7,12 +7,14 @@ import { UserReducer } from "./service/store/userStore/reducer";
 import storage from "redux-persist/lib/storage";
 import { ApartmentReducer } from "./service/store/apartment/reducer";
 import { CommonReducer } from "./service/store/common/reducer";
-import { AddressReducer } from "./service/store/adress/reducer";
+import { ProvinceReducer } from "./service/store/adress/province/reducer";
+import { DistrictReducer } from "./service/store/adress/district/reducer";
 const RootReducer = combineReducers({
   UserReducer: UserReducer,
   Apartment: ApartmentReducer,
   Common: CommonReducer,
-  Address: AddressReducer,
+  Province: ProvinceReducer,
+  District: DistrictReducer,
 });
 const persistConfig = {
   key: "root",
