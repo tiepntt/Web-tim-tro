@@ -18,7 +18,6 @@ const useStyles = makeStyles((theme: any) => ({
     margin: theme.spacing(1),
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(2),
-
     fontSize: "20px",
   },
 }));
@@ -26,6 +25,7 @@ const useStyles = makeStyles((theme: any) => ({
 export const TextFieldInput = (props: Props) => {
   const {
     onChange,
+
     disable,
     label,
     placeholder,

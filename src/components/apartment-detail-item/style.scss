@@ -1,4 +1,5 @@
 .apartment-detail-item {
+  text-align: left;
   .slide-apartment {
     border: 2px solid white;
   }
@@ -26,6 +27,7 @@
     }
 
     .title {
+      text-align: left;
       font-weight: bold;
       font-size: 1.3rem;
       margin-bottom: 10px;
@@ -92,7 +94,6 @@
       }
     }
     .box {
-      text-align: center;
       position: relative;
       .contact-box {
         display: inline-block;

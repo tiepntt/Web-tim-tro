@@ -9,12 +9,18 @@ import { ApartmentReducer } from "./service/store/apartment/reducer";
 import { CommonReducer } from "./service/store/common/reducer";
 import { ProvinceReducer } from "./service/store/adress/province/reducer";
 import { DistrictReducer } from "./service/store/adress/district/reducer";
+import { WardReducer } from "./service/store/adress/wards/reducer";
+import { StreetReducer } from "./service/store/adress/street/reducer";
+import { LocationReducer } from "./service/store/adress/location/reducer";
 const RootReducer = combineReducers({
   UserReducer: UserReducer,
   Apartment: ApartmentReducer,
   Common: CommonReducer,
   Province: ProvinceReducer,
   District: DistrictReducer,
+  Ward: WardReducer,
+  Street: StreetReducer,
+  Location: LocationReducer,
 });
 const persistConfig = {
   key: "root",

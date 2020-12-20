@@ -4,32 +4,44 @@ import { Image } from "react-bootstrap";
 import "./style.scss";
 import { CarausolFooter } from "../../carausol.footer";
 import BackspaceIcon from "@material-ui/icons/Backspace";
-import { RemoveCircle } from "@material-ui/icons";
-interface Props {}
+interface Props {
+  urls?: string[];
+  setPicture?: (e: any) => void;
+  pictures?: [];
+  setUrl?: (e: any) => void;
+}
 const handleDragStart = (e: any) => e.preventDefault();
 export const UploadImage = (props: Props) => {
-  const [picture, setPicture] = useState([]);
-  const [urls, setUrl] = useState([]);
-
+  const { urls, setPicture, pictures, setUrl } = props;
   const onDrop = (img: any[], pictureDataURLs: any) => {
-    let oldPicture = [...picture];
-    let oldUrls = [...urls];
-    setUrl(oldUrls.concat(pictureDataURLs.pop()));
-    setPicture(oldPicture.concat(img.pop()));
+    if (setUrl && urls) {
+      setUrl(urls.concat(pictureDataURLs.pop()));
+    }
+
+    if (setPicture && pictures) {
+      setPicture(pictures.concat(img.pop()));
+    }
   };
+
   const drop = (index: number) => {
-    let oldPicture = [...picture];
-    let oldUrl = [...urls];
-    oldUrl.splice(index, 1);
-    oldPicture.splice(index, 1);
-    setUrl(oldUrl);
-    setPicture(oldPicture);
+    if (setUrl && urls) {
+      let oldUrl = [...urls];
+      oldUrl.splice(index, 1);
+      setUrl(oldUrl);
+    }
+    if (setPicture && pictures) {
+      let oldPicture = [...pictures];
+      oldPicture.splice(index, 1);
+      setPicture(oldPicture);
+    }
   };
   const getAllImage = () => {
     let items = [] as JSX.Element[];
-    urls.forEach((url, index) => {
-      items.push(getImage(url, index));
-    });
+    if (urls) {
+      urls.forEach((url, index) => {
+        items.push(getImage(url, index));
+      });
+    }
     return items;
   };
   const getImage = (url: any, index: number) => {
@@ -47,10 +59,6 @@ export const UploadImage = (props: Props) => {
       </div>
     );
   };
-  useEffect(() => {
-    console.log(picture);
-    console.log(urls);
-  }, [picture]);
   return (
     <div className="upload">
       <ImageUploader
@@ -62,7 +70,9 @@ export const UploadImage = (props: Props) => {
         maxFileSize={5242880}
       />
       <div className="privew">
-        {urls.length != 0 ? <CarausolFooter data={getAllImage()} /> : null}
+        {urls && urls.length !== 0 ? (
+          <CarausolFooter data={getAllImage()} />
+        ) : null}
       </div>
     </div>
   );

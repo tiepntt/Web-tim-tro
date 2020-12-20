@@ -11,6 +11,17 @@ export class LocationOfDistrictDto {
   @Type((type) => LocationTitleGetDto)
   locations?: LocationTitleGetDto[];
 }
+export class LocationOfProvinceDto {
+  @Expose()
+  id?: number;
+  @Expose()
+  name?: string;
+  @Expose()
+  code?: string;
+  @Expose()
+  @Type((type) => LocationTitleGetDto)
+  locations?: LocationTitleGetDto[];
+}
 export class LocationTitleGetDto {
   @Expose()
   id?: number;
