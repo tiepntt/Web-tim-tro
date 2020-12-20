@@ -1,0 +1,23 @@
+.comment {
+  padding: 5px 5px;
+  > .user-box {
+    .avatar {
+      margin-right: 10px;
+    }
+    line-height: 20px;
+    .name {
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .time {
+      color: gray;
+      margin-top: 9px;
+    }
+    .comment-text {
+      margin-left: 15px;
+    }
+    > .user-info {
+      display: flex;
+    }
+  }
+}

@@ -11,6 +11,7 @@ import { InfoProfile } from "../Info";
 import { NavSidebar } from "../NavSideBar";
 import { User } from "../User";
 import "./style.scss";
+import Messenger from "../../../containers/chat";
 interface Props {
   children: any;
 }
@@ -84,6 +85,9 @@ export const DashboardLayout = (props: Props) => {
                   </Route>
                   <Route exact path="/profile/user/owner">
                     <User onTogle={onTogle} type={RoleAdmin.OWNER} />
+                  </Route>
+                  <Route exact path="/profile/support">
+                    <Messenger />
                   </Route>
                   <Route exact path="/profile/data/location">
                     <div>Dữ liệu</div>

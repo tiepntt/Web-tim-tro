@@ -9,6 +9,8 @@ import { SideBar } from "../../components/sibar";
 import { SideBarApartment } from "../../components/SideBarApartment";
 import { CarausolFooter } from "../../containers/carausol.footer";
 import "./style.scss";
+import {CommentItem} from "../../containers/apartment/commentItem";
+import {CommentInput} from "../../components/comment-input";
 interface Props {}
 
 export const ApartmentDetail = (props: Props) => {
@@ -28,6 +30,9 @@ export const ApartmentDetail = (props: Props) => {
           </div>
         </Row>
         <hr />
+        <CommentItem />
+        <CommentItem />
+        <CommentInput />
         <div>
           <div className="title">Bất động sản tương tự</div>
           <CarausolFooter />
