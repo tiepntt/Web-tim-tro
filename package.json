@@ -100,6 +100,7 @@
     "@types/node-sass": "^4.11.1",
     "@types/react-bootstrap-typeahead": "^5.1.0",
     "@types/react-redux": "^7.1.11",
-    "@types/react-router-dom": "^5.1.6"
+    "@types/react-router-dom": "^5.1.6",
+    "shave": "^2.5.4"
   }
 }

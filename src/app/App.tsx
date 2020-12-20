@@ -23,7 +23,7 @@ function App() {
   const getCommon = () => {};
 
   useEffect(() => {
-    if (!common.state) loader(store);
+    loader(store);
   }, []);
   return (
     <div>

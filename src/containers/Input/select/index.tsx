@@ -1,6 +1,7 @@
 import { InputLabel, makeStyles, MenuItem, Select } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { FormControl } from "react-bootstrap";
+import { getConstantValue } from "typescript";
 
 interface Props {
   input: { name?: string; title?: string; id?: number }[];
@@ -35,6 +36,13 @@ export const InputSelect = (props: Props) => {
   const onChange = (e: any) => {
     if (onSelect) onSelect(e.target.value);
   };
+  const getValue = () => {
+    if (!input) return 0;
+    if (input.find((i) => i.id === value)) return value;
+    else {
+      return input ? input[0]?.id : 0;
+    }
+  };
 
   const classes = useStyles();
   return (
@@ -48,7 +56,7 @@ export const InputSelect = (props: Props) => {
       <Select
         labelId="demo-simple-select-helper-label"
         id="demo-simple-select-helper"
-        value={value || (input ? input[0]?.id : 0)}
+        value={getValue()}
         onChange={onChange}
         fullWidth
         disabled={props.disable}
