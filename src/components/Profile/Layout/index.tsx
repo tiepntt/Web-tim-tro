@@ -6,6 +6,7 @@ import { Route, Switch } from "react-router";
 import { RoleAdmin } from "../../../libs/constants/role";
 import { ApartmentProfile } from "../Apartment";
 import { BodyWrapper } from "../BodyWrapper";
+import { Statistical } from "../chart";
 import { HeaderFilter } from "../header-filter";
 import { InfoProfile } from "../Info";
 import { NavSidebar } from "../NavSideBar";
@@ -68,7 +69,7 @@ export const DashboardLayout = (props: Props) => {
               >
                 <Switch>
                   <Route exact path="/profile">
-                    <div>Thống kê</div>
+                    <Statistical onTogle={onTogle} />
                   </Route>
                   <Route exact path="/profile/post">
                     <ApartmentProfile onTogle={onTogle} />

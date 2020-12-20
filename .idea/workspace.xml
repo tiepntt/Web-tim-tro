@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="10a5876c-0b97-4fbe-ba31-0c8342b71602" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/Profile/chart/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Profile/chart/style.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Footer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Footer/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer/style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/User/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/User/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/profile-user/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/profile-user/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/profile-user/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/profile-user/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/Layout/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/Layout/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +18,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
         <option value="SCSS File" />
       </list>
     </option>
@@ -65,7 +66,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../react-analytics" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -89,7 +90,9 @@
       <workItem from="1608055390409" duration="998000" />
       <workItem from="1608056413792" duration="6248000" />
       <workItem from="1608218921458" duration="11831000" />
-      <workItem from="1608259796747" duration="498000" />
+      <workItem from="1608259796747" duration="806000" />
+      <workItem from="1608326716430" duration="958000" />
+      <workItem from="1608404546325" duration="5624000" />
     </task>
     <servers />
   </component>

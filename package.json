@@ -5,6 +5,10 @@
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^23.1.0",
     "@ckeditor/ckeditor5-react": "^3.0.0",
+    "@devexpress/dx-react-chart": "^2.7.3",
+    "@devexpress/dx-react-chart-bootstrap4": "^2.7.3",
+    "@devexpress/dx-react-chart-material-ui": "^2.7.3",
+    "@devexpress/dx-react-core": "^2.7.3",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-brands-svg-icons": "^5.15.1",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
