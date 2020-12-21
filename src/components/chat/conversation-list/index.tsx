@@ -35,10 +35,12 @@ export default function ConversationList(props:any) {
             />
             {
                 conversations.map(conversation =>
-                    <ConversationListItem
-                        key={conversation.name}
-                        data={conversation}
-                    />
+                    <a href="/profile/support/messenger" >
+                        <ConversationListItem
+                            key={conversation.name}
+                            data={conversation}
+                        />
+                    </a>
                 )
             }
         </div>

@@ -15,6 +15,8 @@ import { AddApartmentPage } from "../page/addApartment";
 import { useDispatch, useSelector, useStore } from "react-redux";
 import { loader } from "../loader";
 import { RootState } from "../store";
+import {PageNotFound} from "../page/404";
+import {IntroPage} from "../containers/intro";
 import {Term} from "../page/terms";
 
 export const history = createBrowserHistory();
@@ -31,6 +33,7 @@ function App() {
       <Router history={history}>
         <Switch>
           <Route exact path="/home" component={HomePage} />
+          <Route exact path="/link" component={IntroPage} />
           <Route exact path="/apartment" component={ApartmentDetail} />
           <Route exact path="/apartment/create" component={ApartmentDetail} />
           <Route path="/apartment/add" component={AddApartmentPage} />
@@ -38,6 +41,7 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/profileUser" component={ProfileUser} />
+          <Route path="/404" component={PageNotFound} />
           <Route path="/terms" component={Term} />
           <Redirect from="/" to="/home" />
         </Switch>

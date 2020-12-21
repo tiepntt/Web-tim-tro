@@ -4,15 +4,12 @@
   height: 80vh;
   background: #eeeef1;
 
-  grid-template-columns: 560px auto;
+  //grid-template-columns: 560px auto;
   grid-template-rows: 60px auto 60px;
   grid-column-gap: 1px;
   grid-row-gap: 1px;
 }
 
-.container {
-  padding: 10px;
-}
 
 .scrollable {
   position: relative;
@@ -32,7 +29,3 @@
   grid-row-end: span 3;
 }
 
-.footer {
-  grid-column-start: 2;
-  background: white;
-}
