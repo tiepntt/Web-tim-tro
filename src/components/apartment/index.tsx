@@ -6,12 +6,17 @@ import {
   Select,
   withStyles,
 } from "@material-ui/core";
-import React from "react";
+import React, { useState } from "react";
+import { ApartmentDto } from "../../api/apartment/apartment/dto";
+import {
+  condition,
+  ConditionDto,
+} from "../../api/apartment/apartment/dto/condtion";
+import { SearchAPI } from "../../api/apartment/search";
 import { ApartmentItem } from "../../containers/apartment/apartmentItem";
 import { PaginationItem } from "../../containers/pagination";
 import "./style.scss";
 
-interface Props {}
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
@@ -58,10 +63,30 @@ const BootstrapInput = withStyles((theme) => ({
     },
   },
 }))(InputBase);
-
+interface Props {
+  apartments?: ApartmentDto[];
+  count: number;
+  take: number;
+  page: number;
+  onChangePage: (e: number) => void;
+}
 export const Apartment = (props: Props) => {
+  const { apartments, count, take, page, onChangePage } = props;
   const classes = useStyles();
-
+  const getApartment = (index: number) => {
+    if (apartments && apartments[index])
+      return (
+        <li>
+          <ApartmentItem apartment={apartments[index]} />
+        </li>
+      );
+    return null;
+  };
+  const getAmount = () => {
+    return `${take * (page - 1) + 1} - ${
+      take * page > count ? count : take * page
+    }`;
+  };
   return (
     <div className="apartment-list">
       <div className="apartment-title">
@@ -71,7 +96,7 @@ export const Apartment = (props: Props) => {
       <ul>
         <div className="result row">
           <div className="col-lg-9  col-8 result-tag ">
-            Kết quả <b>1 - 15</b> trong <b>1124142</b>
+            Kết quả : <b>{getAmount()}</b> trong <b>{count}</b>
           </div>
           <div className="filter col-lg-3 col-4   right">
             <FormControl className={classes.margin}>
@@ -89,21 +114,15 @@ export const Apartment = (props: Props) => {
             </FormControl>
           </div>
         </div>
-        <li>
-          <ApartmentItem avatar="https://cloud.mogi.vn/images/2020/08/18/120/f9bc95cb39d5462887620d0afd860634.jpg" />
-        </li>
-        <li>
-          <ApartmentItem avatar="https://cloud.mogi.vn/images/2020/11/09/368/2f98c1ec352f419db14344b46415b315.jpg" />
-        </li>
-        <li>
-          <ApartmentItem avatar="https://cloud.mogi.vn/images/2020/07/02/581/72fc9f434e474b429273663a032d12de.jpg" />
-        </li>
-        <li>
-          <ApartmentItem avatar="https://cloud.mogi.vn/images/2020/07/22/376/44bdbe8040e54218ba9c2bd5f3080d2a.jpg" />
-        </li>
+
+        {apartments?.map((item, index) => getApartment(index))}
       </ul>
       <div className="pagination-tag">
-        <PaginationItem pageActive={1} lastPage={10} />
+        <PaginationItem
+          pageActive={page}
+          lastPage={Math.floor(count / take) + 1}
+          onPageChange={onChangePage}
+        />
       </div>
     </div>
   );

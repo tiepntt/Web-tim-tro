@@ -27,7 +27,6 @@ import "./style.scss";
 import { addStreets } from "../../loader/loaderStreet";
 import { loadLocation } from "../../loader/loaderLocation";
 import { ApartmentImageDto } from "../../api/image/apartmentImages";
-
 import { ApartmentApi } from "../../api/apartment/apartment";
 import { mapObject } from "../../libs/constants/function/map";
 import { handleToast } from "../../service/Toast";
@@ -89,13 +88,7 @@ export const AddApartment = (props: Props) => {
     dispatch(apartmentInputChange({ ...apartment, [key]: value }));
   };
   const onClear = () => {
-    dispatch(
-      apartmentInputChange({
-        ...apartment,
-        id: undefined,
-        apartmentDetail: {},
-      })
-    );
+    dispatch(apartmentClear());
   };
   const getDistrict = () => {
     let districtData = district.districts.find(
@@ -185,6 +178,13 @@ export const AddApartment = (props: Props) => {
           ...apartment,
           id: id,
           apartmentDetail: { ...detail, id: res.data.result.id },
+        })
+      );
+    } else {
+      dispatch(
+        apartmentInputChange({
+          ...apartment,
+          id: res.data.result.id,
         })
       );
     }
@@ -282,7 +282,7 @@ export const AddApartment = (props: Props) => {
     <div className="add-apartment">
       <div className="main-info">
         <TextFieldInput
-          value={apartment.title}
+          value={apartment.title || ""}
           label={"Tiêu đề"}
           onChange={(e) => onChangeApartment("title", e)}
         />
@@ -305,7 +305,7 @@ export const AddApartment = (props: Props) => {
               label={"Giá"}
               type="number"
               end="VNĐ"
-              value={apartment.price}
+              value={apartment.price || ""}
               onChange={(e) => {
                 onChangeApartment("price", e);
               }}
@@ -452,6 +452,50 @@ export const AddApartment = (props: Props) => {
           </div>
         </div>
         <div className="row">
+          <div className="col-md-4 col-12 detail-item">
+            <TextFieldInput
+              label={"Giường"}
+              type="number"
+              value={apartment.bedRoom}
+              onChange={(e) =>
+                onChangeApartment("apartment", {
+                  ...apartment,
+                  bedRoom: e,
+                })
+              }
+              end={"chiếc"}
+            />
+          </div>
+          <div className="col-md-4 col-12 detail-item">
+            <TextFieldInput
+              label={"Phòng tắm"}
+              type="number"
+              end="chiếc"
+              value={apartment.bathRoom}
+              onChange={(e) =>
+                onChangeApartment("apartment", {
+                  ...apartment,
+                  bathRoom: e,
+                })
+              }
+            />
+          </div>
+          <div className="col-md-4 col-12 detail-item">
+            <TextFieldInput
+              label={"Tủ quần áo"}
+              type="number"
+              end="cái"
+              value={apartment.wardrobe}
+              onChange={(e) =>
+                onChangeApartment("apartment", {
+                  ...apartment,
+                  wardrobe: e,
+                })
+              }
+            />
+          </div>
+        </div>
+        <div className="row">
           <div className="col-md-3 col-6">
             <CheckBoxInput
               value={apartment.apartmentDetail?.isHasElevator}
@@ -534,7 +578,7 @@ export const AddApartment = (props: Props) => {
       </div>
       <div className="editer-description">
         <EditorComponent
-          value={apartment.apartmentDetail?.description}
+          value={apartment.apartmentDetail?.description || ""}
           onChange={(e) => {
             onChangeApartment("apartmentDetail", {
               ...apartment.apartmentDetail,

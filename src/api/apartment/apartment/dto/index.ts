@@ -11,8 +11,11 @@ import { ApartmentTypeGetDto } from "../../type/dto/apartmentType";
 export class ApartmentInputDto {
   id?: string;
   title?: string;
-
+  bedRoom?: number;
+  bathRoom?: number;
+  area?: number;
   description?: string;
+  wardrobe?: number;
 
   price?: number;
 
@@ -64,6 +67,7 @@ export class ApartmentGetDto {
   constructor() {
     this.apartmentDetail = new ApartmentDetailGetDto();
   }
+  wardrobe?: number;
   id?: number;
 
   title?: string;
@@ -99,9 +103,11 @@ export class ApartmentGetDto {
   streetNo?: string;
 
   LocationsNear?: LocationTitleGetDto[];
-
   avatar?: string;
   apartmentDetail?: ApartmentDetailGetDto;
+  bathRoom?: number;
+  bedRoom?: number;
+  area?: number;
 }
 export class ApartmentApproveDto {
   id?: number;
@@ -133,4 +139,33 @@ export class ApproveInput {
   id?: number;
 
   userApproveId?: number;
+}
+export class ApartmentDto {
+  id?: number;
+  avatar?: string;
+
+  title?: string;
+
+  area?: number;
+
+  bathRoom?: number;
+
+  bedRoom?: number;
+
+  wardrobe?: number;
+
+  description?: string;
+
+  price?: number;
+
+  streetNo?: string;
+
+  province?: ProvinceGetDto;
+
+  district?: DistrictDto;
+
+  ward?: WardGetDto;
+  street?: StreetGetDto;
+  type?: ApartmentTypeGetDto;
+  create_at?: Date;
 }
