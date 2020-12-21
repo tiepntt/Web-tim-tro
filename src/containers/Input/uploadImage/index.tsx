@@ -4,42 +4,30 @@ import { Image } from "react-bootstrap";
 import "./style.scss";
 import { CarausolFooter } from "../../carausol.footer";
 import BackspaceIcon from "@material-ui/icons/Backspace";
+import { ApartmentImageDto } from "../../../api/image/apartmentImages";
 interface Props {
-  urls?: string[];
-  setPicture?: (e: any) => void;
-  pictures?: [];
-  setUrl?: (e: any) => void;
+  urls?: ApartmentImageDto[];
+  dropImg?: (id: number) => void;
+  addImg?: (file: any) => void;
 }
 const handleDragStart = (e: any) => e.preventDefault();
 export const UploadImage = (props: Props) => {
-  const { urls, setPicture, pictures, setUrl } = props;
+  const { urls, dropImg, addImg } = props;
   const onDrop = (img: any[], pictureDataURLs: any) => {
-    if (setUrl && urls) {
-      setUrl(urls.concat(pictureDataURLs.pop()));
-    }
-
-    if (setPicture && pictures) {
-      setPicture(pictures.concat(img.pop()));
+    if (addImg) {
+      addImg(img.pop());
+      // addImg(img;
     }
   };
 
   const drop = (index: number) => {
-    if (setUrl && urls) {
-      let oldUrl = [...urls];
-      oldUrl.splice(index, 1);
-      setUrl(oldUrl);
-    }
-    if (setPicture && pictures) {
-      let oldPicture = [...pictures];
-      oldPicture.splice(index, 1);
-      setPicture(oldPicture);
-    }
+    if (dropImg) dropImg(index);
   };
   const getAllImage = () => {
     let items = [] as JSX.Element[];
     if (urls) {
-      urls.forEach((url, index) => {
-        items.push(getImage(url, index));
+      urls.forEach((url) => {
+        items.push(getImage(url.url, url?.id || 0));
       });
     }
     return items;

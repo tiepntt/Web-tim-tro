@@ -25,7 +25,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store";
 import NumberFormat from "react-number-format";
 import { convertDate } from "../../libs/constants/function/time";
-interface Props {}
+import { ApartmentGetDto } from "../../api/apartment/apartment/dto";
+interface Props {
+  apartment: ApartmentGetDto;
+}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,8 +57,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 export const ApartmentDetailItem = (props: Props) => {
   const classes = useStyles();
-  const dispatch = useDispatch();
-  const apartment = useSelector((state: RootState) => state.Apartment);
+  const { apartment } = props;
   const getAddress = () => {
     return `${apartment.streetNo || "xxx"}, đường ${
       apartment.street?.name || "yyyy"
@@ -212,7 +214,7 @@ export const ApartmentDetailItem = (props: Props) => {
         <div className="info-detail">
           <div className="title">Mô tả chi tiết</div>
           <div className="content">
-            {ReactHtmlParser(apartment.description || "")}
+            {ReactHtmlParser(apartment?.apartmentDetail?.description || "")}
           </div>
         </div>
         <div className="location">

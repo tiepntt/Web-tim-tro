@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector, useStore } from "react-redux";
 import { DistrictForProvinceDto } from "../../api/address/district/dto/districtOfProvince";
 import { LocationOfProvinceDto } from "../../api/address/location/dto/get";
@@ -17,7 +17,10 @@ import { UploadImage } from "../../containers/Input/uploadImage";
 import { ChipLabel } from "../../containers/Label/chip";
 import { addWards } from "../../loader/loadDataWard";
 import { addDistrict } from "../../loader/loadDataDistrict";
-import { apartmentInputChange } from "../../service/store/apartment/action";
+import {
+  apartmentClear,
+  apartmentInputChange,
+} from "../../service/store/apartment/action";
 import { RootState } from "../../store";
 import { EditorComponent } from "../editor";
 import "./style.scss";
@@ -28,6 +31,14 @@ import { ApartmentImageDto } from "../../api/image/apartmentImages";
 import { ApartmentApi } from "../../api/apartment/apartment";
 import { mapObject } from "../../libs/constants/function/map";
 import { handleToast } from "../../service/Toast";
+import { ApartmentDetailApi } from "../../api/apartment/apartmentDetail";
+import { toast } from "react-toastify";
+import {
+  loadapartmentType,
+  loadKitchenType,
+  loadToiletType,
+} from "../../loader/loadDataApartment";
+import { Button, ButtonGroup } from "react-bootstrap";
 
 interface Props {
   id?: string;
@@ -76,6 +87,15 @@ export const AddApartment = (props: Props) => {
   );
   const onChangeApartment = (key: string, value: any) => {
     dispatch(apartmentInputChange({ ...apartment, [key]: value }));
+  };
+  const onClear = () => {
+    dispatch(
+      apartmentInputChange({
+        ...apartment,
+        id: undefined,
+        apartmentDetail: {},
+      })
+    );
   };
   const getDistrict = () => {
     let districtData = district.districts.find(
@@ -139,55 +159,121 @@ export const AddApartment = (props: Props) => {
     setPicture(e);
   };
   const getUrls = () => {
-    let item = [] as string[];
-    if (apartment.apartmentDetail?.images) {
-      apartment.apartmentDetail?.images.forEach((i) => {
-        if (i.url) item.push(i.url);
-      });
-    }
-
-    return item;
+    return apartment.apartmentDetail?.images;
   };
-  const getImagesUrl = (i: string[]) => {
-    let urls = [] as ApartmentImageDto[];
 
-    i.forEach((item) => {
-      urls.push({ url: item });
-    });
-    onChangeApartment("apartmentDetail", {
-      ...apartment.apartmentDetail,
-      images: urls,
-    });
-  };
   const createApartment = async () => {
     let apartmentInput = convertApartmentToInput();
     let res = await ApartmentApi.create(apartmentInput);
+    if (res.data.status === 200) {
+      await createApartmentDetails(res.data.result.id);
+    } else {
+    }
+    handleToast(res.data);
+  };
+
+  const createApartmentDetails = async (id: number) => {
+    let apartmentDetail = convertApartmentDetailToInpput(id);
+    let res = await ApartmentDetailApi.create(apartmentDetail);
     if (res.data.status) {
       handleToast(res.data);
     }
-    console.log(apartmentInput);
+    if (res.data.status === 200) {
+      let detail = apartment.apartmentDetail;
+      dispatch(
+        apartmentInputChange({
+          ...apartment,
+          id: id,
+          apartmentDetail: { ...detail, id: res.data.result.id },
+        })
+      );
+    }
   };
-  const getLocationCodes = () => {
+  useEffect(() => {
+    console.log(apartment.apartmentDetail);
+  }, [apartment.apartmentDetail]);
+  const getLocationCodes = (array: any[]) => {
     let locationNear = [] as number[];
-    apartment?.LocationsNear?.forEach((element) => {
+    array.forEach((element) => {
       if (element.id) locationNear.push(element.id);
     });
+
     return locationNear;
   };
+  const addImg = (file: any) => {
+    let formData = new FormData();
+    formData.append("image", file);
+    ApartmentApi.upload(formData).then((res) => {
+      handleToast(res.data);
+      if (res.data.status === 200) {
+        let imgs = { ...apartment.apartmentDetail }.images || [];
+        imgs.push(res.data.result);
+
+        onChangeApartment("apartmentDetail", {
+          ...apartment.apartmentDetail,
+          images: imgs,
+        });
+      }
+    });
+  };
+  const dropImg = (id: number) => {
+    ApartmentApi.removeImg(id).then((res) => {
+      handleToast(res.data);
+      if (res.data.status === 200 || res.data.status === 404) {
+        let imgs = { ...apartment?.apartmentDetail }.images || [];
+        imgs = imgs.filter((i) => i.id != id);
+        onChangeApartment("apartmentDetail", {
+          ...apartment.apartmentDetail,
+          images: imgs,
+        });
+      }
+    });
+  };
   const convertApartmentToInput = () => {
-    const formData = new FormData();
-    formData.append("title", toStringAny(apartment.title));
-    formData.append("price", toStringAny(apartment.price));
-    formData.append("description", toStringAny(apartment.description));
-    formData.append("type", toStringAny(apartment.type?.id));
-    formData.append("LocationsNearCode", getLocationCodes().toString());
-    formData.append("avatar", pictures[0]);
-    formData.append("provinceId", toStringAny(apartment.province?.id));
-    formData.append("districtId", toStringAny(apartment.district?.id));
-    formData.append("wardId", toStringAny(apartment.ward?.id));
-    formData.append("streetId", toStringAny(apartment.street?.id));
-    formData.append("streetNo", toStringAny(apartment.street?.id));
-    return formData;
+    let apartmentInput = { ...apartment } as ApartmentInputDto;
+    apartmentInput.LocationsNearCode = getLocationCodes(
+      apartment.LocationsNear || []
+    );
+    apartmentInput.provinceId = apartment.province?.id;
+    apartmentInput.districtId = apartment.district?.id;
+    apartmentInput.streetId = apartment.street?.id;
+    apartmentInput.wardId = apartment.ward?.id;
+    apartmentInput.type = apartment.type?.id;
+    return apartmentInput;
+  };
+  const convertApartmentDetailToInpput = (id: number) => {
+    let apartmentDetail = {
+      ...apartment.apartmentDetail,
+    } as ApartmentDetailInputDto;
+    apartmentDetail.apartmentId = id;
+    apartmentDetail.toiletTypeId = apartment.apartmentDetail?.toiletType?.id;
+    apartmentDetail.kitchenTypeId = apartment.apartmentDetail?.kitchenType?.id;
+    apartmentDetail.imagesId = getLocationCodes(
+      apartment.apartmentDetail?.images || []
+    );
+
+    return apartmentDetail;
+  };
+  const getApartmentType = () => {
+    if (common.apartmentTypes.length != 0) {
+      return common.apartmentTypes;
+    }
+    loadapartmentType(store);
+    return [];
+  };
+  const getKichentType = () => {
+    if (common.kitchenTypes.length != 0) {
+      return common.kitchenTypes;
+    }
+    loadKitchenType(store);
+    return [];
+  };
+  const getToiletType = () => {
+    if (common.toiletTypes.length != 0) {
+      return common.toiletTypes;
+    }
+    loadToiletType(store);
+    return [];
   };
   const toStringAny = (any?: any) => {
     return !any ? "" : any.toString();
@@ -204,7 +290,7 @@ export const AddApartment = (props: Props) => {
           <div className="col-6">
             <InputSelect
               label={"Loại hình"}
-              input={common.apartmentTypes}
+              input={getApartmentType()}
               value={apartment.type?.id}
               onSelect={(e) => {
                 onChangeApartment(
@@ -313,12 +399,7 @@ export const AddApartment = (props: Props) => {
       </div>
 
       <div className="upload">
-        <UploadImage
-          pictures={pictures as []}
-          urls={getUrls()}
-          setPicture={updatePicture}
-          setUrl={getImagesUrl}
-        />
+        <UploadImage urls={getUrls()} addImg={addImg} dropImg={dropImg} />
       </div>
       <div className="apartment-detail">
         {/* <RadioInput input={dataCheck} inline={true} /> */}
@@ -424,7 +505,7 @@ export const AddApartment = (props: Props) => {
           <div className="col-md-6">
             <InputSelect
               label={"Vệ Sinh"}
-              input={common.toiletTypes as []}
+              input={getToiletType()}
               flex={true}
               value={apartment.apartmentDetail?.toiletType?.id}
               onSelect={(e) => {
@@ -438,7 +519,7 @@ export const AddApartment = (props: Props) => {
           <div className="col-md-6">
             <InputSelect
               label={"Bếp"}
-              input={common.kitchenTypes as []}
+              input={getKichentType()}
               flex={true}
               value={apartment.apartmentDetail?.kitchenType?.id}
               onSelect={(e) => {
@@ -453,28 +534,41 @@ export const AddApartment = (props: Props) => {
       </div>
       <div className="editer-description">
         <EditorComponent
-          value={apartment.description}
+          value={apartment.apartmentDetail?.description}
           onChange={(e) => {
-            onChangeApartment("description", e);
+            onChangeApartment("apartmentDetail", {
+              ...apartment.apartmentDetail,
+              description: e,
+            });
           }}
         />
       </div>
       <div className="location-near">
         <SearchFilterInput input={getLocation()} onSelect={addLocationNear} />
         <div className="location-near-list d-block">
-          {apartment?.LocationsNear?.map((item, index) => (
-            <ChipLabel
-              label={item.name}
-              onDelete={() => {
-                removeLocationNear(item);
-              }}
-            />
-          ))}
+          {apartment?.LocationsNear?.map((item, index) => {
+            if (item) {
+              return (
+                <ChipLabel
+                  label={item.name}
+                  onDelete={() => {
+                    removeLocationNear(item);
+                  }}
+                />
+              );
+            }
+          })}
         </div>
       </div>
-      <div className="btn btn-primary btn-block" onClick={createApartment}>
-        Lưu
-      </div>
+
+      <ButtonGroup style={{ float: "right" }}>
+        <Button onClick={createApartment}>
+          {apartment.id ? "Cập Nhật" : "Lưu"}
+        </Button>
+        <Button variant="success" onClick={onClear}>
+          Tạo mới
+        </Button>
+      </ButtonGroup>
     </div>
   );
 };

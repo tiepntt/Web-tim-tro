@@ -4,6 +4,7 @@ import { KitchenTypeDto } from "../../type/dto/kitchen";
 import { ToiletTypeDto } from "../../type/dto/tolietType";
 
 export class ApartmentDetailInputDto {
+  id?: number;
   description?: string;
   apartmentId?: number;
   imagesId?: number[];
@@ -20,6 +21,7 @@ export class ApartmentDetailInputDto {
   isHasParking?: boolean;
 }
 export class ApartmentDetailGetDto {
+  id?: number;
   @Expose()
   description?: string;
   @Expose()
