@@ -9,8 +9,8 @@ import { SideBar } from "../../components/sibar";
 import { SideBarApartment } from "../../components/SideBarApartment";
 import { CarausolFooter } from "../../containers/carausol.footer";
 import "./style.scss";
-import {CommentItem} from "../../containers/apartment/commentItem";
-import {CommentInput} from "../../components/comment-input";
+import { CommentItem } from "../../containers/apartment/commentItem";
+import { CommentInput } from "../../components/comment-input";
 interface Props {}
 
 export const ApartmentDetail = (props: Props) => {
@@ -22,9 +22,7 @@ export const ApartmentDetail = (props: Props) => {
       <HeaderItem />
       <Container className="content">
         <Row>
-          <div className="col-lg-8 col-12">
-            <ApartmentDetailItem />
-          </div>
+          <div className="col-lg-8 col-12">{/* <ApartmentDetailItem /> */}</div>
           <div className="col-lg-4 col-12 sidebar-component">
             <SideBarApartment />
           </div>

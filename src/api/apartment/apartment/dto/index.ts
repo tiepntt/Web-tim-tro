@@ -9,6 +9,7 @@ import { ApartmentDetailGetDto } from "../../apartmentDetail/dto";
 import { ApartmentTypeGetDto } from "../../type/dto/apartmentType";
 
 export class ApartmentInputDto {
+  id?: string;
   title?: string;
 
   description?: string;
@@ -60,6 +61,9 @@ export class ApartmentTitleDto {
   price?: number;
 }
 export class ApartmentGetDto {
+  constructor() {
+    this.apartmentDetail = new ApartmentDetailGetDto();
+  }
   id?: number;
 
   title?: string;
@@ -70,7 +74,6 @@ export class ApartmentGetDto {
 
   create_at?: Date;
 
-  @Type((type) => UserTitleDto)
   user?: UserTitleDto;
 
   isApprove?: boolean;
@@ -81,32 +84,23 @@ export class ApartmentGetDto {
 
   deadline?: Date;
 
-  @Type((type) => UserDto)
   userApprove?: UserDto;
 
-  @Type((type) => ApartmentTypeGetDto)
   type?: ApartmentTypeGetDto;
 
-  @Type((type) => ProvinceGetDto)
   province?: ProvinceGetDto;
 
-  @Type((type) => DistrictDto)
   district?: DistrictDto;
 
-  @Type((type) => WardGetDto)
   ward?: WardGetDto;
 
-  @Type((type) => StreetGetDto)
   street?: StreetGetDto;
 
   streetNo?: string;
 
-  @Type((type) => LocationTitleGetDto)
   LocationsNear?: LocationTitleGetDto[];
 
   avatar?: string;
-
-  @Type((type) => ApartmentDetailGetDto)
   apartmentDetail?: ApartmentDetailGetDto;
 }
 export class ApartmentApproveDto {
