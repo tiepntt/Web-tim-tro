@@ -15,6 +15,8 @@ interface Props {
 const useStyles = makeStyles((theme) => ({
   select: {
     margin: theme.spacing(1),
+    marginBottom: 0,
+    marginTop: "-3px",
   },
   selectLabel: {
     display: "block",
@@ -40,7 +42,7 @@ export const InputSelect = (props: Props) => {
     if (!input) return 0;
     if (input.find((i) => i.id === value)) return value;
     else {
-      return input ? input[0]?.id : 0;
+      return -1;
     }
   };
 

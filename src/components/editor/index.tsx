@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState, convertToRaw } from "draft-js";
 
@@ -6,20 +6,28 @@ import draftToHtml from "draftjs-to-html";
 import htmlToDraft from "html-to-draftjs";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import "./style.scss";
-interface Props {}
+import { stateFromHTML } from "draft-js-import-html";
+interface Props {
+  onChange?: (e: any) => void;
+  value?: any;
+}
 
 export const EditorComponent = (props: Props) => {
+  const { value, onChange } = props;
   const [state, setState] = useState(EditorState.createEmpty());
   const onEditorStateChange = (editorState: any) => {
     setState(editorState);
-    console.log(editorState);
+    if (onChange)
+      onChange(draftToHtml(convertToRaw(editorState.getCurrentContent())));
   };
-  const getText = () => {
-    return {
-      value: draftToHtml(convertToRaw(state.getCurrentContent())),
-      text: state,
-    };
+
+  const convertToDraft = () => {
+    let contentState = stateFromHTML(value || "");
+    return EditorState.createWithContent(contentState);
   };
+  useEffect(() => {
+    setState(convertToDraft());
+  }, []);
   return (
     <div className="text-editor">
       <label className="label">Mô tả</label>

@@ -48,7 +48,7 @@ export class ApartmentDetailGetDto {
   @Expose()
   priceElectricity?: number;
   @Expose()
-  priceWater?: string;
+  priceWater?: number;
   @Expose()
   isHasParking?: boolean;
 }

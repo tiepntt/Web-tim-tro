@@ -1,11 +1,11 @@
-import { DistrictForProvinceDto } from "../../../../api/address/district/dto/districtOfProvince";
+import { LocationOfProvinceDto } from "../../../../api/address/location/dto/get";
 import { ActionConst } from "./action";
 
 const initState = {
   state: false,
-  districts: [] as DistrictForProvinceDto[],
+  locations: [] as LocationOfProvinceDto[],
 };
-export const DistrictReducer = (
+export const LocationReducer = (
   state = initState,
   action = { type: "", payload: {} }
 ) => {
@@ -13,22 +13,22 @@ export const DistrictReducer = (
     case ActionConst.ADD:
       if (action.payload) {
         if (
-          state.districts.find(
-            (i) => i === (action.payload as DistrictForProvinceDto)?.id
+          state.locations.find(
+            (i) => i === (action.payload as LocationOfProvinceDto)?.id
           )
         )
           return { ...state };
 
-        let oldAddState = { ...state }.districts || [];
+        let oldAddState = { ...state }.locations || [];
         if (
           oldAddState.find(
-            (i) => i.id === (action.payload as DistrictForProvinceDto).id
+            (i) => i.id === (action.payload as LocationOfProvinceDto).id
           )
         )
           return { ...state };
-        oldAddState.push(action.payload as DistrictForProvinceDto);
+        oldAddState.push(action.payload as LocationOfProvinceDto);
 
-        return { ...state, districts: oldAddState, state: false };
+        return { ...state, locations: oldAddState, state: false };
       }
       return { ...state };
     case ActionConst.CHANGE_STATE:

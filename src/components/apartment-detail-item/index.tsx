@@ -6,13 +6,10 @@ import {
   faHeart,
   faPhone,
   faPhoneAlt,
-  faSave,
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Avatar, Chip, makeStyles } from "@material-ui/core";
-import { MessageOutlined } from "@material-ui/icons";
-import draftToHtml from "draftjs-to-html";
 import React, { useState } from "react";
 import { Carousel, Col, Image, Row } from "react-bootstrap";
 import ReactHtmlParser from "react-html-parser";
@@ -23,18 +20,13 @@ import {
   FacebookShareButton,
 } from "react-share";
 import "./style.scss";
-import {CommentItem} from "../../containers/apartment/commentItem";
+import { CommentItem } from "../../containers/apartment/commentItem";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../store";
+import NumberFormat from "react-number-format";
+import { convertDate } from "../../libs/constants/function/time";
 interface Props {}
-const text = `<div class="prop-info-content">
-🟢 Khai trương dự án Lotus Apartment<br>
-🟡 Căn hộ dịch vụ thiết kế kiểu Ý hiện đại<br>
-🔴 Không gian mở ban công thoáng mát<br>
-🔻Dịch vụ dọn vệ sinh 2 lần/tuần, thai ga gối 1 lần/tuần phục vụ tận răng
-🔻<br>
-🔹 Vị trí đi bộ 500m tới Sân Bay<br>
-🔹 Trên đường Trường Sơn<br>
-🔹 Khu dân cư quang chức cấp cao vô cùng an ninh<br>
-</div>`;
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -62,6 +54,29 @@ const useStyles = makeStyles((theme) => ({
 }));
 export const ApartmentDetailItem = (props: Props) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const apartment = useSelector((state: RootState) => state.Apartment);
+  const getAddress = () => {
+    return `${apartment.streetNo || "xxx"}, đường ${
+      apartment.street?.name || "yyyy"
+    },  ${apartment.ward?.name || "PP"}, ${
+      apartment.district?.name || "QQQQ"
+    }, ${apartment.province?.name || "TTTT"} `;
+  };
+  const FormatNumber = (n?: number, suffix = "", prefix = "") => {
+    return (
+      <NumberFormat
+        value={n || 0}
+        displayType={"text"}
+        thousandSeparator={true}
+        suffix={suffix}
+        prefix={prefix}
+      />
+    );
+  };
+  const getYesNo = (e?: boolean) => {
+    return e ? "Có" : "Không";
+  };
   return (
     <div className="apartment-detail-item">
       <div className="slide-apartment">
@@ -74,49 +89,35 @@ export const ApartmentDetailItem = (props: Props) => {
           }
           interval={5000}
         >
-          <Carousel.Item>
-            <Image
-              className="d-block w-100"
-              src="https://cloud.mogi.vn/images/2020/11/03/456/82ee2b80fe4243e1a238bca87babb205.jpg"
-              alt="First slide"
-              thumbnail
-            />
-          </Carousel.Item>
-          <Carousel.Item>
-            <Image
-              className="d-block w-100"
-              src="https://cloud.mogi.vn/images/2020/11/03/456/82ee2b80fe4243e1a238bca87babb205.jpg"
-              alt="Third slide"
-              thumbnail
-            />
-          </Carousel.Item>
-          <Carousel.Item>
-            <Image
-              className="d-block w-100 "
-              src="https://cloud.mogi.vn/images/2020/11/28/071/97e2bbc228584a54b0a3a0a159ee9e5f.jpg"
-              alt="Third slide"
-              thumbnail
-            />
-          </Carousel.Item>
-          <Carousel.Item>
-            <Image
-              className="d-block w-100"
-              src="https://cloud.mogi.vn/images/2020/11/25/527/f1e37361b9514c4a9e197aea07c83155.jpg"
-              alt="Third slide"
-              thumbnail
-            />
-          </Carousel.Item>
+          {apartment.apartmentDetail?.images &&
+          apartment.apartmentDetail?.images.length != 0 ? (
+            apartment.apartmentDetail?.images.map((i) => (
+              <Carousel.Item>
+                <Image
+                  className="d-block w-100"
+                  src={i.url}
+                  alt="First slide"
+                  thumbnail
+                />
+              </Carousel.Item>
+            ))
+          ) : (
+            <Carousel.Item>
+              <Image
+                className="d-block w-100"
+                src="https://cloud.mogi.vn/images/2020/11/03/456/82ee2b80fe4243e1a238bca87babb205.jpg"
+                alt="First slide"
+                thumbnail
+              />
+            </Carousel.Item>
+          )}
         </Carousel>
       </div>
       <div className="info">
         <div className="info-title">
-          <div className="title">
-            Chính chủ cho thuê căn hộ 1PN, đầy đủ tiện nghi và nội thất 45m2.
-          </div>
-          <div className="address">
-            Bạch Đằng, Phường 2, Quận Tân Bình, TPHCM
-          </div>
-          <div className="price">3.000.000 vnđ</div>
+          <div className="title">{apartment.title || "Tiêu đề"}</div>
+          <div className="address">{getAddress()}</div>
+          <div className="price">{FormatNumber(apartment.price, " vnđ")}</div>
         </div>
         <div className="info-main">
           <div className="title">Thông tin chính</div>
@@ -125,56 +126,84 @@ export const ApartmentDetailItem = (props: Props) => {
               <Col md={6} xs={12}>
                 <div className="item-info">
                   <span className="item-title">Giá tiền</span>
-                  <span className="data">: 3.000.000 vnđ</span>
+                  <span className="data">
+                    :{FormatNumber(apartment.price, " vnđ")}
+                  </span>
                 </div>
                 <div className="item-info">
                   <span className="item-title">Diện tích</span>
                   <span className="data">
-                    : 40 m<sup>2</sup>
+                    : {apartment.apartmentDetail?.acreage || 0} m<sup>2</sup>
                   </span>
                 </div>
                 <div className="item-info">
                   <span className="item-title">Ngày đăng</span>
-                  <span className="data">: 20/10/2020</span>
+                  <span className="data">
+                    : {convertDate(apartment.create_at)}
+                  </span>
                 </div>
                 <div className="item-info">
                   <span className="item-title">Loại hình</span>
-                  <span className="data">: Nhà trọ bình dân</span>
+                  <span className="data">: {apartment.type?.name}</span>
                 </div>
                 <div className="item-info">
                   <span className="item-title">Giá điện</span>
-                  <span className="data">: 3.000/số</span>
+                  <span className="data">
+                    :{" "}
+                    {FormatNumber(
+                      apartment.apartmentDetail?.priceElectricity,
+                      "/số"
+                    )}
+                  </span>
                 </div>
                 <div className="item-info">
                   <span className="item-title">Giá nước</span>
-                  <span className="data">: 25k/khối</span>
+                  <span className="data">
+                    :{" "}
+                    {FormatNumber(
+                      apartment.apartmentDetail?.priceWater,
+                      "/khối"
+                    )}
+                  </span>
                 </div>{" "}
               </Col>
 
               <Col md={6} xs={12}>
                 <div className="item-info">
                   <span className="item-title">Thang máy</span>
-                  <span className="data">: Có</span>
+                  <span className="data">
+                    : {getYesNo(apartment.apartmentDetail?.isHasElevator)}
+                  </span>
                 </div>
                 <div className="item-info">
                   <span className="item-title">Điều hòa</span>
-                  <span className="data">: Có</span>
+                  <span className="data">
+                    : {getYesNo(apartment.apartmentDetail?.isHasAirConditioner)}
+                  </span>
                 </div>
                 <div className="item-info">
                   <span className="item-title">Ban Công</span>
-                  <span className="data">: Không</span>
+                  <span className="data">
+                    : {getYesNo(apartment.apartmentDetail?.isHasBalcony)}
+                  </span>
                 </div>
                 <div className="item-info">
                   <span className="item-title">Vệ sinh</span>
-                  <span className="data">: Khép kín</span>
+                  <span className="data">
+                    : {apartment.apartmentDetail?.toiletType?.name}
+                  </span>
                 </div>
                 <div className="item-info">
                   <span className="item-title">Bếp</span>
-                  <span className="data">: Khép kín</span>
+                  <span className="data">
+                    : {apartment.apartmentDetail?.kitchenType?.name}
+                  </span>
                 </div>
                 <div className="item-info">
                   <span className="item-title">Chỗ để xe</span>
-                  <span className="data">: Có</span>
+                  <span className="data">
+                    : {getYesNo(apartment.apartmentDetail?.isHasParking)}
+                  </span>
                 </div>{" "}
               </Col>
             </Row>
@@ -182,54 +211,26 @@ export const ApartmentDetailItem = (props: Props) => {
         </div>
         <div className="info-detail">
           <div className="title">Mô tả chi tiết</div>
-          <div className="content">{ReactHtmlParser(text)}</div>
+          <div className="content">
+            {ReactHtmlParser(apartment.description || "")}
+          </div>
         </div>
         <div className="location">
           <div className="title">Địa điểm lân cận</div>
 
-          <Chip
-            className={classes.location}
-            label="BigC Thăng Long"
-            component="a"
-            href="#chip"
-            clickable
-            variant="outlined"
-          />
-          <Chip
-            className={classes.location}
-            label="BigC Thăng Long"
-            component="a"
-            href="#chip"
-            clickable
-            variant="outlined"
-          />
-          <Chip
-            className={classes.location}
-            label="BigC Thăng Long"
-            component="a"
-            href="#chip"
-            clickable
-            variant="outlined"
-          />
-          <Chip
-            className={classes.location}
-            label="BigC Thăng Long"
-            component="a"
-            href="#chip"
-            clickable
-            variant="outlined"
-          />
-          <Chip
-            className={classes.location}
-            label="BigC Thăng Long"
-            component="a"
-            href="#chip"
-            clickable
-            variant="outlined"
-          />
+          {apartment.LocationsNear?.map((item) => (
+            <Chip
+              className={classes.location}
+              label={item.name}
+              component="a"
+              href="#chip"
+              clickable
+              variant="outlined"
+            />
+          ))}
         </div>
       </div>
-      <div className="user-info row">
+      {/* <div className="user-info row">
         <div className="col-md-7 col-12 user-item">
           <Avatar
             src="https://scontent.fhan5-5.fna.fbcdn.net/v/t1.0-9/74607660_532630757561738_5938117982679990272_o.jpg?_nc_cat=101&ccb=2&_nc_sid=174925&_nc_ohc=dgBa5uDDRi8AX-OrKVV&_nc_ht=scontent.fhan5-5.fna&oh=b11b1f1315c58f43c04fe5a8b7e680ef&oe=5FEC4744"
@@ -253,8 +254,8 @@ export const ApartmentDetailItem = (props: Props) => {
           </div>
         </div>
       </div>
-      <div className="row review-share ">
-        <div className="col-md-9 col-12 review ">
+      <div className="row review-share "> */}
+      {/* <div className="col-md-9 col-12 review ">
           <ul>
             <li>
               <Chip
@@ -303,8 +304,7 @@ export const ApartmentDetailItem = (props: Props) => {
             <FacebookMessengerIcon size={48} round />
           </FacebookMessengerShareButton>
         </div>
-      </div>
-
+      </div> */}
     </div>
   );
 };
