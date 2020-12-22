@@ -1,11 +1,12 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { AddApartment } from "../../components/addApartment";
 import { ApartmentDetailItem } from "../../components/apartment-detail-item";
 import Footer from "../../components/Footer";
 import HeaderItem from "../../components/Navbar";
 import { RootState } from "../../store";
+import {ActionUserLogout} from "../../service/store/userStore/action";
 
 interface Props {}
 

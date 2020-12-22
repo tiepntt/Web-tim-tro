@@ -12,13 +12,14 @@ import {InfoProfile} from "../Info";
 import {NavSidebar} from "../NavSideBar";
 import {User} from "../User";
 import "./style.scss";
-import Messenger from "../../../containers/chat";
+import Messenger from "../../../containers/chat/messenger";
+import ConversationList from "../../chat/conversation-list";
+import Conversation from "../../../containers/chat/conversation";
 import {Contract} from "../contract";
 
 interface Props {
     children: any;
 }
-
 const filter = {
     title: "Select",
     data: [
@@ -91,6 +92,12 @@ export const DashboardLayout = (props: Props) => {
                                         <User onTogle={onTogle} type={RoleAdmin.OWNER}/>
                                     </Route>
                                     <Route exact path="/profile/support">
+                                        <Conversation/>
+                                    </Route>
+                                    <Route exact path="/profile/support/messenger">
+                                        <Messenger/>
+                                    </Route>
+                                    <Route  path="/profile/support/messenger/:id">
                                         <Messenger/>
                                     </Route>
                                     <Route exact path="/profile/data/location">

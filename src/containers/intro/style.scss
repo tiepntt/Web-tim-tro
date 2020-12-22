@@ -1,0 +1,39 @@
+.Intro {
+  display: block;
+  .content {
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+    padding: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .news-detail {
+    padding: 20px 10px 30px 10px;
+    h1.title {
+      margin-bottom: 20px;
+      font-size: 25px;
+    }
+    .summary {
+      font-weight: bold;
+    }
+    .body {
+      padding-top: 10px;
+      font-size: 20px;
+      text-align: justify;
+      a{
+        text-decoration: none;
+      }
+      ul{
+        display: block;
+        list-style-type: disc;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        padding-inline-start: 40px;
+      }
+
+    }
+
+  }
+}

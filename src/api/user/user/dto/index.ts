@@ -112,6 +112,13 @@ export class AccountDto {
   isBlock?: boolean;
   @Expose()
   isApprove?: boolean;
+  avatar?: AccountDto;
+}
+export class AvatarDto {
+  @Expose()
+  id?: number;
+  @Expose()
+  url?: string;
 }
 export class UserDetailDto {
   @Expose()
