@@ -13,9 +13,7 @@ interface Props {
 
 export const EditorComponent = (props: Props) => {
   const { value, onChange } = props;
-  const [state, setState] = useState(EditorState.createEmpty());
   const onEditorStateChange = (editorState: any) => {
-    setState(editorState);
     if (onChange)
       onChange(draftToHtml(convertToRaw(editorState.getCurrentContent())));
   };
@@ -24,9 +22,6 @@ export const EditorComponent = (props: Props) => {
     let contentState = stateFromHTML(value || "");
     return EditorState.createWithContent(contentState);
   };
-  useEffect(() => {
-    setState(convertToDraft());
-  }, []);
   return (
     <div className="text-editor">
       <label className="label">Mô tả</label>
@@ -34,7 +29,7 @@ export const EditorComponent = (props: Props) => {
         <Editor
           toolbarHidden
           placeholder="Viết một bài thật hay nào"
-          editorState={state}
+          editorState={convertToDraft()}
           toolbarClassName="toolbarClassName"
           wrapperClassName="wrapperClassName"
           editorClassName="editorClassName"

@@ -57,7 +57,7 @@ export const TextFieldInput = (props: Props) => {
           ),
           endAdornment: <InputAdornment position="end">{end}</InputAdornment>,
         }}
-        value={value}
+        value={value || ""}
         margin="normal"
         disabled={disable}
         InputLabelProps={{

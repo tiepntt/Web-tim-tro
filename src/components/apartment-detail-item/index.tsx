@@ -20,7 +20,7 @@ import {
   FacebookShareButton,
 } from "react-share";
 import "./style.scss";
-import { CommentItem } from "../../containers/apartment/commentItem";
+// import { CommentItem } from "../../containers/apartment/commentItem";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store";
 import NumberFormat from "react-number-format";

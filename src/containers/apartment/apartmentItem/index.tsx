@@ -1,57 +1,69 @@
 import {
   faBath,
   faBed,
-  faBlenderPhone,
   faHeart,
-  faPhone,
   faPhoneAlt,
   faSquare,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Image } from "react-bootstrap";
-
+import { ApartmentDto } from "../../../api/apartment/apartment/dto";
+import NumberFormat from "react-number-format";
 import "./style.scss";
+import { convertDate } from "../../../libs/constants/function/time";
 interface Props {
   avatar?: string;
+  apartment?: ApartmentDto;
 }
 export const ApartmentItem = (props: Props) => {
-  const { avatar } = props;
+  const { apartment } = props;
+  const getAddress = () => {
+    return `${apartment?.streetNo ? apartment?.streetNo + "," : ""} 
+    ${apartment?.street?.name ? apartment?.street?.name + "," : ""}
+    ${apartment?.ward?.name ? apartment?.ward?.name + "," : ""}
+    ${apartment?.district?.name ? apartment?.district?.name : ""} `;
+  };
+  const FormatNumber = (n?: number, suffix = "", prefix = "") => {
+    return (
+      <NumberFormat
+        value={n || 0}
+        displayType={"text"}
+        thousandSeparator={true}
+        suffix={suffix}
+        prefix={prefix}
+      />
+    );
+  };
   return (
     <div className="apartment-item">
       <a href="/apartment">
         <div className="props-img">
-          <Image src={avatar} className="apartment-avatar" />
+          <Image src={apartment?.avatar} className="apartment-avatar" />
         </div>
         <div className="info">
-          <div className="apartment-item-title">
-            Cho thuê căn hộ 100% Full nội thất gia sieu re o mot nguoi nha chu
-            sieu de tinh. chi can toi o thoi
-          </div>
-          <div className="address">
-            Số nhà 79 ngõ 59, Khúc Thừa Dụ, Cầu Giấy, Hà Nội
-          </div>
+          <div className="apartment-item-title">{apartment?.title}</div>
+          <div className="address">{getAddress()}</div>
           <ul className={"icon-info"}>
             <li>
               <FontAwesomeIcon icon={faSquare} />{" "}
               <span>
-                32m<sup>2</sup>
+                {" "}
+                {apartment?.area}m<sup>2</sup>
               </span>
             </li>
             <li>
-              <FontAwesomeIcon icon={faBed} />
-              {" 0"}
+              <FontAwesomeIcon icon={faBed} /> {apartment?.bedRoom}
             </li>
 
             <li>
-              <FontAwesomeIcon icon={faBath} />
-              {" 0"}
+              <FontAwesomeIcon icon={faBath} /> {apartment?.bathRoom}
             </li>
           </ul>
-          <div className="price">3.000.000 vnđ</div>
+          <div className="price">{FormatNumber(apartment?.price, " vnđ")}</div>
           <div className="date">
             <span className="date-title">Ngày đăng: </span>
-            <span>Hôm nay</span>
+            <span>{convertDate(apartment?.create_at)}</span>
           </div>
           <div className="float-right">
             <ul>

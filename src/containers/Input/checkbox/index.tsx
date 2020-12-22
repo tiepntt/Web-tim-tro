@@ -29,7 +29,11 @@ export const CheckBoxInput = (props: Props) => {
     <div>
       <FormControlLabel
         control={
-          <Checkbox checked={value} onChange={handleChange} name="gilad" />
+          <Checkbox
+            checked={value || false}
+            onChange={handleChange}
+            name="gilad"
+          />
         }
         label={label}
       />

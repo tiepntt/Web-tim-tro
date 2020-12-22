@@ -19,7 +19,7 @@ export const SearchFilterInput = (props: Props) => {
       value={value}
       fullWidth
       onChange={(event, newValue: any) => {
-        if (onSelect) {
+        if (onSelect && newValue) {
           onSelect(newValue);
         }
         if (typeof newValue === "string") {

@@ -1,11 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row } from "react-bootstrap";
-import { Apartment } from "../../components/apartment";
-import { ApartmentDetailItem } from "../../components/apartment-detail-item";
 import Footer from "../../components/Footer";
 import HeaderItem from "../../components/Navbar";
-import SearchHeader from "../../components/search-header";
-import { SideBar } from "../../components/sibar";
 import { SideBarApartment } from "../../components/SideBarApartment";
 import { CarausolFooter } from "../../containers/carausol.footer";
 import "./style.scss";
@@ -17,6 +13,7 @@ export const ApartmentDetail = (props: Props) => {
   useEffect(() => {
     document.title = "Apartment";
   }, []);
+
   return (
     <div className={"apartment-detail"}>
       <HeaderItem />
