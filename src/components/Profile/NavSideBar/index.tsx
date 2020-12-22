@@ -106,6 +106,11 @@ const NavData = [
         itemId: "/profile/user/renter",
         elemBefore: () => <Icon name="coffee" />,
       },
+      {
+        title: "Hợp đồng",
+        itemId: "/profile/contract",
+        elemBefore: () => <Icon name="coffee" />,
+      },
     ],
   },
   {

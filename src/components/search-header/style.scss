@@ -1,8 +1,24 @@
 .searh-header {
-  background-color: #262637;
+  background-image: url("https://mogi.vn/content/images/home/home-bg-d.jpg?fbclid=IwAR2WTsjsJp12rx7f9nJEWFeTIyU3fgrqG0rL0zRwEp4KV9wQmYtNxeqwECI");
   text-align: center;
+  background-size: auto;
   padding-right: 1px;
   display: block;
+  height: 250px;
+  padding-top: 50px;
+  .border{
+    background-color: rgba(40,40,46,.6);
+    padding: 20px;
+    border: none!important;
+    border-radius: 4px;
+  }
+  h1{
+    margin: 10px;
+    text-align: left;
+    font-size: 30px;
+    font-weight: bold;
+    color: #f1f4f6;
+  }
   .input-group-text {
     background-color: white !important;
     border: 0 !important;

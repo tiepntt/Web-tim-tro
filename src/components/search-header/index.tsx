@@ -40,60 +40,63 @@ const SearchHeader = (props: Props) => {
   return (
     <div className="searh-header">
       <Container className="container-header">
-        <Row>
-          <Col lg={4} xs={12}>
-            <Paper component="form" className={classes.root}>
-              <IconButton
-                type="submit"
-                className={classes.iconButton}
-                aria-label="search"
-              >
-                <FontAwesomeIcon icon={faSearch} size="sm" />
-              </IconButton>
-              <InputBase
-                className={classes.input}
-                placeholder="Search Google Maps"
-                inputProps={{ "aria-label": "search google maps" }}
-              />
-            </Paper>
-          </Col>
-          <Col lg={2} xs={6}>
-            <Select label="Distric" className={"drop-down"} value={1}>
-              <MenuItem value={1}>Khu vực</MenuItem>
-              <MenuItem value={2}>Cầu Giấy</MenuItem>
-              <MenuItem value={3}>Đống Đa</MenuItem>
-              <MenuItem value={4}>Hà Đông</MenuItem>
-            </Select>
-          </Col>
-          <Col lg={2} xs={6}>
-            <Select label="price" className={"drop-down"} value={10}>
-              <MenuItem value={10} disabled={true}>
-                Giá thuê
-              </MenuItem>
-              <MenuItem value={1}>1-2tr</MenuItem>
-              <MenuItem value={20}>2-4tr</MenuItem>
-              <MenuItem value={30}>{">4tr"}</MenuItem>
-            </Select>
-          </Col>
-          <Col lg={2} xs={6}>
-            <Select label="Age" className={"drop-down"} value={10}>
-              <MenuItem value={10}>Diện tích</MenuItem>
-              <MenuItem value={1}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
-            </Select>
-          </Col>
-          <Col lg={2} xs={6}>
-            <Select label="Age" className={"drop-down"} value={10}>
-              <MenuItem value={10} disabled={true}>
-                Loại hình
-              </MenuItem>
-              <MenuItem value={1}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
-            </Select>
-          </Col>
-        </Row>
+        <h1>Đúng nhà, đúng giá, đúng thời điểm</h1>
+        <div className={"border"}>
+          <Row>
+            <Col lg={4} xs={12}>
+              <Paper component="form" className={classes.root}>
+                <IconButton
+                    type="submit"
+                    className={classes.iconButton}
+                    aria-label="search"
+                >
+                  <FontAwesomeIcon icon={faSearch} size="sm" />
+                </IconButton>
+                <InputBase
+                    className={classes.input}
+                    placeholder="Search Google Maps"
+                    inputProps={{ "aria-label": "search google maps" }}
+                />
+              </Paper>
+            </Col>
+            <Col lg={2} xs={6}>
+              <Select label="Distric" className={"drop-down"} value={1}>
+                <MenuItem value={1}>Khu vực</MenuItem>
+                <MenuItem value={2}>Cầu Giấy</MenuItem>
+                <MenuItem value={3}>Đống Đa</MenuItem>
+                <MenuItem value={4}>Hà Đông</MenuItem>
+              </Select>
+            </Col>
+            <Col lg={2} xs={6}>
+              <Select label="price" className={"drop-down"} value={10}>
+                <MenuItem value={10} disabled={true}>
+                  Giá thuê
+                </MenuItem>
+                <MenuItem value={1}>1-2tr</MenuItem>
+                <MenuItem value={20}>2-4tr</MenuItem>
+                <MenuItem value={30}>{">4tr"}</MenuItem>
+              </Select>
+            </Col>
+            <Col lg={2} xs={6}>
+              <Select label="Age" className={"drop-down"} value={10}>
+                <MenuItem value={10}>Diện tích</MenuItem>
+                <MenuItem value={1}>Ten</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem>
+              </Select>
+            </Col>
+            <Col lg={2} xs={6}>
+              <Select label="Age" className={"drop-down"} value={10}>
+                <MenuItem value={10} disabled={true}>
+                  Loại hình
+                </MenuItem>
+                <MenuItem value={1}>Ten</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem>
+              </Select>
+            </Col>
+          </Row>
+        </div>
       </Container>
     </div>
   );

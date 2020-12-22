@@ -28,11 +28,33 @@ const Footer = (props: Props) => {
         <Row>
           <Col md={4} sm={12}>
             <div className="header-footer">
-              <div>
+              <div className="name-web">
                 TIMTRO<small>.vn</small>
               </div>
               <div className="slogan">
                 Đúng phòng - đúng gia - đúng thời điểm
+              </div>
+              <div className={"contactIcon"}>
+                <a
+                    href="https://www.facebook.com/tiep.nguyenthai.779/"
+                    className={"contactIcon-item"}
+                >
+                  <FontAwesomeIcon
+                      icon={faFacebookSquare}
+                      color={"#3b5998"}
+                      size={"lg"}
+                  />
+                </a>
+                <a href="" className={"contactIcon-item"}>
+                  <FontAwesomeIcon
+                      icon={faYoutubeSquare}
+                      color={"#FF0000"}
+                      size={"lg"}
+                  />
+                </a>
+                <a href="" className={"contactIcon-item"}>
+                  <FontAwesomeIcon icon={faGithub} color={"black"} size={"lg"} />
+                </a>
               </div>
             </div>
           </Col>
@@ -66,28 +88,6 @@ const Footer = (props: Props) => {
                   <span>Nguyenthaitiep206@gmail.com</span>
                 </div>
               </div>
-            </div>
-            <div className={"contactIcon"}>
-              <a
-                href="https://www.facebook.com/tiep.nguyenthai.779/"
-                className={"contactIcon-item"}
-              >
-                <FontAwesomeIcon
-                  icon={faFacebookSquare}
-                  color={"#3b5998"}
-                  size={"lg"}
-                />
-              </a>
-              <a href="" className={"contactIcon-item"}>
-                <FontAwesomeIcon
-                  icon={faYoutubeSquare}
-                  color={"#FF0000"}
-                  size={"lg"}
-                />
-              </a>
-              <a href="" className={"contactIcon-item"}>
-                <FontAwesomeIcon icon={faGithub} color={"black"} size={"lg"} />
-              </a>
             </div>
           </Col>
           {/* <Col xs={12}>HElllo</Col> */}

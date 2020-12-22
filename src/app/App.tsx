@@ -15,6 +15,7 @@ import { AddApartmentPage } from "../page/addApartment";
 import { useDispatch, useSelector, useStore } from "react-redux";
 import { loader } from "../loader";
 import { RootState } from "../store";
+import {Term} from "../page/terms";
 
 export const history = createBrowserHistory();
 function App() {
@@ -37,6 +38,7 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/profileUser" component={ProfileUser} />
+          <Route path="/terms" component={Term} />
           <Redirect from="/" to="/home" />
         </Switch>
       </Router>
