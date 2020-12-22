@@ -25,7 +25,6 @@ const useStyles = makeStyles((theme: any) => ({
 export const TextFieldInput = (props: Props) => {
   const {
     onChange,
-
     disable,
     label,
     placeholder,
@@ -59,7 +58,7 @@ export const TextFieldInput = (props: Props) => {
         }}
         value={value || ""}
         margin="normal"
-        disabled={disable}
+        disabled={disable || false}
         InputLabelProps={{
           shrink: true,
         }}

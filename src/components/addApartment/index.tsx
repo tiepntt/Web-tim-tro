@@ -410,10 +410,16 @@ export const AddApartment = (props: Props) => {
               type="number"
               value={apartment.apartmentDetail?.acreage}
               onChange={(e) =>
-                onChangeApartment("apartmentDetail", {
-                  ...apartment.apartmentDetail,
-                  acreage: e,
-                })
+                dispatch(
+                  apartmentInputChange({
+                    ...apartment,
+                    area: e,
+                    apartmentDetail: {
+                      ...apartment.apartmentDetail,
+                      acreage: e,
+                    },
+                  })
+                )
               }
               end={
                 <span>
@@ -457,12 +463,7 @@ export const AddApartment = (props: Props) => {
               label={"Giường"}
               type="number"
               value={apartment.bedRoom}
-              onChange={(e) =>
-                onChangeApartment("apartment", {
-                  ...apartment,
-                  bedRoom: e,
-                })
-              }
+              onChange={(e) => onChangeApartment("bedRoom", e)}
               end={"chiếc"}
             />
           </div>
@@ -472,12 +473,7 @@ export const AddApartment = (props: Props) => {
               type="number"
               end="chiếc"
               value={apartment.bathRoom}
-              onChange={(e) =>
-                onChangeApartment("apartment", {
-                  ...apartment,
-                  bathRoom: e,
-                })
-              }
+              onChange={(e) => onChangeApartment("bathRoom", e)}
             />
           </div>
           <div className="col-md-4 col-12 detail-item">
@@ -486,12 +482,7 @@ export const AddApartment = (props: Props) => {
               type="number"
               end="cái"
               value={apartment.wardrobe}
-              onChange={(e) =>
-                onChangeApartment("apartment", {
-                  ...apartment,
-                  wardrobe: e,
-                })
-              }
+              onChange={(e) => onChangeApartment("wardrobe", e)}
             />
           </div>
         </div>
