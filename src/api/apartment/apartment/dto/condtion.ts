@@ -3,28 +3,30 @@ export const condition = {
   maxPrice: 1000000000,
   minS: 0,
   maxS: 1000,
-  apartmentTypeId: null,
+  apartmentTypeId: undefined,
   provinceId: 1,
-  districtId: null,
-  wardId: null,
-  streetId: null,
+  districtId: undefined,
+  wardId: undefined,
+  streetId: undefined,
   nearLocation: [],
   take: 5,
   skip: 0,
   page: 1,
+  key: "",
 };
 export class ConditionDto {
   minPrice?: number;
   maxPrice?: 1000000000;
   minS?: 0;
   maxS?: 1000;
-  apartmentTypeId?: null;
+  apartmentTypeId?: number;
   provinceId?: number;
-  districtId?: null;
-  wardId?: null;
-  streetId?: null;
+  districtId?: number;
+  wardId?: number;
+  streetId?: number;
   nearLocation?: [];
   take?: number;
   skip?: number;
   page?: number;
+  key?: string;
 }

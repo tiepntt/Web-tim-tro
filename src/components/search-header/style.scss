@@ -4,15 +4,16 @@
   background-size: auto;
   padding-right: 1px;
   display: block;
-  height: 250px;
-  padding-top: 50px;
-  .border{
-    background-color: rgba(40,40,46,.6);
+  // height: auto;
+  padding-top: 30px;
+  padding-bottom: 10px;
+  .border {
+    background-color: rgba(40, 40, 46, 0.6);
     padding: 20px;
-    border: none!important;
+    border: none !important;
     border-radius: 4px;
   }
-  h1{
+  h1 {
     margin: 10px;
     text-align: left;
     font-size: 30px;
@@ -56,5 +57,15 @@
   }
   .container {
     padding: 0;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .searh-header {
+    padding-top: 5px !important;
+    .header-search-title {
+      display: none !important;
+    }
+    height: auto !important;
+    padding-bottom: 0 !important;
   }
 }

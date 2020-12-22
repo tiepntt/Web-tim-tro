@@ -35,9 +35,12 @@ export const ApartmentItem = (props: Props) => {
       />
     );
   };
+  const getUrl = () => {
+    return "/apartment/" + apartment?.id || "";
+  };
   return (
     <div className="apartment-item">
-      <a href="/apartment">
+      <a href={getUrl()}>
         <div className="props-img">
           <Image src={apartment?.avatar} className="apartment-avatar" />
         </div>

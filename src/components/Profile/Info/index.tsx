@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Image } from "react-bootstrap";
+import { useDispatch, useStore } from "react-redux";
 import { ContactApi } from "../../../api/user/contactUser";
 import { UserApi } from "../../../api/user/user";
 import { UserDetailDto } from "../../../api/user/user/dto";
 import { convertDate } from "../../../libs/constants/function/time";
+import { loadInfoUser } from "../../../loader/loaderInfoUser";
 import { handleToast } from "../../../service/Toast";
 import { HeaderFilter } from "../header-filter";
 import "./style.scss";
@@ -12,7 +14,9 @@ interface Props {
 }
 
 export const InfoProfile = (props: Props) => {
+  const store = useStore();
   const { onTogle } = props;
+  const [update, setUpdate] = useState(false);
   const [showUpdate, setUpdateInfo] = useState({
     info: false,
     contact: false,
@@ -24,11 +28,15 @@ export const InfoProfile = (props: Props) => {
         return handleToast(response.data.status);
       setUserInfo(response.data.result);
     });
-  }, []);
+  }, [update]);
   const updateInfo = () => {
     UserApi.update(user).then((res) => {
       handleToast(res.data);
       setUpdateInfo({ ...showUpdate, info: false });
+      setUpdate(!update);
+      if (res.data.status === 200) {
+        loadInfoUser(store, user.id || 0);
+      }
     });
   };
   const updateContact = () => {
@@ -36,11 +44,13 @@ export const InfoProfile = (props: Props) => {
       ContactApi.update(user.contactUser).then((res) => {
         handleToast(res.data);
         setUpdateInfo({ ...showUpdate, contact: false });
+        setUpdate(!update);
       });
     } else {
       ContactApi.create(user.contactUser).then((res) => {
         handleToast(res.data);
         setUpdateInfo({ ...showUpdate, contact: false });
+        setUpdate(!update);
       });
     }
   };
