@@ -92,6 +92,12 @@ export const DashboardLayout = (props: Props) => {
                                         <User onTogle={onTogle} type={RoleAdmin.OWNER}/>
                                     </Route>
                                     <Route exact path="/profile/support">
+                                        <Conversation/>
+                                    </Route>
+                                    <Route exact path="/profile/support/messenger">
+                                        <Messenger/>
+                                    </Route>
+                                    <Route  path="/profile/support/messenger/:id">
                                         <Messenger/>
                                     </Route>
                                     <Route exact path="/profile/data/location">

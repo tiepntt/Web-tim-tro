@@ -4,6 +4,7 @@ import Toolbar from '../toolbar';
 import axios from 'axios';
 
 import './style.scss';
+import {useHistory} from "react-router-dom";
 
 export interface Conversation {
     photo: string;
@@ -12,6 +13,7 @@ export interface Conversation {
 }
 export default function ConversationList(props:any) {
     const [conversations, setConversations] = useState([] as Conversation[]);
+    const history = useHistory()
     useEffect(() => {
         getConversations()
     },[])
@@ -27,7 +29,9 @@ export default function ConversationList(props:any) {
             setConversations([...conversations, ...newConversations])
         });
     }
-
+    const redirect = () => {
+        history.push('/profile/support/messenger/' + '12314')
+    }
     return (
         <div className="conversation-list">
             <Toolbar
@@ -35,12 +39,12 @@ export default function ConversationList(props:any) {
             />
             {
                 conversations.map(conversation =>
-                    <a href="/profile/support/messenger" >
+                    <div  onClick={redirect} >
                         <ConversationListItem
                             key={conversation.name}
                             data={conversation}
                         />
-                    </a>
+                    </div>
                 )
             }
         </div>
