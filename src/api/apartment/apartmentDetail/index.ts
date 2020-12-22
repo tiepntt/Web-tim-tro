@@ -5,6 +5,8 @@ const create = (input: any) => {
   return API.post(`${baseUrl}/create`, input);
 };
 
-const getByApartmentId = () => {};
+const getByApartmentId = (id: number) => {
+  return API.get(`${baseUrl}/${id}`);
+};
 const remove = () => {};
 export const ApartmentDetailApi = { create, getByApartmentId, remove };

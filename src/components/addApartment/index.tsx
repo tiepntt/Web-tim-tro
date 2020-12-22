@@ -38,6 +38,7 @@ import {
   loadToiletType,
 } from "../../loader/loadDataApartment";
 import { Button, ButtonGroup } from "react-bootstrap";
+import { useHistory } from "react-router";
 
 interface Props {
   id?: string;
@@ -58,6 +59,7 @@ export const AddApartment = (props: Props) => {
   const { id } = props;
   const store = useStore();
   const dispatch = useDispatch();
+  const history = useHistory();
   const apartment = useSelector(
     (state: RootState) => state.Apartment as ApartmentGetDto
   );
@@ -89,6 +91,7 @@ export const AddApartment = (props: Props) => {
   };
   const onClear = () => {
     dispatch(apartmentClear());
+    history.push("/apartment/add");
   };
   const getDistrict = () => {
     let districtData = district.districts.find(
@@ -136,17 +139,17 @@ export const AddApartment = (props: Props) => {
     return location.locations as [];
   };
   const addLocationNear = (e: any) => {
-    let locationNear = { ...apartment }.LocationsNear || [];
-    if (locationNear.find((i) => i.id === e)) return;
-    locationNear?.push(e);
-    onChangeApartment("LocationsNear", locationNear);
+    let locationNear = { ...apartment }.near || [];
+    if (locationNear.find((i) => i?.location?.id === e.id)) return;
+    locationNear?.push({ location: e });
+    onChangeApartment("near", locationNear);
   };
   const removeLocationNear = (e: any) => {
-    let locationNear = { ...apartment }.LocationsNear;
+    let locationNear = { ...apartment }.near || [];
     let newLocationNear = locationNear?.filter(
-      (i) => i.id !== e.id || i === null
+      (i) => i.location?.id !== e.id || i === null
     );
-    onChangeApartment("LocationsNear", newLocationNear || []);
+    onChangeApartment("near", newLocationNear || []);
   };
   const updatePicture = (e: any) => {
     setPicture(e);
@@ -169,7 +172,12 @@ export const AddApartment = (props: Props) => {
     let apartmentDetail = convertApartmentDetailToInpput(id);
     let res = await ApartmentDetailApi.create(apartmentDetail);
     if (res.data.status) {
-      handleToast(res.data);
+      await handleToast(res.data);
+      if (!apartment.id) {
+        setTimeout(() => {
+          history.push("/apartment/edit/" + id);
+        }, 1000);
+      }
     }
     if (res.data.status === 200) {
       let detail = apartment.apartmentDetail;
@@ -184,7 +192,7 @@ export const AddApartment = (props: Props) => {
       dispatch(
         apartmentInputChange({
           ...apartment,
-          id: res.data.result.id,
+          id: id,
         })
       );
     }
@@ -581,11 +589,11 @@ export const AddApartment = (props: Props) => {
       <div className="location-near">
         <SearchFilterInput input={getLocation()} onSelect={addLocationNear} />
         <div className="location-near-list d-block">
-          {apartment?.LocationsNear?.map((item, index) => {
+          {apartment?.near?.map((item, index) => {
             if (item) {
               return (
                 <ChipLabel
-                  label={item.name}
+                  label={item.location?.name}
                   onDelete={() => {
                     removeLocationNear(item);
                   }}

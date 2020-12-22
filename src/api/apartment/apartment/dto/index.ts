@@ -103,12 +103,18 @@ export class ApartmentGetDto {
   streetNo?: string;
 
   LocationsNear?: LocationTitleGetDto[];
+  near?: ApartmentNearDto[];
   avatar?: string;
   apartmentDetail?: ApartmentDetailGetDto;
   bathRoom?: number;
   bedRoom?: number;
   area?: number;
 }
+export class ApartmentNearDto {
+  id?: number;
+  location?: LocationTitleGetDto;
+}
+
 export class ApartmentApproveDto {
   id?: number;
 

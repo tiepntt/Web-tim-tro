@@ -59,11 +59,10 @@ export const ApartmentDetailItem = (props: Props) => {
   const classes = useStyles();
   const { apartment } = props;
   const getAddress = () => {
-    return `${apartment.streetNo || "xxx"}, đường ${
-      apartment.street?.name || "yyyy"
-    },  ${apartment.ward?.name || "PP"}, ${
-      apartment.district?.name || "QQQQ"
-    }, ${apartment.province?.name || "TTTT"} `;
+    return `${apartment?.streetNo ? apartment?.streetNo + "," : ""} 
+    ${apartment?.street?.name ? apartment?.street?.name + "," : ""}
+    ${apartment?.ward?.name ? apartment?.ward?.name + "," : ""}
+    ${apartment?.district?.name ? apartment?.district?.name : ""} `;
   };
   const FormatNumber = (n?: number, suffix = "", prefix = "") => {
     return (
@@ -96,7 +95,7 @@ export const ApartmentDetailItem = (props: Props) => {
             apartment.apartmentDetail?.images.map((i) => (
               <Carousel.Item>
                 <Image
-                  className="d-block w-100"
+                  className="d-block w-100 image-detail"
                   src={i.url}
                   alt="First slide"
                   thumbnail
@@ -106,7 +105,7 @@ export const ApartmentDetailItem = (props: Props) => {
           ) : (
             <Carousel.Item>
               <Image
-                className="d-block w-100"
+                className="d-block w-100 image-detail"
                 src="https://cloud.mogi.vn/images/2020/11/03/456/82ee2b80fe4243e1a238bca87babb205.jpg"
                 alt="First slide"
                 thumbnail
@@ -129,7 +128,7 @@ export const ApartmentDetailItem = (props: Props) => {
                 <div className="item-info">
                   <span className="item-title">Giá tiền</span>
                   <span className="data">
-                    :{FormatNumber(apartment.price, " vnđ")}
+                    : {FormatNumber(apartment.price, " vnđ")}
                   </span>
                 </div>
                 <div className="item-info">
@@ -220,10 +219,10 @@ export const ApartmentDetailItem = (props: Props) => {
         <div className="location">
           <div className="title">Địa điểm lân cận</div>
 
-          {apartment.LocationsNear?.map((item) => (
+          {apartment.near?.map((item) => (
             <Chip
               className={classes.location}
-              label={item.name}
+              label={item.location?.name}
               component="a"
               href="#chip"
               clickable
@@ -232,18 +231,18 @@ export const ApartmentDetailItem = (props: Props) => {
           ))}
         </div>
       </div>
-      {/* <div className="user-info row">
-        <div className="col-md-7 col-12 user-item">
+      <div className="d-flex user-info ">
+        <div className=" user-item" style={{ flexGrow: 1 }}>
           <Avatar
             src="https://scontent.fhan5-5.fna.fbcdn.net/v/t1.0-9/74607660_532630757561738_5938117982679990272_o.jpg?_nc_cat=101&ccb=2&_nc_sid=174925&_nc_ohc=dgBa5uDDRi8AX-OrKVV&_nc_ht=scontent.fhan5-5.fna&oh=b11b1f1315c58f43c04fe5a8b7e680ef&oe=5FEC4744"
             className={classes.large}
           />
           <div className="user">
-            <div className="name">Nguyễn Thái Tiệp</div>
+            <div className="name">{apartment?.user?.name}</div>
             <div className="time">Đã tham gia 2 năm</div>
           </div>
         </div>
-        <div className="box col-md-5 col-12">
+        <div className="box ">
           <div className="contact-box">
             <div className="contact">
               <FontAwesomeIcon icon={faPhoneAlt} color={"#009177"} />
@@ -256,8 +255,8 @@ export const ApartmentDetailItem = (props: Props) => {
           </div>
         </div>
       </div>
-      <div className="row review-share "> */}
-      {/* <div className="col-md-9 col-12 review ">
+      <div className="row review-share ">
+        <div className="col-md-9 col-12 review ">
           <ul>
             <li>
               <Chip
@@ -306,7 +305,7 @@ export const ApartmentDetailItem = (props: Props) => {
             <FacebookMessengerIcon size={48} round />
           </FacebookMessengerShareButton>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };

@@ -45,12 +45,21 @@ export const HomePage = (props: Props) => {
       skip: (searchCondition?.take || 0) * (e - 1),
       page: e,
     });
-    console.log(e);
+  };
+  const onChangeCondition = (key: string, value: any) => {
+    setSearchCondition({ ...searchCondition, [key]: value, page: 1, skip: 0 });
+  };
+  const onChangeState = (e: any) => {
+    setSearchCondition(e);
   };
   return (
     <div className={"Home"}>
       <HeaderItem />
-      <SearchHeader />
+      <SearchHeader
+        filter={searchCondition}
+        onChangeCondition={onChangeCondition}
+        onChangeFilter={onChangeState}
+      />
       <Container className="content">
         <Row>
           <div className="col-lg-8 col-12">

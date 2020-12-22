@@ -14,6 +14,7 @@ import {
 } from "../../api/apartment/apartment/dto/condtion";
 import { SearchAPI } from "../../api/apartment/search";
 import { ApartmentItem } from "../../containers/apartment/apartmentItem";
+import { DropDownInput } from "../../containers/Input/dropdown";
 import { PaginationItem } from "../../containers/pagination";
 import "./style.scss";
 
@@ -70,6 +71,12 @@ interface Props {
   page: number;
   onChangePage: (e: number) => void;
 }
+const filter = [
+  { name: "Sớm nhất", id: 1 },
+  { name: "Muộn nhất", id: 1 },
+  { name: "Diện tích tăng dần", id: 1 },
+  { name: "Diện tích giảm dần", id: 1 },
+];
 export const Apartment = (props: Props) => {
   const { apartments, count, take, page, onChangePage } = props;
   const classes = useStyles();
@@ -100,17 +107,13 @@ export const Apartment = (props: Props) => {
           </div>
           <div className="filter col-lg-3 col-4   right">
             <FormControl className={classes.margin}>
-              <Select
-                labelId="demo-customized-select-label"
+              <DropDownInput
+                input={filter}
+                label="Sắp xếp theo"
                 id="demo-customized-select"
-                input={<BootstrapInput />}
-                value={1}
-              >
-                <MenuItem value={1}>Sớm nhất</MenuItem>
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
-              </Select>
+                labelId="demo-customized-select-label"
+                inputBootstrap={<BootstrapInput />}
+              />
             </FormControl>
           </div>
         </div>
