@@ -9,7 +9,6 @@ import { HeaderFilter } from "../header-filter";
 interface Props {
   onTogle?: () => void;
 }
-
 export const ApartmentProfile = (props: Props) => {
   const { onTogle } = props;
   const [apartments, setApartments] = useState([]);

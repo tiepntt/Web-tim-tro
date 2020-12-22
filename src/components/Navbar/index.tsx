@@ -17,7 +17,7 @@ const HeaderItem = () => {
             <Nav className="mr-auto">
               <Nav.Link href="/home">Trang chủ</Nav.Link>
               <Nav.Link href="/link">Giới thiệu</Nav.Link>
-              <Nav.Link href="/auto">Điều khoản</Nav.Link>
+              <Nav.Link href="/terms">Điều khoản</Nav.Link>
             </Nav>
             <a className="avatar-group" href="/profile">
               <div className="name">Tiệp</div>

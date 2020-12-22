@@ -1,17 +1,27 @@
 .Footer {
   margin-top: 100px;
   text-align: left;
-  width: 100%;
+  width: auto;
   height: auto;
-  background-color: #f8f9fa;
+  color: #e4e4e4;
+  background-color:#009177;
   .header-footer {
-    margin-bottom: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .name-web {
+    font-size: 40px;
+    font-weight: bold;
   }
   .contactIcon {
+    margin-top: 20px;
     margin-bottom: 10px;
     .contactIcon-item {
       white-space: nowrap;
-      margin-right: 10px;
+      margin-right: 20px;
     }
   }
   .contact-fild {
