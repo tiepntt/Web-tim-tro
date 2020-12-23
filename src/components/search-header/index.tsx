@@ -18,15 +18,15 @@ import {
   condition,
   ConditionDto,
 } from "../../api/apartment/apartment/dto/condtion";
-import { HintApi } from "../../api/apartment/hint";
-import { HintDto } from "../../api/apartment/hint/dto/hint.dto";
-import { DropDownInput } from "../../containers/Input/dropdown";
 import { SearchFilterInput } from "../../containers/Input/searchFilter";
 import { loadapartmentType } from "../../loader/loadDataApartment";
 import { addDistrict } from "../../loader/loadDataDistrict";
 import { loadLocation } from "../../loader/loaderLocation";
 import { RootState } from "../../store";
 import "./style.scss";
+import {HintDto} from "../../api/apartment/hint/dto/hint.dto";
+import {HintApi} from "../../api/apartment/hint";
+import {DropDownInput} from "../../containers/Input/dropdown";
 
 const useStyles = makeStyles((theme) => ({
   root: {

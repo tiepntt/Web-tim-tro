@@ -1,20 +1,52 @@
 .Login {
   .content {
+    padding: 0px;
     text-align: center;
     position: relative;
     justify-content: center;
-    width: 100%;
-    
+    margin-top: 60px;
+    margin-bottom: 60px;
+
+    .login-box {
+      display: inline-block;
+      text-align: left;
+      padding: 30px 30px;
+      min-width: 30vw;
+      margin-left: auto;
+      background-color: white;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    }
+    @media only screen and (max-width: 800px) {
       .login-box {
         display: inline-block;
         text-align: left;
         padding: 30px 30px;
-        border-radius: 20px;
-        border: bisque 1px solid;
         min-width: 30vw;
-        margin-top: 100px;
-        margin-bottom: 100px;
+        margin: auto!important;
+        background-color: white;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
       }
-    
+      .image-login {
+        display: none!important;
+      }
+    }
+    .image-login {
+      width: auto;
+      height: 420px;
+      margin-right: auto;
+      vertical-align: middle;
+      box-sizing: border-box;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    }
+  }
+
+  h3 {
+    font-size: 50px;
+    font-weight: bold;
+    color: #009177;
+    margin: 10px;
   }
 }

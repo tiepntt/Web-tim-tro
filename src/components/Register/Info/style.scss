@@ -3,6 +3,10 @@
     margin-bottom: 15px;
   }
 
+  form {
+    margin-right: 50px;
+  }
+
   .col-md-4,
   .col-md-8 {
     padding: 0;
@@ -18,7 +22,7 @@
   }
 }
 .infoInput.row {
-  padding: 0;
+  padding: 10px;
   margin-right: 0 !important;
   margin-left: 0 !important;
 }
@@ -34,7 +38,8 @@
     display: inline-block;
     border-radius: 25px;
     padding: 10px 20px;
-    background-color: turquoise;
+    background-color: darkcyan;
+    color: white;
   }
 }
 .btnNext {

@@ -5,10 +5,10 @@ import { ContactApi } from "../../../api/user/contactUser";
 import { UserApi } from "../../../api/user/user";
 import { UserDetailDto } from "../../../api/user/user/dto";
 import { convertDate } from "../../../libs/constants/function/time";
-import { loadInfoUser } from "../../../loader/loaderInfoUser";
 import { handleToast } from "../../../service/Toast";
 import { HeaderFilter } from "../header-filter";
 import "./style.scss";
+import {loadInfoUser} from "../../../loader/loaderInfoUser";
 interface Props {
   onTogle?: () => void;
 }
