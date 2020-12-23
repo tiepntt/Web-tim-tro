@@ -75,7 +75,7 @@ export const InfoInput = (props: Props) => {
           </div>
         </div>
         <div className="col-md-4 col-12 img">
-          <img src="https://thuenhatro360.com/u/i/YkGgFDNJ.png" />
+          <img src="https://image.freepik.com/free-photo/blue-minimalist-home-background_149197-2.jpg" />
         </div>{" "}
       </div>
       <Button onClick={Next} style={{ flexGrow: 2 }} className="btnNext">
