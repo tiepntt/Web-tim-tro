@@ -22,6 +22,7 @@ export const InfoProfile = (props: Props) => {
     contact: false,
   });
   const [user, setUserInfo] = useState({} as UserDetailDto);
+  const [image, setImage] = useState(user?.avatar?.url ?? "https://www.avatarins.com/image/homesmall.png" as any)
   useEffect(() => {
     UserApi.getInfo().then((response) => {
       if (response.data.status !== 200)
@@ -54,7 +55,6 @@ export const InfoProfile = (props: Props) => {
       });
     }
   };
-
   return (
     <>
       <HeaderFilter onTogle={onTogle} />
@@ -66,7 +66,7 @@ export const InfoProfile = (props: Props) => {
               thumbnail
               width={100}
               height={100}
-              src={user?.avatar?.url as string}
+              src={image}
             />
             <label htmlFor="upload-photo" className="upload-photo">
               <input
@@ -74,6 +74,10 @@ export const InfoProfile = (props: Props) => {
                 id="upload-photo"
                 name="upload-photo"
                 type="file"
+                onChange={(e:any) => {
+                  console.log(e.target.files[0])
+                  setImage(e.target.files[0]);
+                }}
               />
               <div className="btn btn-upload">Tải ảnh lên</div>
             </label>

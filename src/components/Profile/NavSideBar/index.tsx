@@ -7,6 +7,8 @@ import "react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import "./style.scss";
+import {useSelector} from "react-redux";
+import {RootState} from "../../../store";
 interface Props {
   navActive: boolean;
 }
@@ -140,6 +142,7 @@ const NavData = [
   },
 ];
 export const NavSidebar = (props: Props) => {
+  const user = useSelector((state: RootState) => state.UserReducer);
   const history = useHistory();
   const location = useLocation();
   const { navActive } = props;
@@ -161,16 +164,16 @@ export const NavSidebar = (props: Props) => {
           <div className="py-4 px-3 mb-4 bg-light">
             <div className="media d-flex align-items-center">
               <img
-                src="https://res.cloudinary.com/mhmd/image/upload/v1556074849/avatar-1_tcnd60.png"
+                src={user?.account?.avatar?.url??"https://www.avatarins.com/image/homesmall.png"}
                 alt="..."
                 width={65}
                 className="mr-3 rounded-circle img-thumbnail shadow-sm"
               />
               <div className="media-body">
-                <h4 className="m-0">Jason Doe</h4>
-                <p className="font-weight-light text-muted mb-0">
-                  Web developer
-                </p>
+                <h4 className="m-0">{user?.account?.name}</h4>
+                {/*<p className="font-weight-light text-muted mb-0">*/}
+                {/*  Web developer*/}
+                {/*</p>*/}
               </div>
             </div>
           </div>
