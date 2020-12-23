@@ -9,7 +9,10 @@ const login = (input: Account) => {
 const logout = () => {
   return API.post(`${baseUrl}/logout`);
 };
+const resetPass = () => {
+  return API.post(`${baseUrl}/logout`);
+};
 const resigter = (input: UserInputDto) => {
   return API.post(`${baseUrl}/register`, { account: input });
 };
-export const AuthApi = { login, logout, resigter };
+export const AuthApi = { login, logout,resetPass, resigter };

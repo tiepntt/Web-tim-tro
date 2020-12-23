@@ -12,10 +12,10 @@ import {InfoProfile} from "../Info";
 import {NavSidebar} from "../NavSideBar";
 import {User} from "../User";
 import "./style.scss";
-import Messenger from "../../../containers/chat/messenger";
 import ConversationList from "../../chat/conversation-list";
-import Conversation from "../../../containers/chat/conversation";
 import {Contract} from "../contract";
+import Conversation from "../../../containers/chat/conversation";
+import Messenger from "../../../containers/chat/messenger";
 
 interface Props {
     children: any;

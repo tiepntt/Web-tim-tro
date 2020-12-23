@@ -21,11 +21,12 @@ const HeaderItem = () => {
     return user.account ? (
       <>
         <div className="avatar">
-          <Avatar src="https://cloud.mogi.vn/images/2020/11/21/581/537107b650a3455abcaa6396570f0217.jpg" />
+          <Avatar src={user?.account?.avatar?.url??"https://www.avatarins.com/image/homesmall.png"} />
         </div>
         <NavDropdown className="name" title={getName()} id="basic-nav-dropdown">
           <NavDropdown.Item href="/profile">Thông tin</NavDropdown.Item>
-          <NavDropdown.Item onClick={clear}>Đăng xuất</NavDropdown.Item>
+          <NavDropdown.Item href="/resetPass">Đổi mật khẩu</NavDropdown.Item>
+          <NavDropdown.Item href="/login" onClick={clear}>Đăng xuất</NavDropdown.Item>
         </NavDropdown>
         <Button className={"post-button"} href="/apartment/add">
           Đăng Tin
