@@ -57,7 +57,7 @@ export const EmploymentModel = (props: Props) => {
             setCondition({ ...condition, key: e.target.value });
           }}
         />
-        <div className="suggest">
+        <div className="suggest" >
           {users
             ? users.map((item, index) => (
                 <div className="d-flex admin-item">

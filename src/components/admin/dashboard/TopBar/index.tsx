@@ -22,6 +22,10 @@ const useStyles = makeStyles(() => ({
   root: {
     backgroundColor: "#009177",
   },
+  title: {
+    color: "#ffffff",
+    fontSize: 20,
+  },
   avatar: {
     width: 60,
     height: 60,
@@ -46,7 +50,9 @@ const TopBar = (props: Props) => {
   return (
     <AppBar className={clsx(classes.root, className)} elevation={0} {...rest}>
       <Toolbar>
-        <RouterLink to="/">{/* <Logo /> */}</RouterLink>
+        <RouterLink to="/">
+          <span className={classes.title}>TIMTRO.vn</span>
+        </RouterLink>
         <Box flexGrow={1} />
         <Hidden mdDown>
           <IconButton color="inherit">

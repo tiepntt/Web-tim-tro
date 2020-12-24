@@ -153,7 +153,7 @@ export class ApartmentDto {
   bathRoom?: number;
 
   bedRoom?: number;
-
+  isApprove?: boolean;
   wardrobe?: number;
 
   description?: string;
@@ -163,11 +163,17 @@ export class ApartmentDto {
   streetNo?: string;
 
   province?: ProvinceGetDto;
+  pricePost?: PriceDto;
 
   district?: DistrictDto;
-
+  deadline?: Date;
   ward?: WardGetDto;
+  user?: UserTitleDto;
+  userApprove?: UserTitleDto;
   street?: StreetGetDto;
   type?: ApartmentTypeGetDto;
   create_at?: Date;
+  reviewCount?: number;
+  reportCount?: number;
+  status?: boolean;
 }

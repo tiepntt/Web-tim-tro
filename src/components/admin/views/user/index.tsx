@@ -24,7 +24,7 @@ const userTab = [
     label: <LabelIcon label="Người thuê trọ" icon={<ImageSearchIcon />} />,
     component: <Employment type={RoleAdmin.RENTER} />,
     icon: SupervisorAccountIcon,
-    private: [RoleAdmin.ADMIN, RoleAdmin.ADMIN],
+    private: [RoleAdmin.ADMIN, RoleAdmin.MANAGER],
   },
 ];
 export const UserDashboard = (props: Props) => {
