@@ -4,20 +4,17 @@ import { Image } from "react-bootstrap";
 import "./style.scss";
 import { FormatNumber } from "../../../components/apartment-detail-item";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import WarningIcon from "@material-ui/icons/Warning";
+
 import {
   faBath,
   faBed,
   faComment,
-  faExclamation,
   faExclamationCircle,
   faEye,
-  faHeart,
-  faPhoneAlt,
   faSquare,
 } from "@fortawesome/free-solid-svg-icons";
 import { convertDate } from "../../../libs/constants/function/time";
-import { faReact } from "@fortawesome/free-brands-svg-icons";
+
 interface Props {
   apartment?: ApartmentDto;
 }

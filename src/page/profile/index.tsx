@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import Footer from "../../components/Footer";
 import HeaderItem from "../../components/Navbar";
 
 import "react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css";
 import { DashboardLayout } from "../../components/Profile/Layout";
-import { HeaderFilter } from "../../components/Profile/header-filter";
 
 interface Props {}
 

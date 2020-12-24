@@ -1,8 +1,6 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
-import Autocomplete, {
-  createFilterOptions,
-} from "@material-ui/lab/Autocomplete";
+import Autocomplete from "@material-ui/lab/Autocomplete";
 import "./style.scss";
 interface Props {
   onSelect?: (item: any) => void;

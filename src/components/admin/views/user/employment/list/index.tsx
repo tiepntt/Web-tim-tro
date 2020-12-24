@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
+
 import { UserGetDto } from "../../../../../../api/user/user/dto";
 import { UserListItem } from "../../../../../../containers/Label/userItem";
-import { PaginationAuto } from "../../../../../../containers/pagination/pagination";
+
 import { RoleAdmin } from "../../../../../../libs/constants/role";
-import { RootState } from "../../../../../../store";
 import "./style.scss";
 interface Props {
   type?: string;

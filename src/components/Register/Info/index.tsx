@@ -22,7 +22,7 @@ export const InfoInput = (props: Props) => {
       if (
         !userInfo.name ||
         !userInfo.password ||
-        (!userInfo.personNo && role == RoleAdmin.OWNER)
+        (!userInfo.personNo && role === RoleAdmin.OWNER)
       )
         return handleToast({ status: 400, message: "Điền đầy đủ thông tin" });
       onNext();

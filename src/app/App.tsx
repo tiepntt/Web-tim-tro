@@ -12,9 +12,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ProfileUser } from "../page/profile-user";
 import { AddApartmentPage } from "../page/addApartment";
-import { useDispatch, useSelector, useStore } from "react-redux";
+import {   useStore } from "react-redux";
 import { loader } from "../loader";
-import { RootState } from "../store";
 import { PageNotFound } from "../page/404";
 import { IntroPage } from "../containers/intro";
 import { Term } from "../page/terms";
@@ -24,8 +23,6 @@ import DashboardLayout from "../components/admin/dashboard";
 export const history = createBrowserHistory();
 function App() {
   const store = useStore();
-  const common = useSelector((state: RootState) => state.Common);
-  const getCommon = () => {};
 
   useEffect(() => {
     loader(store);

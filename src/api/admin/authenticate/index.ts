@@ -1,5 +1,5 @@
 import API from "../..";
-import { ChangePasswordDto, UserInputDto } from "../../user/user/dto";
+import { UserInputDto } from "../../user/user/dto";
 import { Account } from "./dto/account";
 
 const baseUrl = "/authenticate";

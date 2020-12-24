@@ -4,14 +4,14 @@ import { makeStyles } from "@material-ui/core";
 import NavBar from "./NavBar";
 import TopBar from "./TopBar";
 import { Route, Switch, useHistory } from "react-router";
-import { ApartmentProfile } from "../../Profile/Apartment";
+
 import { InfoProfile } from "../../Profile/Info";
-import { User } from "../../Profile/User";
+
 import Conversation from "../../../containers/chat/conversation";
 import Statistical from "../../Profile/chart";
 import Messenger from "../../../containers/chat/messenger";
 import { Contract } from "../../Profile/contract";
-import { RoleAdmin } from "../../../libs/constants/role";
+
 import { UserDashboard } from "../views/user";
 import { ApartmentDashboard } from "../views/apartment";
 import { useSelector } from "react-redux";

@@ -5,7 +5,6 @@ import TimerIcon from "@material-ui/icons/Timer";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import HomeIcon from "@material-ui/icons/Home";
 import { LabelIcon } from "../../../../containers/Label/Icon";
-import { UserListItem } from "../../../../containers/Label/userItem";
 import { ApproveApartment } from "./approve";
 import { RoleAdmin } from "../../../../libs/constants/role";
 export const STATUS_APARTMENT = {

@@ -1,36 +1,13 @@
-import {
-  FormControl,
-  InputBase,
-  makeStyles,
-  MenuItem,
-  Select,
-  withStyles,
-} from "@material-ui/core";
-import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router";
+import { InputBase, withStyles } from "@material-ui/core";
+import React from "react";
+
 import { ApartmentDto } from "../../api/apartment/apartment/dto";
-import {
-  condition,
-  ConditionDto,
-} from "../../api/apartment/apartment/dto/condtion";
-import { SearchAPI } from "../../api/apartment/search";
+
 import { ApartmentItem } from "../../containers/apartment/apartmentItem";
 import { DropDownInput } from "../../containers/Input/dropdown";
 import { PaginationItem } from "../../containers/pagination";
 import "./style.scss";
 
-const useStyles = makeStyles((theme) => ({
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 100,
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
-  margin: {
-    width: "100%",
-  },
-}));
 const BootstrapInput = withStyles((theme) => ({
   root: {
     "label + &": {
@@ -80,10 +57,8 @@ const filter = [
 ];
 export const Apartment = (props: Props) => {
   const { apartments, count, take, page, onChangePage } = props;
-  const location = useLocation();
   // const [search, setSearch] = useState(new URLSearchParams(location.search));
 
-  const classes = useStyles();
   const getApartment = (index: number) => {
     if (apartments && apartments[index])
       return (

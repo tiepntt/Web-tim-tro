@@ -1,4 +1,3 @@
-import { parseIsolatedEntityName } from "typescript";
 import { changeString } from "../../../../libs/constants/function/getQuery";
 
 export const condition = {
@@ -37,18 +36,18 @@ export const convertToCondition = (input: any) => {
 };
 export const convertToConditionParams = (input: any) => {
   let output = {} as any;
-  if (input.provinceId && input.provinceId != 1)
+  if (input.provinceId && input.provinceId !== 1)
     output.provinceId = parseInt(input.provinceId || condition.provinceId);
-  if (input.page && input.page != 1) output.page = parseInt(input.page);
+  if (input.page && input.page !== 1) output.page = parseInt(input.page);
   if (input.minPrice && input.minPrice !== condition.minPrice)
     output.minPrice = parseInt(input.minPrice || condition.minPrice);
   if (input.maxPrice && input.maxPrice !== condition.maxPrice)
     output.maxPrice = parseInt(input.maxPrice || condition.maxPrice);
-  if (input.minS && input.minS != condition.minS)
+  if (input.minS && input.minS !== condition.minS)
     output.minS = parseInt(input.minS || condition.minS);
-  if (input.maxS && input.maxS != condition.maxS)
+  if (input.maxS && input.maxS !== condition.maxS)
     output.maxS = parseInt(input.maxS || condition.maxS);
-  if (input.key && input.key != "") output.key = input.key;
+  if (input.key && input.key !== "") output.key = input.key;
   if (input.districtId)
     output.districtId = input.districtId
       ? parseInt(input.districtId)

@@ -1,5 +1,5 @@
 import API from "../..";
-import { User } from "../../../components/Profile/User";
+
 import { ConditionDto } from "../../apartment/apartment/dto/condtion";
 import { ChangePasswordDto, UserUpdateDto } from "./dto";
 

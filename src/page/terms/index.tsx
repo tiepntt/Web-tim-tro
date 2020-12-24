@@ -1,6 +1,6 @@
 import {useEffect} from "react";
 import HeaderItem from "../../components/Navbar";
-import {Container, Row} from "react-bootstrap";
+import {Container} from "react-bootstrap";
 import Footer from "../../components/Footer";
 import * as React from "react";
 import Terms from "../../components/terms";

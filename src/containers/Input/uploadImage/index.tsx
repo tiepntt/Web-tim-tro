@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ImageUploader from "react-images-upload";
 import { Image } from "react-bootstrap";
 import "./style.scss";

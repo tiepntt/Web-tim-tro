@@ -1,25 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { Button, Container } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { Container } from "react-bootstrap";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
-import { AuthApi } from "../../api/admin/authenticate";
+
 import { UserApi } from "../../api/user/user";
 import { ChangePasswordDto } from "../../api/user/user/dto";
 import Footer from "../../components/Footer";
 import HeaderItem from "../../components/Navbar";
-import { CheckBoxInput } from "../../containers/Input/checkbox";
+
 import { CheckBoxGreen } from "../../containers/Input/greenCheckBox";
-import {
-  ActionUserDispatch,
-  ActionUserLogout,
-} from "../../service/store/userStore/action";
+import { ActionUserLogout } from "../../service/store/userStore/action";
 import { handleToast } from "../../service/Toast";
-import { RootState } from "../../store";
+
 import "./style.scss";
 interface Props {}
 
 export const ChangePassword = (props: Props) => {
-  const user = useSelector((state: RootState) => state.UserReducer);
   const dispatch = useDispatch();
   const history = useHistory();
   const [callApi, setCallApi] = useState({
@@ -50,9 +46,9 @@ export const ChangePassword = (props: Props) => {
   };
   useEffect(() => {
     let check =
-      account.newPassword != "" &&
-      account.oldPassword != "" &&
-      account.newPasswordLoop != "";
+      account.newPassword !== "" &&
+      account.oldPassword !== "" &&
+      account.newPasswordLoop !== "";
     setCallApi({ show: check, send: false });
   }, [account]);
   return (
@@ -110,8 +106,8 @@ export const ChangePassword = (props: Props) => {
             disabled={
               !(
                 account.newPassword === account.newPasswordLoop &&
-                account.newPassword != "" &&
-                account.oldPassword != ""
+                account.newPassword !== "" &&
+                account.oldPassword !== ""
               )
             }
           >

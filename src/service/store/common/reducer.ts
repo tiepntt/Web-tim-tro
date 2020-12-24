@@ -1,9 +1,7 @@
-import { TypeApi } from "../../../api/apartment/type";
 import { ApartmentTypeGetDto } from "../../../api/apartment/type/dto/apartmentType";
 import { KitchenTypeDto } from "../../../api/apartment/type/dto/kitchen";
 import { ToiletTypeDto } from "../../../api/apartment/type/dto/tolietType";
 import {
-  GET_ALL,
   UPDATE_APARTMENT_TYPE,
   UPDATE_KITCHEN_TYPE,
   UPDATE_TOILET_TYPE,

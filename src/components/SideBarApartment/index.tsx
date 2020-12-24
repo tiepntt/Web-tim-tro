@@ -1,9 +1,3 @@
-import {
-  faEnvelope,
-  faPhoneAlt,
-  faSms,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Avatar, makeStyles } from "@material-ui/core";
 import { EmailOutlined, Phone } from "@material-ui/icons";
 import React from "react";
@@ -32,7 +26,13 @@ export const SideBarApartment = (props: Props) => {
             />
           </div>
           <div className="user-info-title">
-            <a href="/profileUser" data-rb-event-key="/profileUser" className="nav-link"><div className="name"> Nguyễn Thái Tiệp</div></a>
+            <a
+              href="/profileUser"
+              data-rb-event-key="/profileUser"
+              className="nav-link"
+            >
+              <div className="name"> Nguyễn Thái Tiệp</div>
+            </a>
             <div className="time">Đã tham gia 2 năm 10 tháng</div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import { Button, Fab, makeStyles, Paper, useTheme } from "@material-ui/core";
+import { useTheme } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import Footer from "../../components/Footer";
@@ -36,9 +36,6 @@ export const Register = (props: Props) => {
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
   const onSelectRole = (roleCode: string) => {
     setUser({ ...user, roleCode: roleCode });
   };
@@ -60,7 +57,7 @@ export const Register = (props: Props) => {
   const createContact = () => {
     ContactApi.create(contactUser).then((response) => {
       handleToast(response.data);
-      if (response.data.status == 200) {
+      if (response.data.status === 200) {
         history.push("/login");
       }
     });
@@ -70,7 +67,6 @@ export const Register = (props: Props) => {
     <InfoInput onNext={register} stateChange={setUserInfo} />,
     <Contact setContactUser={setUserContact} onNext={createContact} />,
   ];
-  const maxSteps = tutorialSteps.length;
   const handleStepChange = (step: any) => {
     setActiveStep(step);
   };

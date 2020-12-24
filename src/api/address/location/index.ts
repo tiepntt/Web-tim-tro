@@ -1,4 +1,3 @@
-import { NumberLiteralType } from "typescript";
 import API from "../..";
 
 const baseUrl = "/location";

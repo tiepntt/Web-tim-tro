@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { makeStyles, Theme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import { Icon } from "@material-ui/core";
+
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
-import { TRUE } from "node-sass";
 
 const useStyles = makeStyles({
   root: {
@@ -38,22 +37,7 @@ export const TabsRender = (props: Props) => {
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
-  const getAllTab = () => {
-    input.map((item, index) =>
-      !item.private || item.private.find((i) => i === user?.role?.code) ? (
-        <Tab label={item.label} {...a11yProps(index)} />
-      ) : null
-    );
-  };
-  const getAllComponent = () => {
-    input.map((item, index) =>
-      !item.private || item.private.find((i) => i === user?.role?.code) ? (
-        <TabPanel value={value} index={index}>
-          {item.component}
-        </TabPanel>
-      ) : null
-    );
-  };
+
   useEffect(() => {
     setTabValue(
       input.filter(

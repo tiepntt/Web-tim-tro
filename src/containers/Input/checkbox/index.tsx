@@ -1,10 +1,9 @@
 import {
   Checkbox,
-  CheckboxProps,
-  createStyles,
+
   FormControlLabel,
   makeStyles,
-  withStyles,
+
 } from "@material-ui/core";
 import { green } from "@material-ui/core/colors";
 import React from "react";
@@ -29,7 +28,7 @@ const useStyles = makeStyles((theme: any) => ({
 }));
 
 export const CheckBoxInput = (props: Props) => {
-  const { value, onChange, label, greenColor } = props;
+  const { value, onChange, label } = props;
   const classes = useStyles();
   const handleChange = (event: any) => {
     if (onChange) onChange(event.target.checked as boolean);
