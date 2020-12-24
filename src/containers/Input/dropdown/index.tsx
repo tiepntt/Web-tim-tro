@@ -7,6 +7,7 @@ interface Props {
   input?: { id?: number; code?: string; name?: string }[];
   onSelect?: (e?: number) => void;
   onClear?: (e: number) => void;
+  
   label?: string;
   labelId?: string;
   inputBootstrap?: any;
@@ -38,6 +39,7 @@ export const DropDownInput = (props: Props) => {
       value={value || 0}
       input={inputBootstrap}
       id={id}
+      fullWidth
       labelId={labelId}
     >
       {getLabel()}

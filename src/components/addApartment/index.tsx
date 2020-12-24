@@ -37,8 +37,11 @@ import {
   loadKitchenType,
   loadToiletType,
 } from "../../loader/loadDataApartment";
-import { Button, ButtonGroup } from "react-bootstrap";
+import { Button, ButtonGroup, Table } from "react-bootstrap";
 import { useHistory } from "react-router";
+import { PriceDto } from "../../api/payment/price/dto/price.get.dto";
+import { PriceApi } from "../../api/payment/price";
+import { FormatNumber } from "../apartment-detail-item";
 
 interface Props {
   id?: string;
@@ -58,6 +61,7 @@ const dataCheck = [
 export const AddApartment = (props: Props) => {
   const { id } = props;
   const store = useStore();
+  const [dataPostPrice, setDataPostPrice] = useState([] as PriceDto[]);
   const dispatch = useDispatch();
   const history = useHistory();
   const apartment = useSelector(
@@ -104,6 +108,13 @@ export const AddApartment = (props: Props) => {
       return [];
     }
     return districtData.districts as [];
+  };
+  const getPricePostData = () => {
+    PriceApi.getAll().then((res) => {
+      if (res.data.status) {
+        setDataPostPrice(res.data.result);
+      }
+    });
   };
   const getWard = () => {
     let wardData = wards.wards.find((i) => i.id === apartment.district?.id);
@@ -198,12 +209,13 @@ export const AddApartment = (props: Props) => {
     }
   };
   useEffect(() => {
-    console.log(apartment.apartmentDetail);
-  }, [apartment.apartmentDetail]);
+    getPricePostData();
+  }, []);
   const getLocationCodes = (array: any[]) => {
     let locationNear = [] as number[];
     array.forEach((element) => {
-      if (element.id) locationNear.push(element.id);
+      if (element.id || element.location.id)
+        locationNear.push(element.id || element.location.id);
     });
 
     return locationNear;
@@ -239,14 +251,13 @@ export const AddApartment = (props: Props) => {
   };
   const convertApartmentToInput = () => {
     let apartmentInput = { ...apartment } as ApartmentInputDto;
-    apartmentInput.LocationsNearCode = getLocationCodes(
-      apartment.LocationsNear || []
-    );
+    apartmentInput.LocationsNearCode = getLocationCodes(apartment.near || []);
     apartmentInput.provinceId = apartment.province?.id;
     apartmentInput.districtId = apartment.district?.id;
     apartmentInput.streetId = apartment.street?.id;
     apartmentInput.wardId = apartment.ward?.id;
     apartmentInput.type = apartment.type?.id;
+    apartmentInput.pricePostId = apartment.pricePost?.id;
     return apartmentInput;
   };
   const convertApartmentDetailToInpput = (id: number) => {
@@ -603,7 +614,37 @@ export const AddApartment = (props: Props) => {
           })}
         </div>
       </div>
-
+      <div className="time-post">
+        <InputSelect
+          label="Thời gian đăng bài"
+          input={dataPostPrice}
+          value={apartment.pricePost?.id}
+          onSelect={(e) => {
+            onChangeApartment(
+              "pricePost",
+              dataPostPrice.find((i) => i.id === e)
+            );
+          }}
+        />
+        {apartment.pricePost ? (
+          <Table striped bordered hover className="user-table">
+            <thead>
+              <tr className={"text-center"}>
+                {["Mã gói", "Thời gian", "Giá tiền"].map((item) => (
+                  <th>{item}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              <tr className={"text-center"}>
+                <td>{apartment.pricePost.code}</td>
+                <td>{apartment.pricePost.name}</td>
+                <td>{FormatNumber(apartment.pricePost.price, " vnđ")}</td>
+              </tr>
+            </tbody>
+          </Table>
+        ) : null}
+      </div>
       <ButtonGroup style={{ float: "right" }}>
         <Button onClick={createApartment}>
           {apartment.id ? "Cập Nhật" : "Lưu"}

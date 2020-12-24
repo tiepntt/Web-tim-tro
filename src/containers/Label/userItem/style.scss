@@ -1,0 +1,12 @@
+.user-list-item {
+    .float-right {
+        cursor: pointer;
+        .accept {
+            color: #009177;
+            text-align: center;
+            border-radius: 5px;
+            border: 1px solid green;
+            padding: 4px 5px;
+        }
+    }
+}

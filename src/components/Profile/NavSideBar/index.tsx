@@ -7,8 +7,8 @@ import "react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import "./style.scss";
-import {useSelector} from "react-redux";
-import {RootState} from "../../../store";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../store";
 interface Props {
   navActive: boolean;
 }
@@ -108,9 +108,24 @@ const NavData = [
         itemId: "/profile/user/renter",
         elemBefore: () => <Icon name="coffee" />,
       },
+    ],
+  },
+  {
+    title: "Phê duyệt",
+    items: [
       {
-        title: "Hợp đồng",
-        itemId: "/profile/contract",
+        title: "Bài đăng",
+        itemId: "/profile/apartment/post",
+        elemBefore: () => <Icon name="coffee" />,
+      },
+      {
+        title: "Bình luận",
+        itemId: "/profile/apartment/comment",
+        elemBefore: () => <Icon name="coffee" />,
+      },
+      {
+        title: "Báo cáo",
+        itemId: "/profile/apartment/report",
         elemBefore: () => <Icon name="coffee" />,
       },
     ],
@@ -164,19 +179,20 @@ export const NavSidebar = (props: Props) => {
           <div className="py-4 px-3 mb-4 bg-light">
             <div className="media d-flex align-items-center">
               <img
-                src={user?.account?.avatar?.url??"https://www.avatarins.com/image/homesmall.png"}
+                src={
+                  user?.account?.avatar?.url ??
+                  "https://www.avatarins.com/image/homesmall.png"
+                }
                 alt="..."
                 width={65}
                 className="mr-3 rounded-circle img-thumbnail shadow-sm"
               />
               <div className="media-body">
                 <h4 className="m-0">{user?.account?.name}</h4>
-                {/*<p className="font-weight-light text-muted mb-0">*/}
-                {/*  Web developer*/}
-                {/*</p>*/}
               </div>
             </div>
           </div>
+
           {NavData.map((nav) => {
             return (
               <div className="nav-item-header">
@@ -205,7 +221,6 @@ export const NavSidebar = (props: Props) => {
             );
           })}
         </div>
-        {/* End vertical navbar */}{" "}
       </div>
     </>
   );

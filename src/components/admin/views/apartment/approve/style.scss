@@ -1,0 +1,10 @@
+.apartment-list {
+}
+@media only screen and (max-width: 700px) {
+    .apartment-list .row.page {
+        flex-direction: column-reverse;
+    }
+    .col-12 {
+        padding: 0;
+    }
+}

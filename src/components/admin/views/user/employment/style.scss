@@ -1,0 +1,10 @@
+.user-list {
+}
+@media only screen and (max-width: 700px) {
+    .user-list .row {
+        flex-direction: column-reverse;
+    }
+    .col-12 {
+        padding: 0;
+    }
+}

@@ -12,6 +12,7 @@ interface Props {
   start?: any;
   required?: boolean;
   end?: any;
+  labelNotBold?: boolean;
 }
 const useStyles = makeStyles((theme: any) => ({
   textField: {
@@ -32,6 +33,7 @@ export const TextFieldInput = (props: Props) => {
     type,
     start,
     end,
+    labelNotBold,
     required,
   } = props;
   const classes = useStyles();
@@ -39,7 +41,9 @@ export const TextFieldInput = (props: Props) => {
     if (onChange) onChange(e.target.value);
   };
   return (
-    <div className="text-field-input">
+    <div
+      className={`text-field-input + ${labelNotBold ? " label-not-bold" : ""}`}
+    >
       <TextField
         required={required}
         className={classes.textField}

@@ -1,0 +1,36 @@
+.change-password {
+  .check-password {
+    margin-top: 10px;
+    .message-check {
+      font-size: 14px;
+      font-style: italic;
+      margin-left: 3px;
+      line-height: 22px;
+    }
+  }
+
+  .content {
+    text-align: center;
+    position: relative;
+    justify-content: center;
+    width: 100%;
+
+    .login-box {
+      display: inline-block;
+      text-align: left;
+      padding: 30px 30px;
+      border-radius: 20px;
+      border: bisque 1px solid;
+      min-width: 30vw;
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+    h3 {
+      font-size: 30px;
+      font-weight: bold;
+      text-align: center;
+      margin: 30px;
+      color: #009177;
+    }
+  }
+}

@@ -55,6 +55,17 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
   },
 }));
+export const FormatNumber = (n?: number, suffix = "", prefix = "") => {
+  return (
+    <NumberFormat
+      value={n || 0}
+      displayType={"text"}
+      thousandSeparator={true}
+      suffix={suffix}
+      prefix={prefix}
+    />
+  );
+};
 export const ApartmentDetailItem = (props: Props) => {
   const classes = useStyles();
   const { apartment } = props;
@@ -64,17 +75,7 @@ export const ApartmentDetailItem = (props: Props) => {
     ${apartment?.ward?.name ? apartment?.ward?.name + "," : ""}
     ${apartment?.district?.name ? apartment?.district?.name : ""} `;
   };
-  const FormatNumber = (n?: number, suffix = "", prefix = "") => {
-    return (
-      <NumberFormat
-        value={n || 0}
-        displayType={"text"}
-        thousandSeparator={true}
-        suffix={suffix}
-        prefix={prefix}
-      />
-    );
-  };
+
   const getYesNo = (e?: boolean) => {
     return e ? "Có" : "Không";
   };

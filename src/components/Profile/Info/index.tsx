@@ -8,7 +8,7 @@ import { convertDate } from "../../../libs/constants/function/time";
 import { handleToast } from "../../../service/Toast";
 import { HeaderFilter } from "../header-filter";
 import "./style.scss";
-import {loadInfoUser} from "../../../loader/loaderInfoUser";
+import { loadInfoUser } from "../../../loader/loaderInfoUser";
 interface Props {
   onTogle?: () => void;
 }
@@ -22,7 +22,10 @@ export const InfoProfile = (props: Props) => {
     contact: false,
   });
   const [user, setUserInfo] = useState({} as UserDetailDto);
-  const [image, setImage] = useState(user?.avatar?.url ?? "https://www.avatarins.com/image/homesmall.png" as any)
+  const [image, setImage] = useState(
+    user?.avatar?.url ??
+      ("https://www.avatarins.com/image/homesmall.png" as any)
+  );
   useEffect(() => {
     UserApi.getInfo().then((response) => {
       if (response.data.status !== 200)
@@ -57,7 +60,6 @@ export const InfoProfile = (props: Props) => {
   };
   return (
     <>
-      <HeaderFilter onTogle={onTogle} />
       <div className="info-profile">
         <div className="main-info">
           <div className="avatar">
@@ -74,8 +76,8 @@ export const InfoProfile = (props: Props) => {
                 id="upload-photo"
                 name="upload-photo"
                 type="file"
-                onChange={(e:any) => {
-                  console.log(e.target.files[0])
+                onChange={(e: any) => {
+                  console.log(e.target.files[0]);
                   setImage(e.target.files[0]);
                 }}
               />

@@ -11,7 +11,6 @@ const HeaderItem = () => {
   const dispatch = useDispatch();
   const clear = () => {
     dispatch(ActionUserLogout());
-    // console.log(apartment.account)
   };
   const getName = () => {
     let name = { ...user }.account?.name as string;
@@ -21,12 +20,21 @@ const HeaderItem = () => {
     return user.account ? (
       <>
         <div className="avatar">
-          <Avatar src={user?.account?.avatar?.url??"https://www.avatarins.com/image/homesmall.png"} />
+          <Avatar
+            src={
+              user?.account?.avatar?.url ??
+              "https://www.avatarins.com/image/homesmall.png"
+            }
+          />
         </div>
         <NavDropdown className="name" title={getName()} id="basic-nav-dropdown">
           <NavDropdown.Item href="/profile">Thông tin</NavDropdown.Item>
-          <NavDropdown.Item href="/resetPass">Đổi mật khẩu</NavDropdown.Item>
-          <NavDropdown.Item href="/login" onClick={clear}>Đăng xuất</NavDropdown.Item>
+          <NavDropdown.Item href="/changePassword">
+            Đổi mật khẩu
+          </NavDropdown.Item>
+          <NavDropdown.Item href="/login" onClick={clear}>
+            Đăng xuất
+          </NavDropdown.Item>
         </NavDropdown>
         <Button className={"post-button"} href="/apartment/add">
           Đăng Tin

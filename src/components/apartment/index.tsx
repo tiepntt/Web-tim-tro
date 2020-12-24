@@ -6,7 +6,8 @@ import {
   Select,
   withStyles,
 } from "@material-ui/core";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router";
 import { ApartmentDto } from "../../api/apartment/apartment/dto";
 import {
   condition,
@@ -79,6 +80,9 @@ const filter = [
 ];
 export const Apartment = (props: Props) => {
   const { apartments, count, take, page, onChangePage } = props;
+  const location = useLocation();
+  // const [search, setSearch] = useState(new URLSearchParams(location.search));
+
   const classes = useStyles();
   const getApartment = (index: number) => {
     if (apartments && apartments[index])
@@ -105,16 +109,14 @@ export const Apartment = (props: Props) => {
           <div className="col-lg-9  col-8 result-tag ">
             Kết quả : <b>{getAmount()}</b> trong <b>{count}</b>
           </div>
-          <div className="filter col-lg-3 col-4   right">
-            <FormControl className={classes.margin}>
-              <DropDownInput
-                input={filter}
-                label="Sắp xếp theo"
-                id="demo-customized-select"
-                labelId="demo-customized-select-label"
-                inputBootstrap={<BootstrapInput />}
-              />
-            </FormControl>
+          <div className="filter col-lg-3 col-4 w-100   right">
+            <DropDownInput
+              input={filter}
+              label="Sắp xếp theo"
+              id="demo-customized-select"
+              labelId="demo-customized-select-label"
+              inputBootstrap={<BootstrapInput />}
+            />
           </div>
         </div>
 
@@ -123,7 +125,7 @@ export const Apartment = (props: Props) => {
       <div className="pagination-tag">
         <PaginationItem
           pageActive={page}
-          lastPage={Math.floor(count / take) + 1}
+          lastPage={Math.ceil(count / take)}
           onPageChange={onChangePage}
         />
       </div>

@@ -112,13 +112,14 @@ export class AccountDto {
   isBlock?: boolean;
   @Expose()
   isApprove?: boolean;
-  avatar?: AccountDto;
+  avatar?: AvatarDto;
 }
 export class AvatarDto {
   @Expose()
   id?: number;
   @Expose()
   url?: string;
+  avatar?: AvatarUserDto;
 }
 export class UserDetailDto {
   @Expose()
@@ -149,4 +150,9 @@ export class UserDetailDto {
   avatar?: AvatarUserDto;
   @Expose()
   personNo?: string;
+}
+export class ChangePasswordDto {
+  oldPassword?: string;
+  newPassword?: string;
+  newPasswordLoop?: string;
 }
