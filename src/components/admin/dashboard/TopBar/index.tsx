@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link as RouterLink, useHistory } from "react-router-dom";
 import clsx from "clsx";
-import PropTypes from "prop-types";
+
 import {
   AppBar,
   Badge,
@@ -17,7 +17,6 @@ import InputIcon from "@material-ui/icons/Input";
 import { useDispatch } from "react-redux";
 import { ActionUserLogout } from "../../../../service/store/userStore/action";
 import { AuthApi } from "../../../../api/admin/authenticate";
-import { handleToast } from "../../../../service/Toast";
 
 const useStyles = makeStyles(() => ({
   root: {

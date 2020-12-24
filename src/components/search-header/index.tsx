@@ -1,20 +1,14 @@
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  IconButton,
-  InputBase,
-  MenuItem,
-  Paper,
-  Select,
-} from "@material-ui/core";
+import { IconButton, Paper } from "@material-ui/core";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useSelector, useStore } from "react-redux";
-import { useLocation } from "react-router-dom";
+
 import { DistrictForProvinceDto } from "../../api/address/district/dto/districtOfProvince";
-import { LocationOfProvinceDto } from "../../api/address/location/dto/get";
+
 import {
   condition,
   ConditionDto,
@@ -22,12 +16,11 @@ import {
 import { SearchFilterInput } from "../../containers/Input/searchFilter";
 import { loadapartmentType } from "../../loader/loadDataApartment";
 import { addDistrict } from "../../loader/loadDataDistrict";
-import { loadLocation } from "../../loader/loaderLocation";
 import { RootState } from "../../store";
 import "./style.scss";
-import {HintDto} from "../../api/apartment/hint/dto/hint.dto";
-import {HintApi} from "../../api/apartment/hint";
-import {DropDownInput} from "../../containers/Input/dropdown";
+import { HintDto } from "../../api/apartment/hint/dto/hint.dto";
+import { HintApi } from "../../api/apartment/hint";
+import { DropDownInput } from "../../containers/Input/dropdown";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -106,15 +99,11 @@ const SearchHeader = (props: Props) => {
   const { onChangeCondition, filter, onChangeFilter } = props;
   const [hintState, setHintState] = useState([] as HintDto[]);
   const store = useStore();
-  const location = useLocation();
   const district = useSelector(
     (state: RootState) =>
       state.District as { state: boolean; districts: DistrictForProvinceDto[] }
   );
-  const locations = useSelector(
-    (state: RootState) =>
-      state.Location as { state: boolean; locations: LocationOfProvinceDto[] }
-  );
+
   const common = useSelector((state: RootState) => state.Common);
   const classes = useStyles();
   const getDistrict = () => {
@@ -130,7 +119,7 @@ const SearchHeader = (props: Props) => {
     return districtData.districts as [];
   };
   const getApartmentType = () => {
-    if (common.apartmentTypes.length != 0) {
+    if (common.apartmentTypes.length !== 0) {
       return common.apartmentTypes;
     }
     loadapartmentType(store);
@@ -138,8 +127,6 @@ const SearchHeader = (props: Props) => {
   };
 
   const getValuePrice = () => {
-
-
     let price = filterPrice.find(
       (i) => i.maxPrice === filter?.maxPrice && filter?.minPrice === i.minPrice
     );
@@ -152,17 +139,6 @@ const SearchHeader = (props: Props) => {
     );
     return S ? S.id : 0;
   };
-  const getLocation = () => {
-    let location = locations.locations.find(
-      (i) => i.id === condition?.provinceId
-    );
-    if (!location) {
-      loadLocation(store, condition.provinceId || 0);
-
-      return [];
-    }
-    return location.locations as [];
-  };
   const getHint = (e: string) => {
     HintApi.getHint({ key: e, take: 10 }).then((res) => {
       if (res.data.status === 200) setHintState(res.data.result);
@@ -170,7 +146,7 @@ const SearchHeader = (props: Props) => {
     });
   };
   const getValueType = () => {
-    return common.apartmentTypes.find((i) => i.id == filter?.apartmentTypeId)
+    return common.apartmentTypes.find((i) => i.id === filter?.apartmentTypeId)
       ?.id;
   };
   return (

@@ -10,7 +10,7 @@ interface Props {
 }
 
 export const Contact = (props: Props) => {
-  const { role, setContactUser, onNext } = props;
+  const { setContactUser, onNext } = props;
   const [contact, setContact] = useState({} as ContactDto);
   useEffect(() => {
     if (setContactUser) {

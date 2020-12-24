@@ -1,16 +1,12 @@
 import {
   faAngleLeft,
   faAngleRight,
-  faComment,
-  faExclamationTriangle,
-  faHeart,
-  faPhone,
   faPhoneAlt,
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Avatar, Chip, makeStyles } from "@material-ui/core";
-import React, { useState } from "react";
+import React from "react";
 import { Carousel, Col, Image, Row } from "react-bootstrap";
 import ReactHtmlParser from "react-html-parser";
 import {
@@ -20,9 +16,6 @@ import {
   FacebookShareButton,
 } from "react-share";
 import "./style.scss";
-// import { CommentItem } from "../../containers/apartment/commentItem";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store";
 import NumberFormat from "react-number-format";
 import { convertDate } from "../../libs/constants/function/time";
 import { ApartmentGetDto } from "../../api/apartment/apartment/dto";
@@ -70,7 +63,7 @@ export const ApartmentDetailItem = (props: Props) => {
   const classes = useStyles();
   const { apartment } = props;
   const getAddress = () => {
-    return `${apartment?.streetNo ? apartment?.streetNo + "," : ""} 
+    return `${apartment?.streetNo ? apartment?.streetNo + "," : ""}
     ${apartment?.street?.name ? apartment?.street?.name + "," : ""}
     ${apartment?.ward?.name ? apartment?.ward?.name + "," : ""}
     ${apartment?.district?.name ? apartment?.district?.name : ""} `;
@@ -92,7 +85,7 @@ export const ApartmentDetailItem = (props: Props) => {
           interval={5000}
         >
           {apartment.apartmentDetail?.images &&
-          apartment.apartmentDetail?.images.length != 0 ? (
+          apartment.apartmentDetail?.images.length !== 0 ? (
             apartment.apartmentDetail?.images.map((i) => (
               <Carousel.Item>
                 <Image

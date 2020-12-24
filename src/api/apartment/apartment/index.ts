@@ -8,15 +8,22 @@ const create = (input: any) => {
 const upload = (file: any) => {
   return API.post(`${baseUrl}/upload`, file);
 };
+const getAll = (input: {
+  take: number;
+  skip: number;
+  isApprove: boolean;
+  key: string;
+}) => {
+  return API.get(`${baseUrl}/all`, { params: input });
+};
 const removeImg = (id: any) => {
   return API.delete(`${baseUrl}/upload`, { params: id });
 };
-const getAll = () => {};
 const getAllByUserId = () => {};
 const remove = () => {};
 const getRemoved = () => {};
 const restore = () => {};
-const update = (input : ApartmentInputDto) => {
+const update = (input: ApartmentInputDto) => {
   return API.put("/");
 };
 export const ApartmentApi = {
@@ -28,4 +35,5 @@ export const ApartmentApi = {
   remove,
   restore,
   getRemoved,
+  update,
 };

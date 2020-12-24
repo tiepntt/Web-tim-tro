@@ -16,7 +16,7 @@ export const PaginationItem = (props: Props) => {
   return (
     <Pagination className={"pagination-item justify-content-center"}>
       <Pagination.Prev
-        disabled={pageActive == 1}
+        disabled={pageActive === 1}
         onClick={() => {
           changePage((pageActive as any) - 1);
         }}
@@ -55,7 +55,7 @@ export const PaginationItem = (props: Props) => {
           {(pageActive as any) + 1}
         </Pagination.Item>
       ) : null}{" "}
-      {(pageActive as any) == 1 &&
+      {(pageActive as any) === 1 &&
       (pageActive as any) + 2 <= (lastPage as any) ? (
         <Pagination.Item
           onClick={() => {

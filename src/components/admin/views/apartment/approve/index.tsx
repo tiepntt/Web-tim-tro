@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { STATUS_APARTMENT } from "..";
+import { ApartmentApi } from "../../../../../api/apartment/apartment";
 import { ApartmentGetDto } from "../../../../../api/apartment/apartment/dto";
-import { ConditionDto } from "../../../../../api/apartment/apartment/dto/condtion";
 import { PaginationItem } from "../../../../../containers/pagination";
 import { RoleAdmin } from "../../../../../libs/constants/role";
 import { RootState } from "../../../../../store";
-import { SideBarApartment } from "../../../../SideBarApartment";
 import { SideBarUser } from "../../user/employment/sidebar";
 import { ListApartment } from "./list";
-import { SideBarApartmentDashboard } from "./sidebar";
 import "./style.scss";
 interface Props {
   type?: string;
@@ -31,11 +29,23 @@ export const ApproveApartment = (props: Props) => {
   const onChangePage = (e: number) => {
     setCondition({ ...conditionSearch, page: e });
   };
+  const getApartmentAdmin = (isApprove: boolean) => {
+    ApartmentApi.getAll({
+      ...conditionSearch,
+      isApprove: isApprove,
+    }).then((res) => {
+      if (res.data.status) {
+        setApartments(res.data.result);
+      }
+    });
+  };
   const getApartmentForAdmin = () => {
     switch (type) {
       case STATUS_APARTMENT.APPROVED:
+        getApartmentAdmin(true);
         break;
       case STATUS_APARTMENT.NO_APPROVED:
+        getApartmentAdmin(false);
         break;
       case STATUS_APARTMENT.LOVE:
         break;
@@ -46,8 +56,10 @@ export const ApproveApartment = (props: Props) => {
   const getApartmentForManager = () => {
     switch (type) {
       case STATUS_APARTMENT.APPROVED:
+        getApartmentAdmin(true);
         break;
       case STATUS_APARTMENT.NO_APPROVED:
+        getApartmentAdmin(false);
         break;
       case STATUS_APARTMENT.LOVE:
         break;
@@ -58,7 +70,7 @@ export const ApproveApartment = (props: Props) => {
   const getApartmentForOnwer = () => {};
   const getApartmentForARenter = () => {};
 
-  const getAparment = () => {
+  const getApartment = () => {
     switch (user?.role?.code) {
       case RoleAdmin.MANAGER:
         getApartmentForManager();
@@ -75,7 +87,7 @@ export const ApproveApartment = (props: Props) => {
     }
   };
   useEffect(() => {
-    getAparment();
+    getApartment();
   }, [conditionSearch, type]);
   return (
     <div className="apartment-list">

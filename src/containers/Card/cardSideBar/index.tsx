@@ -1,6 +1,5 @@
 import React from "react";
 import clsx from "clsx";
-import PropTypes from "prop-types";
 import {
   Avatar,
   Box,
@@ -14,15 +13,13 @@ import {
   InputAdornment,
   SvgIcon,
 } from "@material-ui/core";
-import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
+
 import PeopleIcon from "@material-ui/icons/PeopleOutlined";
-import { TextFieldInput } from "../../Input/textField";
-import { FormControl } from "react-bootstrap";
+
 import { SearchIcon } from "@material-ui/data-grid";
-import PersonAddIcon from "@material-ui/icons/PersonAdd";
+
 import "./style.scss";
-import SelectInput from "@material-ui/core/Select/SelectInput";
-import { InputSelect } from "../../Input/select";
+
 import { DropDownInput } from "../../Input/dropdown";
 const useStyles = makeStyles((theme) => ({
   root: {

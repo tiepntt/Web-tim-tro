@@ -1,7 +1,6 @@
 import {useEffect} from "react";
 import HeaderItem from "../../components/Navbar";
 import {Container, Row} from "react-bootstrap";
-import {Apartment} from "../../components/apartment";
 import Footer from "../../components/Footer";
 import * as React from "react";
 import {ApartmentItem} from "../../containers/apartment/apartmentItem";

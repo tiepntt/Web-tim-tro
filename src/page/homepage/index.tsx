@@ -1,8 +1,7 @@
 // @flow
 import * as React from "react";
-import { useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { Container, Row } from "react-bootstrap";
 import { useHistory, useLocation } from "react-router";
 import { ApartmentDto } from "../../api/apartment/apartment/dto";
 import {
@@ -32,7 +31,7 @@ export const HomePage = (props: Props) => {
   } as ConditionDto);
   const [apartments, setApartment] = React.useState([] as ApartmentDto[]);
   const [count, setCount] = React.useState(0);
-  const [key, setKey] = useState("");
+
   const Search = (search: any) => {
     SearchAPI.search(search).then((res) => {
       if (res.data.status === 200) {

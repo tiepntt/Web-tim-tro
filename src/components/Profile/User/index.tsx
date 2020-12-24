@@ -1,6 +1,4 @@
 import * as React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import "./style.scss";
 import { PaginationItem } from "../../../containers/pagination";
 import { useEffect, useState } from "react";
@@ -11,9 +9,9 @@ import { ManagerApi } from "../../../api/admin/manager";
 import { handleToast } from "../../../service/Toast";
 import { UserGetDto } from "../../../api/user/user/dto";
 import { Table } from "react-bootstrap";
-import { Filter, HeaderFilter } from "../header-filter";
+import { HeaderFilter } from "../header-filter";
 import { EmploymentModel } from "../Model/AddEmployment";
-import { EventEmitter } from "events";
+
 import { AddApartmentModal } from "../addEmployment";
 interface Props {
   onTogle?: () => void;
@@ -30,7 +28,6 @@ const filter = {
 };
 export const User = (props: Props) => {
   const { onTogle, type } = props;
-  const eventEmiter = new EventEmitter();
   const user = useSelector((state: RootState) => state.UserReducer.account);
   const [users, setUsers] = useState({ data: [] as UserGetDto[], count: 0 });
   const [userSelected, setUserSelected] = useState(0);
@@ -63,7 +60,6 @@ export const User = (props: Props) => {
       key: key,
     });
   };
-  const addUser = () => {};
   const getAllUserForManger = () => {
     switch (type) {
       case RoleAdmin.OWNER:
@@ -91,7 +87,6 @@ export const User = (props: Props) => {
         break;
     }
   };
-  const getAllUserForAdmin = () => {};
 
   useEffect(() => {
     setUsers({ data: [], count: 0 });

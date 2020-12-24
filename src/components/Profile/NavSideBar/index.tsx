@@ -4,61 +4,13 @@ import Icon from "awesome-react-icons";
 import React, { useEffect, useState } from "react";
 
 import "react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import "./style.scss";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
 interface Props {
   navActive: boolean;
 }
-const items = [
-  {
-    title: "Thống kê",
-    itemId: "/profile",
-    elemBefore: () => <Icon name="coffee" />,
-  },
-  {
-    title: "Thông tin cá nhân",
-    itemId: "/profile/info",
-    elemBefore: () => <Icon name="coffee" />,
-  },
-  {
-    title: "Bài đăng",
-    itemId: "/profile/post",
-    elemBefore: () => <Icon name="user" />,
-  },
-  {
-    title: "Bài đăng yêu thích",
-    itemId: "/profile/apartment",
-    elemBefore: () => <FontAwesomeIcon icon={faHeart} color="" />,
-  },
-  {
-    title: "Người dùng",
-    itemId: "/profile/user",
-    elemBefore: () => <Icon name="user" />,
-  },
-  {
-    title: "Hợp đồng",
-    itemId: "/profile/contract",
-    elemBefore: () => <Icon name="coffee" />,
-  },
-  {
-    title: "Dữ liệu",
-    itemId: "/profile/data",
-    elemBefore: () => <Icon name="user" />,
-    subNav: [
-      {
-        title: "Dữ liệu tỉnh thành",
-        itemId: "#",
-      },
-      {
-        title: "Dữ liệu phòng trọ",
-        itemId: "#",
-      },
-    ],
-  },
-];
+
 const NavData = [
   {
     title: "Thông tin chính",

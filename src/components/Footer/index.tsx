@@ -1,19 +1,9 @@
 import {
-  faFacebook,
   faFacebookSquare,
   faGithub,
-  faPhoenixSquadron,
   faYoutubeSquare,
 } from "@fortawesome/free-brands-svg-icons";
-import {
-  faCoffee,
-  faEnvelope,
-  faPhone,
-  faPhoneAlt,
-  faPhoneSlash,
-  faPhoneSquare,
-  faPhoneVolume,
-} from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
@@ -36,24 +26,28 @@ const Footer = (props: Props) => {
               </div>
               <div className={"contactIcon"}>
                 <a
-                    href="https://www.facebook.com/tiep.nguyenthai.779/"
-                    className={"contactIcon-item"}
+                  href="https://www.facebook.com/tiep.nguyenthai.779/"
+                  className={"contactIcon-item"}
                 >
                   <FontAwesomeIcon
-                      icon={faFacebookSquare}
-                      color={"#3b5998"}
-                      size={"lg"}
+                    icon={faFacebookSquare}
+                    color={"#3b5998"}
+                    size={"lg"}
+                  />
+                </a>
+                <a href="#" className={"contactIcon-item"}>
+                  <FontAwesomeIcon
+                    icon={faYoutubeSquare}
+                    color={"#FF0000"}
+                    size={"lg"}
                   />
                 </a>
                 <a href="" className={"contactIcon-item"}>
                   <FontAwesomeIcon
-                      icon={faYoutubeSquare}
-                      color={"#FF0000"}
-                      size={"lg"}
+                    icon={faGithub}
+                    color={"black"}
+                    size={"lg"}
                   />
-                </a>
-                <a href="" className={"contactIcon-item"}>
-                  <FontAwesomeIcon icon={faGithub} color={"black"} size={"lg"} />
                 </a>
               </div>
             </div>

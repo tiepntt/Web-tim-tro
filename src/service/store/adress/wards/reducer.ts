@@ -1,4 +1,3 @@
-import { stat } from "fs";
 import { WardsOfDistrictDto } from "../../../../api/address/ward/dto/wardInDistrict";
 import { ActionConst } from "./action";
 

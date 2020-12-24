@@ -26,12 +26,12 @@ import { EditorComponent } from "../editor";
 import "./style.scss";
 import { addStreets } from "../../loader/loaderStreet";
 import { loadLocation } from "../../loader/loaderLocation";
-import { ApartmentImageDto } from "../../api/image/apartmentImages";
+
 import { ApartmentApi } from "../../api/apartment/apartment";
-import { mapObject } from "../../libs/constants/function/map";
+
 import { handleToast } from "../../service/Toast";
 import { ApartmentDetailApi } from "../../api/apartment/apartmentDetail";
-import { toast } from "react-toastify";
+
 import {
   loadapartmentType,
   loadKitchenType,
@@ -46,20 +46,8 @@ import { FormatNumber } from "../apartment-detail-item";
 interface Props {
   id?: string;
 }
-const dataCheck = [
-  {
-    value: 1,
-    key: "1",
-    title: "Có",
-  },
-  {
-    value: 2,
-    key: "0",
-    title: "Không",
-  },
-];
+
 export const AddApartment = (props: Props) => {
-  const { id } = props;
   const store = useStore();
   const [dataPostPrice, setDataPostPrice] = useState([] as PriceDto[]);
   const dispatch = useDispatch();
@@ -67,7 +55,6 @@ export const AddApartment = (props: Props) => {
   const apartment = useSelector(
     (state: RootState) => state.Apartment as ApartmentGetDto
   );
-  const [pictures, setPicture] = useState([]);
   const province = useSelector((state: RootState) => state.Province.province);
   const wards = useSelector(
     (state: RootState) =>
@@ -87,9 +74,7 @@ export const AddApartment = (props: Props) => {
   );
 
   const common = useSelector((state: RootState) => state.Common);
-  const [apartmentDetailInput, setDetailInput] = useState(
-    {} as ApartmentDetailInputDto
-  );
+
   const onChangeApartment = (key: string, value: any) => {
     dispatch(apartmentInputChange({ ...apartment, [key]: value }));
   };
@@ -162,9 +147,7 @@ export const AddApartment = (props: Props) => {
     );
     onChangeApartment("near", newLocationNear || []);
   };
-  const updatePicture = (e: any) => {
-    setPicture(e);
-  };
+
   const getUrls = () => {
     return apartment.apartmentDetail?.images;
   };
@@ -180,7 +163,7 @@ export const AddApartment = (props: Props) => {
   };
 
   const createApartmentDetails = async (id: number) => {
-    let apartmentDetail = convertApartmentDetailToInpput(id);
+    let apartmentDetail = convertApartmentDetailToInput(id);
     let res = await ApartmentDetailApi.create(apartmentDetail);
     if (res.data.status) {
       await handleToast(res.data);
@@ -241,7 +224,7 @@ export const AddApartment = (props: Props) => {
       handleToast(res.data);
       if (res.data.status === 200 || res.data.status === 404) {
         let imgs = { ...apartment?.apartmentDetail }.images || [];
-        imgs = imgs.filter((i) => i.id != id);
+        imgs = imgs.filter((i) => i.id !== id);
         onChangeApartment("apartmentDetail", {
           ...apartment.apartmentDetail,
           images: imgs,
@@ -260,7 +243,7 @@ export const AddApartment = (props: Props) => {
     apartmentInput.pricePostId = apartment.pricePost?.id;
     return apartmentInput;
   };
-  const convertApartmentDetailToInpput = (id: number) => {
+  const convertApartmentDetailToInput = (id: number) => {
     let apartmentDetail = {
       ...apartment.apartmentDetail,
     } as ApartmentDetailInputDto;
@@ -274,29 +257,27 @@ export const AddApartment = (props: Props) => {
     return apartmentDetail;
   };
   const getApartmentType = () => {
-    if (common.apartmentTypes.length != 0) {
+    if (common.apartmentTypes.length !== 0) {
       return common.apartmentTypes;
     }
     loadapartmentType(store);
     return [];
   };
   const getKichentType = () => {
-    if (common.kitchenTypes.length != 0) {
+    if (common.kitchenTypes.length !== 0) {
       return common.kitchenTypes;
     }
     loadKitchenType(store);
     return [];
   };
   const getToiletType = () => {
-    if (common.toiletTypes.length != 0) {
+    if (common.toiletTypes.length !== 0) {
       return common.toiletTypes;
     }
     loadToiletType(store);
     return [];
   };
-  const toStringAny = (any?: any) => {
-    return !any ? "" : any.toString();
-  };
+
   return (
     <div className="add-apartment">
       <div className="main-info">
@@ -314,7 +295,7 @@ export const AddApartment = (props: Props) => {
               onSelect={(e) => {
                 onChangeApartment(
                   "type",
-                  common.apartmentTypes.find((i) => i.id == e)
+                  common.apartmentTypes.find((i) => i.id === e)
                 );
               }}
             />
@@ -355,7 +336,7 @@ export const AddApartment = (props: Props) => {
               value={apartment.district?.id}
               onSelect={(e) => {
                 let districtGet = district.districts.find(
-                  (i) => i.id == apartment.province?.id
+                  (i) => i.id === apartment.province?.id
                 );
                 dispatch(
                   apartmentInputChange({

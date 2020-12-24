@@ -1,4 +1,3 @@
-import { Expose, Type } from "class-transformer";
 import { DistrictDto } from "../../../address/district/dto/get";
 import { LocationTitleGetDto } from "../../../address/location/dto/title";
 import { ProvinceGetDto } from "../../../address/province/dto/get";
@@ -51,10 +50,8 @@ export class ApartmentDeletedDto {
 
   delete_at?: Date;
 
-  @Type((type) => UserTitleDto)
   user?: UserTitleDto;
 
-  @Type((type) => UserTitleDto)
   userDeleted?: UserTitleDto;
 }
 export class ApartmentTitleDto {
@@ -111,6 +108,8 @@ export class ApartmentGetDto {
   bathRoom?: number;
   bedRoom?: number;
   area?: number;
+  reviewCount?: number;
+  reportCount?: number;
 }
 export class ApartmentNearDto {
   id?: number;
@@ -124,23 +123,18 @@ export class ApartmentApproveDto {
 
   price?: number;
 
-  @Type((type) => ProvinceGetDto)
   province?: ProvinceGetDto;
 
-  @Type((type) => DistrictDto)
   district?: DistrictDto;
 
-  @Type((type) => WardGetDto)
   ward?: WardGetDto;
 
-  @Type((type) => StreetGetDto)
   street?: StreetGetDto;
 
   streetNo?: string;
 
   avatar?: string;
 
-  @Type((type) => UserTitleDto)
   user?: UserTitleDto;
 }
 export class ApproveInput {

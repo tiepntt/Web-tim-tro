@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
-import { Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { AddApartment } from "../../components/addApartment";
 import { ApartmentDetailItem } from "../../components/apartment-detail-item";
 import Footer from "../../components/Footer";
 import HeaderItem from "../../components/Navbar";
 import { RootState } from "../../store";
-import { useHistory, useParams, useRouteMatch } from "react-router";
+import { useHistory, useParams } from "react-router";
 import { ApartmentDetailApi } from "../../api/apartment/apartmentDetail";
 import {
   apartmentClear,

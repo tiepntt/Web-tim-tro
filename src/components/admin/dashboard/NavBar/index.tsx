@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
 import { Link as RouterLink, useLocation } from "react-router-dom";
-import PropTypes from "prop-types";
+
 import { RootState } from "../../../../store";
 import { useSelector } from "react-redux";
 import {
   Avatar,
   Box,
-  Button,
   Divider,
   Drawer,
   Hidden,
@@ -15,19 +14,13 @@ import {
   makeStyles,
 } from "@material-ui/core";
 import {
-  AlertCircle as AlertCircleIcon,
   BarChart as BarChartIcon,
-  Lock as LockIcon,
-  Settings as SettingsIcon,
   ShoppingBag as ShoppingBagIcon,
   User as UserIcon,
-  UserPlus as UserPlusIcon,
-  Users as UsersIcon,
 } from "react-feather";
 import NavItem from "./NavItem";
 import ChatIcon from "@material-ui/icons/Chat";
 import ApartmentIcon from "@material-ui/icons/Apartment";
-import ReportIcon from "@material-ui/icons/Report";
 import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
 import { RoleAdmin } from "../../../../libs/constants/role";
 

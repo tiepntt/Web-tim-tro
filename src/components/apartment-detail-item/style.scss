@@ -37,8 +37,6 @@
       .item-title {
         color: gray;
       }
-      .data {
-      }
     }
     .info-title {
       .title {
@@ -62,9 +60,6 @@
       .item-title {
         display: block;
         width: 100px;
-      }
-      .data {
-        //   margin-left: 70px;
       }
     }
   }
@@ -152,8 +147,7 @@
       width: 100%;
     }
   }
-  .info-detail {
-  }
+
   @media only screen and (max-width: 200px) {
     .review-share {
       ul {

@@ -5,7 +5,7 @@ import { ManagerApi } from "../../../../../api/admin/manager";
 import { UserApi } from "../../../../../api/user/user";
 import { UserGetDto } from "../../../../../api/user/user/dto";
 import { PaginationItem } from "../../../../../containers/pagination";
-import { PaginationAuto } from "../../../../../containers/pagination/pagination";
+
 import { RoleAdmin } from "../../../../../libs/constants/role";
 import { handleToast } from "../../../../../service/Toast";
 import { RootState } from "../../../../../store";
@@ -64,7 +64,6 @@ export const Employment = (props: Props) => {
       key: key,
     });
   };
-  const addUser = () => {};
   const getAllUserForManger = () => {
     switch (type) {
       case RoleAdmin.OWNER:

@@ -7,7 +7,7 @@ import { CarausolFooter } from "../../containers/carausol.footer";
 import "./style.scss";
 import { CommentItem } from "../../containers/apartment/commentItem";
 import { CommentInput } from "../../components/comment-input";
-import { useHistory, useParams, useRouteMatch } from "react-router-dom";
+import { useHistory, useRouteMatch } from "react-router-dom";
 import { ApartmentGetDto } from "../../api/apartment/apartment/dto";
 import { ApartmentDetailItem } from "../../components/apartment-detail-item";
 import { ApartmentDetailApi } from "../../api/apartment/apartmentDetail";

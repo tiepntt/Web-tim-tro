@@ -13,7 +13,7 @@ interface Props {
   onSuccess?: () => void;
 }
 export const EmploymentModel = (props: Props) => {
-  const { show, handleClose, handleAction, userId, onSuccess } = props;
+  const { show, handleClose, userId, onSuccess } = props;
   const [users, setUsers] = useState([] as UserGetDto[]);
   const [condition, setCondition] = useState({
     take: 5,

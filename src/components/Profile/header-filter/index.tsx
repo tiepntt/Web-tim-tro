@@ -1,9 +1,9 @@
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { AddIcon } from "@material-ui/data-grid";
-import { EventEmitter } from "events";
+
 import React, { useEffect } from "react";
-import { Button, Form, FormControl } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { SearchItem } from "../../../containers/Search";
 import { SelectItem } from "../../../containers/Select";
 import "./style.scss";
@@ -37,7 +37,7 @@ export const HeaderFilter = (props: Props) => {
       </Button>
 
       <SearchItem setKey={setKey} />
-      { filter ?<SelectItem data={filter?.data} onSelect={onSelect} />: null}
+      {filter ? <SelectItem data={filter?.data} onSelect={onSelect} /> : null}
       {onAdd ? (
         <Button variant="contained" color="primary" onClick={onAdd}>
           <div className="btn-add">

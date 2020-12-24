@@ -1,7 +1,6 @@
 import { InputLabel, makeStyles, MenuItem, Select } from "@material-ui/core";
-import React, { useEffect, useState } from "react";
-import { FormControl } from "react-bootstrap";
-import { getConstantValue } from "typescript";
+import React from "react";
+
 
 interface Props {
   input: { name?: string; title?: string; id?: number }[];

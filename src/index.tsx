@@ -7,7 +7,6 @@ import { Provider } from "react-redux";
 import { persistor, store } from "./store";
 import { PersistGate } from "redux-persist/integration/react";
 import "react-bootstrap-typeahead/css/Typeahead.css";
-import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
   <Provider store={store}>

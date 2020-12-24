@@ -1,48 +1,25 @@
-import { faBars, faToggleOn } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
+
 import { Route, Switch } from "react-router";
 import { RoleAdmin } from "../../../libs/constants/role";
 import { ApartmentProfile } from "../Apartment";
 import { BodyWrapper } from "../BodyWrapper";
 import Statistical from "../chart";
-import { HeaderFilter } from "../header-filter";
+
 import { InfoProfile } from "../Info";
 import { NavSidebar } from "../NavSideBar";
 import { User } from "../User";
 import "./style.scss";
-import ConversationList from "../../chat/conversation-list";
-import {Contract} from "../contract";
+
+import { Contract } from "../contract";
 import Conversation from "../../../containers/chat/conversation";
 import Messenger from "../../../containers/chat/messenger";
 
 interface Props {
   children: any;
 }
-const filter = {
-  title: "Select",
-  data: [
-    {
-      key: "Tất cả",
-      value: 0,
-      event: true,
-    },
-    {
-      key: "A-Z",
-      value: 1,
-      event: true,
-    },
-    {
-      key: "Sớm nhất",
-      value: 2,
-      event: true,
-    },
-  ],
-};
 
 export const DashboardLayout = (props: Props) => {
-  const { children } = props;
   const [activeNav, setActiveNav] = useState(true);
 
   const onTogle = () => {

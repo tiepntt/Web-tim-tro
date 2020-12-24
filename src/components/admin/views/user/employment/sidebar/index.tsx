@@ -13,7 +13,7 @@ interface Props {
 }
 
 export const SideBarUser = (props: Props) => {
-  const { add, onAdd, onSearch, filter, filterData } = props;
+  const { add, onAdd, onSearch, filter } = props;
 
   return (
     <div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Form, Modal } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 import { ManagerApi } from "../../../api/admin/manager";
 import { UserInputDto } from "../../../api/user/user/dto";
 import { TextFieldInput } from "../../../containers/Input/textField";
@@ -13,7 +13,7 @@ interface Props {
 }
 
 export const AddApartmentModal = (props: Props) => {
-  const { show, handleClose, handleAction, onSuccess } = props;
+  const { show, handleClose, onSuccess } = props;
   const [adminAdd, setAdminAdd] = useState({} as UserInputDto);
   useEffect(() => {
     setAdminAdd({});
