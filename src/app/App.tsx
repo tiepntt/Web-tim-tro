@@ -18,7 +18,8 @@ import { RootState } from "../store";
 import { PageNotFound } from "../page/404";
 import { IntroPage } from "../containers/intro";
 import { Term } from "../page/terms";
-import {ResetPassWord} from "../page/ResetPassword";
+import { ChangePassword } from "../page/changePassword";
+import DashboardLayout from "../components/admin/dashboard";
 
 export const history = createBrowserHistory();
 function App() {
@@ -44,14 +45,15 @@ function App() {
           <Route path="/apartment/:id">
             <ApartmentDetail />
           </Route>
-
           <Route path="/profile" component={ProfilePage} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
-          <Route path="/resetPass" component={ResetPassWord} />
+          <Route path="/changePassword" component={ChangePassword} />
           <Route path="/profileUser" component={ProfileUser} />
           <Route path="/404" component={PageNotFound} />
           <Route path="/terms" component={Term} />
+          <Route path="/admin" component={DashboardLayout} />
+
           <Redirect from="/" to="/home" />
         </Switch>
       </Router>

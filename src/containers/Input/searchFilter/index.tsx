@@ -19,16 +19,20 @@ export const SearchFilterInput = (props: Props) => {
   return (
     <Autocomplete
       className="auto-complete"
-      value={value || placeHolder}
+      value={value}
       fullWidth
       onKeyUp={(e: any) => {
         if (onChange) onChange(e.target?.value);
       }}
-      onChange={(event, newValue: any) => {
-        if (onSelect && newValue) {
-          onSelect(newValue);
+      onKeyPress={(e: any) => {
+        if (e.key === "Enter") {
+          if (onSelect) onSelect(e.target?.value);
         }
-        console.log((event as any).target?.value);
+      }}
+      onChange={(event: any, newValue: any) => {
+        if (onSelect && newValue) {
+          onSelect(newValue || event.target?.value);
+        }
 
         if (typeof newValue === "string") {
           setValue({
@@ -47,7 +51,7 @@ export const SearchFilterInput = (props: Props) => {
       handleHomeEndKeys
       id="free-solo-with-text-demo"
       options={input || []}
-      getOptionLabel={(option) => {
+      getOptionLabel={(option: any) => {
         if (typeof option === "string") {
           return option;
         }
@@ -56,6 +60,7 @@ export const SearchFilterInput = (props: Props) => {
         }
         return option.name;
       }}
+      clearOnEscape
       renderOption={(option) => option.name}
       renderInput={(params) => (
         <TextField {...params} placeholder={placeHolder} variant="outlined" />

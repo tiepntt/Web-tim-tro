@@ -1,6 +1,11 @@
+import API from "../..";
+import { ConditionDto } from "../../apartment/apartment/dto/condtion";
+
 const baseUrl = "/employment";
 const approveApartment = () => {};
-const getUserOfEmployment = () => {};
+const getUserOfEmployment = (input: ConditionDto) => {
+  return API.get(`${baseUrl}/getUsers/`, { params: input });
+};
 const getAllApartmentApproveYet = () => {};
 const getAllReviewApartmentApproveYet = () => {};
 const getAllReviewApproveYetByApartmentId = () => {};

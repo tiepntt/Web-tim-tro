@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     display: "block",
     fontSize: "18px",
     fontWeight: "bold",
-    width: "100px",
+    minWidth: "100px",
     lineHeight: "8px",
     marginTop: "10px",
     textAlign: "left",
@@ -49,12 +49,14 @@ export const InputSelect = (props: Props) => {
   const classes = useStyles();
   return (
     <div className={props.flex ? classes.selectFlex : classes.select}>
-      <InputLabel
-        id="demo-simple-select-helper-label"
-        className={classes.selectLabel}
-      >
-        {props.label || "label"}
-      </InputLabel>
+      {props.label && (
+        <InputLabel
+          id="demo-simple-select-helper-label"
+          className={classes.selectLabel}
+        >
+          {props.label}
+        </InputLabel>
+      )}
       <Select
         labelId="demo-simple-select-helper-label"
         id="demo-simple-select-helper"

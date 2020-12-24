@@ -2,7 +2,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { AddIcon } from "@material-ui/data-grid";
 import { EventEmitter } from "events";
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Form, FormControl } from "react-bootstrap";
 import { SearchItem } from "../../../containers/Search";
 import { SelectItem } from "../../../containers/Select";
@@ -19,10 +19,9 @@ export interface FilterData {
 interface Props {
   onTogle?: () => void;
   filter?: any;
-  onAdd?: () => {};
+  onAdd?: () => void;
   onSearch?: (key: string) => void;
   onSelect?: (index: number) => void;
-  emiter?: EventEmitter;
 }
 
 export const HeaderFilter = (props: Props) => {
@@ -30,7 +29,7 @@ export const HeaderFilter = (props: Props) => {
   const setKey = (key: string) => {
     if (onSearch) onSearch(key);
   };
-
+  useEffect(() => {}, [onAdd]);
   return (
     <div className="d-flex header-filter">
       <Button style={{ backgroundColor: "transparent" }} onClick={onTogle}>
@@ -38,7 +37,7 @@ export const HeaderFilter = (props: Props) => {
       </Button>
 
       <SearchItem setKey={setKey} />
-      <SelectItem data={filter?.data} onSelect={onSelect} />
+      { filter ?<SelectItem data={filter?.data} onSelect={onSelect} />: null}
       {onAdd ? (
         <Button variant="contained" color="primary" onClick={onAdd}>
           <div className="btn-add">

@@ -4,6 +4,7 @@ import { LocationTitleGetDto } from "../../../address/location/dto/title";
 import { ProvinceGetDto } from "../../../address/province/dto/get";
 import { StreetGetDto } from "../../../address/street/dto/get";
 import { WardGetDto } from "../../../address/ward/dto/get";
+import { PriceDto } from "../../../payment/price/dto/price.get.dto";
 import { UserDto, UserTitleDto } from "../../../user/user/dto";
 import { ApartmentDetailGetDto } from "../../apartmentDetail/dto";
 import { ApartmentTypeGetDto } from "../../type/dto/apartmentType";
@@ -28,7 +29,7 @@ export class ApartmentInputDto {
   districtId?: number;
 
   wardId?: number;
-
+  pricePostId?: number;
   streetId?: number;
 
   streetNo?: string;
@@ -106,6 +107,7 @@ export class ApartmentGetDto {
   near?: ApartmentNearDto[];
   avatar?: string;
   apartmentDetail?: ApartmentDetailGetDto;
+  pricePost?: PriceDto;
   bathRoom?: number;
   bedRoom?: number;
   area?: number;
@@ -149,7 +151,7 @@ export class ApproveInput {
 export class ApartmentDto {
   id?: number;
   avatar?: string;
-
+  views?: number;
   title?: string;
 
   area?: number;

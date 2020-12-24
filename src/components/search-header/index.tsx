@@ -9,9 +9,10 @@ import {
 } from "@material-ui/core";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useSelector, useStore } from "react-redux";
+import { useLocation } from "react-router-dom";
 import { DistrictForProvinceDto } from "../../api/address/district/dto/districtOfProvince";
 import { LocationOfProvinceDto } from "../../api/address/location/dto/get";
 import {
@@ -105,6 +106,7 @@ const SearchHeader = (props: Props) => {
   const { onChangeCondition, filter, onChangeFilter } = props;
   const [hintState, setHintState] = useState([] as HintDto[]);
   const store = useStore();
+  const location = useLocation();
   const district = useSelector(
     (state: RootState) =>
       state.District as { state: boolean; districts: DistrictForProvinceDto[] }
@@ -134,10 +136,14 @@ const SearchHeader = (props: Props) => {
     loadapartmentType(store);
     return [];
   };
+
   const getValuePrice = () => {
+
+
     let price = filterPrice.find(
       (i) => i.maxPrice === filter?.maxPrice && filter?.minPrice === i.minPrice
     );
+
     return price ? price.id : 0;
   };
   const getValueS = () => {
@@ -163,6 +169,10 @@ const SearchHeader = (props: Props) => {
       else setHintState([]);
     });
   };
+  const getValueType = () => {
+    return common.apartmentTypes.find((i) => i.id == filter?.apartmentTypeId)
+      ?.id;
+  };
   return (
     <div className="searh-header">
       <Container className="container-header">
@@ -172,7 +182,7 @@ const SearchHeader = (props: Props) => {
         <div className={"border"}>
           <Row>
             <Col lg={4} xs={12}>
-              <Paper component="form" className={classes.root}>
+              <Paper className={classes.root}>
                 <IconButton
                   type="submit"
                   className={classes.iconButton}
@@ -183,7 +193,7 @@ const SearchHeader = (props: Props) => {
                 <SearchFilterInput
                   onChange={getHint}
                   onSelect={(e: any) => {
-                    onChangeCondition("key", e?.name);
+                    onChangeCondition("key", e?.name || e);
                   }}
                   input={hintState}
                   placeHolder="Từ khóa,địa chỉ hoặc địa danh"
@@ -217,8 +227,8 @@ const SearchHeader = (props: Props) => {
                       })
                     : onChangeFilter({
                         ...filter,
-                        maxPrice: 10000000000,
-                        minPrice: 0,
+                        maxPrice: condition.maxPrice,
+                        minPrice: condition.minPrice,
                         page: 1,
                         skip: 0,
                       });
@@ -253,7 +263,7 @@ const SearchHeader = (props: Props) => {
             <Col lg={2} xs={6}>
               <DropDownInput
                 input={getApartmentType()}
-                value={0}
+                value={getValueType()}
                 label="Loại hình"
                 onSelect={(e) => onChangeCondition("apartmentTypeId", e)}
               />

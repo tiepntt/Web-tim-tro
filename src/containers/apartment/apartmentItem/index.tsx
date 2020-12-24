@@ -1,6 +1,7 @@
 import {
   faBath,
   faBed,
+  faEye,
   faHeart,
   faPhoneAlt,
   faSquare,
@@ -58,9 +59,11 @@ export const ApartmentItem = (props: Props) => {
             <li>
               <FontAwesomeIcon icon={faBed} /> {apartment?.bedRoom}
             </li>
-
             <li>
               <FontAwesomeIcon icon={faBath} /> {apartment?.bathRoom}
+            </li>{" "}
+            <li>
+              <FontAwesomeIcon icon={faEye} /> {apartment?.views}
             </li>
           </ul>
           <div className="price">{FormatNumber(apartment?.price, " vnđ")}</div>

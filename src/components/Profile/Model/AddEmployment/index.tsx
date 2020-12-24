@@ -54,8 +54,6 @@ export const EmploymentModel = (props: Props) => {
         <Form.Control
           placeholder="Tên Nhân viên"
           onChange={(e) => {
-            console.log(e.target.value);
-
             setCondition({ ...condition, key: e.target.value });
           }}
         />

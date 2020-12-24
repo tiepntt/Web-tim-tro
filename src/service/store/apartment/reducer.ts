@@ -23,7 +23,6 @@ export const ApartmentReducer = (
         ...state,
         LocationsNear: location,
       };
-      console.log(newStateAdd);
       return newStateAdd;
     case REMOVE_LOCATION:
       let locationInitRemove = { ...state }.LocationsNear || [];

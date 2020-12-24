@@ -14,7 +14,8 @@ export const EditorComponent = (props: Props) => {
   const { value, onChange } = props;
   const [stateEdit, setStateEdit] = useState(EditorState.createEmpty());
   const [onloadProps, setOnloadProp] = useState(false);
-  const onEditorStateChange = (editorState: any) => {
+  const onEditorStateChange = (editorState: EditorState) => {
+    editorState.getCurrentInlineStyle();
     if (onChange)
       onChange(draftToHtml(convertToRaw(editorState.getCurrentContent())));
     setStateEdit(editorState);
@@ -24,7 +25,9 @@ export const EditorComponent = (props: Props) => {
     let contentState = stateFromHTML(value || "");
     return EditorState.createWithContent(contentState);
   };
-
+  useEffect(() => {
+    setOnloadProp(false);
+  }, []);
   useEffect(() => {
     if (!onloadProps && value) {
       setOnloadProp(true);

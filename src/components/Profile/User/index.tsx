@@ -14,6 +14,7 @@ import { Table } from "react-bootstrap";
 import { Filter, HeaderFilter } from "../header-filter";
 import { EmploymentModel } from "../Model/AddEmployment";
 import { EventEmitter } from "events";
+import { AddApartmentModal } from "../addEmployment";
 interface Props {
   onTogle?: () => void;
   type?: string;
@@ -38,7 +39,7 @@ export const User = (props: Props) => {
     take: 10,
     skip: 0,
     options: true,
-    isApprove: 1,
+    isApprove: -1,
     key: "",
   });
   const onSelectFilter = (index: number) => {
@@ -110,12 +111,17 @@ export const User = (props: Props) => {
         onTogle={onTogle}
         onSearch={onSearch}
         onSelect={onSelectFilter}
-        filter={filter}
+        filter={type === RoleAdmin.OWNER ? filter : null}
+        onAdd={
+          user?.role?.code === RoleAdmin.MANAGER && type === RoleAdmin.ADMIN
+            ? () => setShow(true)
+            : undefined
+        }
       />
       <Table striped bordered hover className="user-table">
         <thead>
           <tr className={"text-center"}>
-            {["#", "Tên", "Email", "CMND", "Quản lý", "#"].map((item) => (
+            {["#", "Tên", "Email", "CMND", "Quản lý"].map((item) => (
               <th>{item}</th>
             ))}
           </tr>
@@ -131,31 +137,20 @@ export const User = (props: Props) => {
                     <td>{item.personNo}</td>
                     <td>
                       {item.userManager ? (
-                        item.userManager?.name
+                        <div className="manager-user">
+                          {item.userManager?.name}
+                        </div>
                       ) : (
                         <div
+                          className="button-approve"
                           onClick={(e) => {
                             setUserSelected(item?.id || 0);
                             setShow(true);
                           }}
                         >
-                          Giao
+                          Xác thực
                         </div>
                       )}
-                    </td>
-
-                    <td>
-                      <div className="d-flex">
-                        <div
-                          className={"icon-item"}
-                          onClick={() => setShow(!showModel)}
-                        >
-                          <FontAwesomeIcon icon={faEdit} color={"green"} />
-                        </div>
-                        <div className={"icon-item"} onClick={() => {}}>
-                          <FontAwesomeIcon icon={faTrash} color={"red"} />
-                        </div>
-                      </div>
                     </td>
                   </tr>
                 );
@@ -170,12 +165,20 @@ export const User = (props: Props) => {
           onPageChange={onPageChange}
         />
       </div>
-      <EmploymentModel
-        show={showModel}
-        userId={userSelected}
-        onSuccess={getAllUserForManger}
-        handleClose={() => setShow(false)}
-      />
+      {user?.role?.code === RoleAdmin.MANAGER && type === RoleAdmin.ADMIN ? (
+        <AddApartmentModal
+          show={showModel}
+          onSuccess={getAllUserForManger}
+          handleClose={() => setShow(false)}
+        />
+      ) : (
+        <EmploymentModel
+          show={showModel}
+          userId={userSelected}
+          onSuccess={getAllUserForManger}
+          handleClose={() => setShow(false)}
+        />
+      )}
     </>
   );
 };

@@ -2,35 +2,48 @@ import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { SvgIcon } from "@material-ui/core";
 import { Delete, Edit, Remove } from "@material-ui/icons";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Table } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router";
+import { ApartmentItemUser } from "../../../containers/apartment/apartment.user";
 import { ApartmentItem } from "../../../containers/apartment/apartmentItem";
+import { ApartmentList } from "../../../containers/table/table-apartment";
+import { RootState } from "../../../store";
 import { HeaderFilter } from "../header-filter";
 
 interface Props {
   onTogle?: () => void;
 }
+const filter = {
+  tilte: "Lọc theo",
+  data: [
+    { key: "approve", title: "Tất cả", value: -1 },
+    { key: "approve", title: "Đã duyệt", value: 1 },
+    { key: "approve", title: "Chưa duyệt", value: 0 },
+  ],
+};
 export const ApartmentProfile = (props: Props) => {
   const { onTogle } = props;
   const [apartments, setApartments] = useState([]);
-  const filter = [];
+  const history = useHistory();
+  const role = useSelector(
+    (state: RootState) => state.UserReducer.account?.role
+  );
+  useEffect(() => {
+    if (!role) history.push("/login");
+  }, [role]);
   return (
     <div>
-      <HeaderFilter onTogle={onTogle} />
       <div className="apartment-info-list " style={{}}>
-        <ul>
-          <li>
-            <ApartmentItem avatar="https://cloud.mogi.vn/images/2020/08/18/120/f9bc95cb39d5462887620d0afd860634.jpg" />
-          </li>
-          <li>
-            <ApartmentItem avatar="https://cloud.mogi.vn/images/2020/11/09/368/2f98c1ec352f419db14344b46415b315.jpg" />
-          </li>
-          <li>
-            <ApartmentItem avatar="https://cloud.mogi.vn/images/2020/07/02/581/72fc9f434e474b429273663a032d12de.jpg" />
-          </li>
-          <li>
-            <ApartmentItem avatar="https://cloud.mogi.vn/images/2020/07/22/376/44bdbe8040e54218ba9c2bd5f3080d2a.jpg" />
-          </li>
-        </ul>
+        <div className="row">
+          <div className="col-xl-6 col-12">
+            <ApartmentItemUser />
+          </div>
+          <div className="col-xl-6 col-12">
+            <ApartmentItemUser />
+          </div>
+        </div>
       </div>
     </div>
   );
