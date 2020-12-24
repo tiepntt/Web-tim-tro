@@ -4,19 +4,24 @@ import { ApartmentItemUser } from "../../../../../../containers/apartment/apartm
 import { ApartmentGetDto } from "../../../../../../api/apartment/apartment/dto";
 interface Props {
   apartments?: ApartmentGetDto[];
+  type?: string;
+  openModel?: (i: number) => void;
 }
 
 export const ListApartment = (props: Props) => {
-  const { apartments } = props;
+  const { apartments, type } = props;
   return (
     <div className="list-apartment">
       <div className="list">
-        <ApartmentItemUser />
-        <ApartmentItemUser />
-        <ApartmentItemUser />
-        <ApartmentItemUser />
-        <ApartmentItemUser />
-        <ApartmentItemUser />
+        {apartments
+          ? apartments.map((item) => (
+              <ApartmentItemUser
+                apartment={item}
+                type={type}
+                openModel={props.openModel}
+              />
+            ))
+          : null}
       </div>
     </div>
   );

@@ -28,7 +28,7 @@ const HeaderItem = () => {
           />
         </div>
         <NavDropdown className="name" title={getName()} id="basic-nav-dropdown">
-          <NavDropdown.Item href="/profile">Thông tin</NavDropdown.Item>
+          <NavDropdown.Item href="/admin">Thông tin</NavDropdown.Item>
           <NavDropdown.Item href="/changePassword">
             Đổi mật khẩu
           </NavDropdown.Item>

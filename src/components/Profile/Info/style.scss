@@ -20,6 +20,9 @@
     .col-md-6.left {
       border-right: 1px solid #92d0c5;
     }
+    .left.col-12 {
+      border-right: unset !important;
+    }
   }
   .upload-photo {
     // max-height: 80px
@@ -41,5 +44,8 @@
   .avatar {
     width: 100%;
     height: 100%;
+  }
+  .row {
+    margin: 0 !important;
   }
 }

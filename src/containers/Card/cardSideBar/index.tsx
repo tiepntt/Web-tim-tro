@@ -128,7 +128,7 @@ export const SideBarCard = (props: Props) => {
                 </InputAdornment>
               ),
             }}
-            placeholder="Search product"
+            placeholder="Tìm kiếm"
             variant="outlined"
           />
           {add && (

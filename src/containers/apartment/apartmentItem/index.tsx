@@ -17,14 +17,15 @@ interface Props {
   avatar?: string;
   apartment?: ApartmentDto;
 }
-export const ApartmentItem = (props: Props) => {
-  const { apartment } = props;
-  const getAddress = () => {
-    return `${apartment?.streetNo ? apartment?.streetNo + "," : ""} 
+export const getAddress = (apartment: any) => {
+  return `${apartment?.streetNo ? apartment?.streetNo + "," : ""} 
     ${apartment?.street?.name ? apartment?.street?.name + "," : ""}
     ${apartment?.ward?.name ? apartment?.ward?.name + "," : ""}
     ${apartment?.district?.name ? apartment?.district?.name : ""} `;
-  };
+};
+export const ApartmentItem = (props: Props) => {
+  const { apartment } = props;
+
   const FormatNumber = (n?: number, suffix = "", prefix = "") => {
     return (
       <NumberFormat
@@ -47,7 +48,7 @@ export const ApartmentItem = (props: Props) => {
         </div>
         <div className="info">
           <div className="apartment-item-title">{apartment?.title}</div>
-          <div className="address">{getAddress()}</div>
+          <div className="address">{getAddress(apartment)}</div>
           <ul className={"icon-info"}>
             <li>
               <FontAwesomeIcon icon={faSquare} />{" "}

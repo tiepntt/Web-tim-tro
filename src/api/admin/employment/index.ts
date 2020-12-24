@@ -2,7 +2,9 @@ import API from "../..";
 import { ConditionDto } from "../../apartment/apartment/dto/condtion";
 
 const baseUrl = "/employment";
-const approveApartment = () => {};
+const approveApartment = (id?: number) => {
+  return API.post(`${baseUrl}/approve`, { apartmentId: id });
+};
 const getUserOfEmployment = (input: ConditionDto) => {
   return API.get(`${baseUrl}/getUsers/`, { params: input });
 };

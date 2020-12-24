@@ -6,6 +6,7 @@ import { TextFieldInput } from "../../../containers/Input/textField";
 import { handleToast } from "../../../service/Toast";
 import "./style.scss";
 interface Props {
+  
   show?: boolean;
   handleClose?: () => void;
   handleAction?: () => void;
