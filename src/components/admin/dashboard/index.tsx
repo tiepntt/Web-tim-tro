@@ -16,10 +16,11 @@ import { UserDashboard } from "../views/user";
 import { ApartmentDashboard } from "../views/apartment";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
+import { DashboardView } from "../views/dashboard";
 
 const useStyles = makeStyles((theme: any) => ({
   root: {
-    backgroundColor: theme.palette.background.dark,
+    backgroundColor: "#F4F6F8",
     display: "flex",
     height: "100%",
     overflow: "hidden",
@@ -69,7 +70,7 @@ const DashboardLayout = () => {
           <div className={classes.content}>
             <Switch>
               <Route exact path="/admin">
-                <Statistical />
+                <DashboardView />
               </Route>
               <Route exact path="/admin/apartment">
                 <ApartmentDashboard />

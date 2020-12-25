@@ -9,10 +9,10 @@ const upload = (file: any) => {
   return API.post(`${baseUrl}/upload`, file);
 };
 const getAll = (input: {
-  take: number;
-  skip: number;
-  isApprove: boolean;
-  key: string;
+  take?: number;
+  skip?: number;
+  isApprove?: boolean;
+  key?: string;
 }) => {
   return API.get(`${baseUrl}/all`, { params: input });
 };

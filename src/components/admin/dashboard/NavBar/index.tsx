@@ -26,7 +26,7 @@ import { RoleAdmin } from "../../../../libs/constants/role";
 
 const items = [
   {
-    href: "/admin/dashboard",
+    href: "/admin",
     icon: BarChartIcon,
     title: "Thống kê",
     private: [RoleAdmin.MANAGER, RoleAdmin.ADMIN],
