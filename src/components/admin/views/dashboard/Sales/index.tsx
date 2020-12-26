@@ -18,9 +18,13 @@ import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 import { ApartmentDto } from "../../../../../api/apartment/apartment/dto";
 import { ApartmentApi } from "../../../../../api/apartment/apartment";
 import { ApartmentItemDashBoard } from "../../../../../containers/apartment/apartment.dashboad";
+import { EmploymentAPI } from "../../../../../api/admin/employment";
+import { handleToast } from "../../../../../service/Toast";
 
 const useStyles = makeStyles(() => ({
-  root: {},
+  root: {
+    padding: 0,
+  },
 }));
 interface Props {
   className?: string;
@@ -31,14 +35,16 @@ export const Sales = (props: Props) => {
   const classes = useStyles();
   const theme = useTheme();
   useEffect(() => {
-    ApartmentApi.getAll({ take: 5 }).then((res) => {
-      if (res.data.status) {
-        setApartments(res.data.result.data);
+    EmploymentAPI.getMaxApartment({ take: 5 }).then((res) => {
+      if (res.data.status === 200) {
+        setApartments(res.data.result);
+      } else {
+        handleToast(res.data);
       }
     });
   }, []);
   return (
-    <Card className={clsx(classes.root, className)} {...rest}>
+    <Card className={classes.root} {...rest}>
       <CardHeader title="Tương tác nhiều nhất" />
       <Divider />
       <CardContent>

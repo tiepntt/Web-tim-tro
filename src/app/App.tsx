@@ -12,13 +12,15 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ProfileUser } from "../page/profile-user";
 import { AddApartmentPage } from "../page/addApartment";
-import {   useStore } from "react-redux";
+import { useStore } from "react-redux";
 import { loader } from "../loader";
 import { PageNotFound } from "../page/404";
 import { IntroPage } from "../containers/intro";
 import { Term } from "../page/terms";
 import { ChangePassword } from "../page/changePassword";
 import DashboardLayout from "../components/admin/dashboard";
+import HeaderItem from "../components/Navbar";
+import Footer from "../components/Footer";
 
 export const history = createBrowserHistory();
 function App() {
@@ -28,31 +30,37 @@ function App() {
     loader(store);
   }, []);
   return (
-    <div>
+    <div className="app">
       <Router history={history}>
-        <Switch>
-          <Route exact path="/home" component={HomePage} />
-          <Route exact path="/link" component={IntroPage} />
-          <Route exact path="/apartment/add">
-            <AddApartmentPage type="add" />
-          </Route>
-          <Route path="/apartment/edit/:id">
-            <AddApartmentPage type="edit" />
-          </Route>
-          <Route path="/apartment/:id">
-            <ApartmentDetail />
-          </Route>
-          <Route path="/profile" component={ProfilePage} />
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-          <Route path="/changePassword" component={ChangePassword} />
-          <Route path="/profileUser" component={ProfileUser} />
-          <Route path="/404" component={PageNotFound} />
-          <Route path="/terms" component={Term} />
-          <Route path="/admin" component={DashboardLayout} />
+        <HeaderItem />
+        <div className="main-content">
+          <Switch>
+            <Route exact path="/home" component={HomePage} />
+            <Route exact path="/link" component={IntroPage} />
+            <Route exact path="/apartment/add">
+              <AddApartmentPage type="add" />
+            </Route>
+            <Route path="/apartment/edit/:id">
+              <AddApartmentPage type="edit" />
+            </Route>
+            <Route path="/apartment/:id">
+              <ApartmentDetail />
+            </Route>
+            <Route path="/profile" component={ProfilePage} />
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+            <Route path="/changePassword" component={ChangePassword} />
+            <Route path="/profileUser" component={ProfileUser} />
+            <Route path="/404" component={PageNotFound} />
+            <Route path="/terms" component={Term} />
+            <Route path="/admin" component={DashboardLayout} />
 
-          <Redirect from="/" to="/home" />
-        </Switch>
+            <Redirect from="/" to="/home" />
+          </Switch>
+        </div>
+        <div className="footer-item">
+          <Footer />
+        </div>
       </Router>
       <ToastContainer
         position="top-right"

@@ -6,7 +6,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Avatar, Chip, makeStyles } from "@material-ui/core";
-import React from "react";
+import React, { useState } from "react";
 import { Carousel, Col, Image, Row } from "react-bootstrap";
 import ReactHtmlParser from "react-html-parser";
 import {
@@ -17,8 +17,15 @@ import {
 } from "react-share";
 import "./style.scss";
 import NumberFormat from "react-number-format";
-import { convertDate } from "../../libs/constants/function/time";
+import {
+  convertDate,
+  NumberDateJoin,
+} from "../../libs/constants/function/time";
 import { ApartmentGetDto } from "../../api/apartment/apartment/dto";
+import { CommentComponent } from "../comment";
+import { ApartmentApi } from "../../api/apartment/apartment";
+import { handleToast } from "../../service/Toast";
+import { ApartmentReportApi } from "../../api/apartment/apartmentReport";
 interface Props {
   apartment: ApartmentGetDto;
 }
@@ -68,7 +75,18 @@ export const ApartmentDetailItem = (props: Props) => {
     ${apartment?.ward?.name ? apartment?.ward?.name + "," : ""}
     ${apartment?.district?.name ? apartment?.district?.name : ""} `;
   };
+  const [canComment, setCanComment] = useState(false);
 
+  const addToHobby = () => {
+    ApartmentApi.saveToHobby(apartment.id).then((res) => {
+      handleToast(res.data);
+    });
+  };
+  const report = () => {
+    ApartmentReportApi.create(apartment.id).then((res) => {
+      handleToast(res.data);
+    });
+  };
   const getYesNo = (e?: boolean) => {
     return e ? "Có" : "Không";
   };
@@ -233,7 +251,9 @@ export const ApartmentDetailItem = (props: Props) => {
           />
           <div className="user">
             <div className="name">{apartment?.user?.name}</div>
-            <div className="time">Đã tham gia 2 năm</div>
+            <div className="time">
+              Đã tham gia {NumberDateJoin(apartment?.user?.create_at)}
+            </div>
           </div>
         </div>
         <div className="box ">
@@ -257,6 +277,7 @@ export const ApartmentDetailItem = (props: Props) => {
                 className={classes.location}
                 label="Lưu"
                 component="a"
+                onClick={addToHobby}
                 clickable
                 variant="outlined"
               />
@@ -269,14 +290,16 @@ export const ApartmentDetailItem = (props: Props) => {
                 clickable
                 variant="outlined"
                 color="primary"
+                onClick={() => setCanComment(!canComment)}
               />
             </li>
             <li>
               <Chip
                 className={classes.location}
-                label="Báo cáo"
+                label="Báo cáo không đúng sự thật"
                 component="a"
                 clickable
+                onClick={report}
                 variant="outlined"
                 color="secondary"
               />
@@ -299,6 +322,9 @@ export const ApartmentDetailItem = (props: Props) => {
             <FacebookMessengerIcon size={48} round />
           </FacebookMessengerShareButton>
         </div>
+      </div>
+      <div className="comment">
+        {canComment && <CommentComponent apartmentId={apartment.id} />}
       </div>
     </div>
   );

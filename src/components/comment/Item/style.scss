@@ -1,0 +1,17 @@
+.comment-item {
+    padding: 3px 3px;
+    .avatar {
+        margin-top: 5px;
+        margin-right: 5px;
+    }
+    .user {
+        font-weight: bold;
+    }
+    .time-comment {
+        color: gray;
+        font-size: 14px;
+    }
+    .content-comment {
+        margin-left: 40px;
+    }
+}

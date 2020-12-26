@@ -43,8 +43,7 @@ export const AddApartmentPage = (props: Props) => {
     }
   }, [id]);
   return (
-    <div className={"add-apartment-page"}>
-      <HeaderItem />
+    <div className={"add-apartment-page"} style={{ height: "100%" }}>
       <div className="content row">
         <div className="col-xl-6">
           <AddApartment />
@@ -53,8 +52,6 @@ export const AddApartmentPage = (props: Props) => {
           <ApartmentDetailItem apartment={apartment} />
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 };

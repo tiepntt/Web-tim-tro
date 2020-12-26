@@ -44,7 +44,11 @@ export const ApartmentItem = (props: Props) => {
     <div className="apartment-item">
       <a href={getUrl()}>
         <div className="props-img">
-          <Image src={apartment?.avatar} className="apartment-avatar" />
+          <Image
+            src={apartment?.avatar}
+            className="apartment-avatar"
+            thumbnail
+          />
         </div>
         <div className="info">
           <div className="apartment-item-title">{apartment?.title}</div>

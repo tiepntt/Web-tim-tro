@@ -1,0 +1,21 @@
+.comment-component {
+    width: 100%;
+    .list-comment {
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    .input-comment {
+        border-top: gray 1px solid;
+    }
+    .icon-send {
+        cursor: pointer;
+        width: 50px;
+        text-align: center;
+        background-color: wheat;
+        // border: 1px solid red;
+        color: white;
+        svg {
+            margin-top: 10px;
+        }
+    }
+}

@@ -72,7 +72,6 @@ export const Register = (props: Props) => {
   };
   return (
     <div className={"Register"}>
-      <HeaderItem />
       <Container className="content">
         <SwipeableViews
           draggable={false}
@@ -86,7 +85,6 @@ export const Register = (props: Props) => {
           ))}
         </SwipeableViews>
       </Container>
-      <Footer />
     </div>
   );
 };

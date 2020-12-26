@@ -78,7 +78,6 @@ export const Apartment = (props: Props) => {
       <div className="apartment-title">
         Thuê nhà đất 2020 giá rẻ tại Việt Nam, giá thuê mới nhất
       </div>
-
       <ul>
         <div className="result row">
           <div className="col-lg-9  col-8 result-tag ">

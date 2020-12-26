@@ -40,17 +40,29 @@ const changeStatus = (id?: number) => {
 const extendApartment = (apartmentId?: number, postPriceId?: number) => {
   return API.put(`${baseUrl}/extend`, { apartmentId, postPriceId });
 };
+const saveToHobby = (apartmentId?: number) => {
+  return API.post(`${baseUrl}/hobby`, { apartmentId });
+};
+const removeHobby = (apartmentId?: number) => {
+  return API.delete(`${baseUrl}/hobby/` + apartmentId);
+};
+const getHobby = (input: { take: number; skip: number; key: string }) => {
+  return API.get(`${baseUrl}/hobby`, { params: input });
+};
 export const ApartmentApi = {
+  removeHobby,
   removeImg,
   upload,
   create,
   getAll,
   getAllByUserId,
+  getHobby,
   remove,
   restore,
   getRemoved,
   update,
   getAllApartmentByUserId,
   changeStatus,
+  saveToHobby,
   extendApartment,
 };

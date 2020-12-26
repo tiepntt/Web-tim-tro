@@ -23,7 +23,7 @@ interface Props {
 export const ApartmentItemDashBoard = (props: Props) => {
   const { apartment } = props;
   return (
-    <div className="row apartment-user">
+    <div className="row apartment-user-dashboard">
       <div className="col-sm-4 col-12 img-info" style={{ marginLeft: 10 }}>
         <div className="img">
           <Image
@@ -57,24 +57,17 @@ export const ApartmentItemDashBoard = (props: Props) => {
             <li>
               <FontAwesomeIcon icon={faEye} /> {apartment?.views}
             </li>
-            <li>
-              <FontAwesomeIcon icon={faComment} /> {apartment?.reviewCount}
-            </li>
-            <li>
-              <FontAwesomeIcon icon={faExclamationCircle} />{" "}
-              {apartment?.reportCount}
-            </li>
           </ul>
-          <div className="d-flex">
+          <div className="row">
             <a
               href={`/profileUser/${apartment?.user?.id}`}
-              className="author"
+              className="author col-6"
               style={{ flexGrow: 1 }}
             >
               <span>Tác giả: </span>
               <span>{apartment?.user?.name}</span>
             </a>
-            <div className="date">
+            <div className="date col-6">
               <span>Ngày đăng: </span>
               <span>{convertDate(apartment?.create_at)}</span>
             </div>

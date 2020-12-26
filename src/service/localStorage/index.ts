@@ -7,5 +7,11 @@ const save = (input: { key: string; data?: string }) => {
     console.log(e);
   }
 };
-const remove = (key: string) => {};
+const remove = (key: string) => {
+  try {
+    localStorage.removeItem(key);
+  } catch (e) {
+    console.log(e);
+  }
+};
 export const LocalStorageService = { save, remove };

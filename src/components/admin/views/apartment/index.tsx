@@ -13,6 +13,7 @@ export const STATUS_APARTMENT = {
   NO_APPROVED: "NO_APPROVE",
   LOVE: "LOVE",
   EXTEND: "EXTEND",
+  MY_APARTMENT: "MY_APARTMENT",
 };
 interface Props {}
 const apartmentTab = [
@@ -36,13 +37,7 @@ const apartmentTab = [
   {
     label: <LabelIcon label="Bài đăng của tôi" icon={<HomeIcon />} />,
     component: "Bài đăng của tôi",
-    icon: HomeIcon,
-    private: [RoleAdmin.ADMIN, RoleAdmin.MANAGER],
-  },
-  {
-    label: <LabelIcon label="Yêu cầu gia hạn" icon={<WatchLaterIcon />} />,
-    component: <ApproveApartment type={STATUS_APARTMENT.EXTEND} />,
-    icon: HomeIcon,
+    icon: <ApproveApartment type={STATUS_APARTMENT.MY_APARTMENT} />,
     private: [RoleAdmin.ADMIN, RoleAdmin.MANAGER],
   },
 ];

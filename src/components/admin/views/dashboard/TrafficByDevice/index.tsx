@@ -26,7 +26,8 @@ import { BudgetItem } from "../Budget/Item";
 
 const useStyles = makeStyles(() => ({
   root: {
-    height: "100%",
+    // height: "100%",
+    height: "auto",
   },
 }));
 interface Props {

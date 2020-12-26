@@ -39,18 +39,35 @@ export const ApartmentItemUser = (props: Props) => {
   const user = useSelector((state: RootState) => state.UserReducer.account);
   const history = useHistory();
   const [approve, setApprove] = useState(false);
+  const [save, setSave] = useState(true);
   useEffect(() => {
     setApprove(apartment?.status || false);
   }, [type]);
-
-  const getButtons = () => {
+  const removeLove = () => {
+    save
+      ? ApartmentApi.removeHobby(apartment?.id).then((res) => {
+          handleToast(res.data);
+          if (res.data.status === 200) {
+            setSave(false);
+          }
+        })
+      : ApartmentApi.saveToHobby(apartment?.id).then((res) => {
+          handleToast(res.data);
+          if (res.data.status === 200) {
+            setSave(true);
+          }
+        });
+  };
+  const getLove = () => {
     return (
       <div className="detail-fast row">
         <div className="col-6">
-          <div className="status wait">{}</div>
+          <div className="status deadline" onClick={removeLove}>
+            {save ? "Xóa" : "Hoàn tác"}
+          </div>
         </div>
         <div className=" col-6">
-          <div className="report">
+          <div className="report wait">
             {apartment?.status ? "Đã cho thuê" : "Đang tìm kiếm"}
           </div>
         </div>
@@ -101,6 +118,7 @@ export const ApartmentItemUser = (props: Props) => {
           case STATUS_APARTMENT.NO_APPROVED:
             break;
           case STATUS_APARTMENT.LOVE:
+            return getLove();
             break;
         }
         break;
@@ -202,7 +220,9 @@ export const ApartmentItemUser = (props: Props) => {
         }
         break;
       case RoleAdmin.RENTER:
-        break;
+      case STATUS_APARTMENT.LOVE:
+        return getLove();
+
       default:
         break;
     }

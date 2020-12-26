@@ -10,14 +10,13 @@ interface Props {}
 export const ProfilePage = (props: Props) => {
   return (
     <div className={"ProfilePage"}>
-      <HeaderItem />
       {/* <HeaderFilter /> */}
       <div className="content">
         <DashboardLayout>
           <h2>Home Page</h2>
         </DashboardLayout>
       </div>
-      <Footer />
+
     </div>
   );
 };
