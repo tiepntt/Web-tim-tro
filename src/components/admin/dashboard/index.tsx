@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core";
 import NavBar from "./NavBar";
 import TopBar from "./TopBar";
-import { Route, Switch, useHistory } from "react-router";
+import { Redirect, Route, Switch, useHistory } from "react-router";
 
 import { InfoProfile } from "../../Profile/Info";
 
@@ -16,10 +16,11 @@ import { UserDashboard } from "../views/user";
 import { ApartmentDashboard } from "../views/apartment";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
-
+import { DashboardView } from "../views/dashboard";
+import { Chat } from "../views/Chat";
 const useStyles = makeStyles((theme: any) => ({
   root: {
-    backgroundColor: theme.palette.background.dark,
+    backgroundColor: "#F4F6F8",
     display: "flex",
     height: "100%",
     overflow: "hidden",
@@ -68,9 +69,6 @@ const DashboardLayout = () => {
         <div className={classes.contentContainer}>
           <div className={classes.content}>
             <Switch>
-              <Route exact path="/admin">
-                <Statistical />
-              </Route>
               <Route exact path="/admin/apartment">
                 <ApartmentDashboard />
               </Route>
@@ -79,13 +77,18 @@ const DashboardLayout = () => {
               </Route>
 
               {user?.role?.isApproveUser && (
-                <Route exact path="/admin/user/">
-                  <UserDashboard />
-                </Route>
+                <>
+                  <Route exact path="/admin/user/">
+                    <UserDashboard />
+                  </Route>
+                  <Route exact path="/admin">
+                    <DashboardView />
+                  </Route>
+                </>
               )}
 
               <Route exact path="/admin/support">
-                <Conversation />
+                <Chat/>
               </Route>
               <Route exact path="/admin/support/messenger">
                 <Messenger />
@@ -93,12 +96,12 @@ const DashboardLayout = () => {
               <Route path="/admin/support/messenger/:id">
                 <Messenger />
               </Route>
-              <Route exact path="/admin/data/location">
-                <div>Dữ liệu</div>
-              </Route>
               <Route exact path="/admin/contract">
                 <Contract />
               </Route>
+              {!user?.role?.isApproveUser && (
+                <Redirect from="/admin" to="/admin/info" />
+              )}
             </Switch>
           </div>
         </div>

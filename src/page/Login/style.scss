@@ -1,35 +1,45 @@
 .Login {
+  display: block;
+  position: relative;
+  // background-color: white;
+
+  .login-box-content {
+    margin-top: 138px;
+  }
   .content {
     padding: 0px;
     text-align: center;
-    position: relative;
+    height: 100vh;
+
     justify-content: center;
-    margin-top: 60px;
-    margin-bottom: 60px;
+    padding-top: 25px;
+    padding-bottom: 30px;
 
     .login-box {
       display: inline-block;
       text-align: left;
       padding: 30px 30px;
+      // margin: auto;
       min-width: 30vw;
       margin-left: auto;
-      background-color: white;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
     @media only screen and (max-width: 800px) {
+      .login-box-content {
+        margin-top: 30px;
+      }
       .login-box {
         display: inline-block;
         text-align: left;
         padding: 30px 30px;
-        min-width: 30vw;
-        margin: auto!important;
+        width: 100%;
+        margin: auto !important;
         background-color: white;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
+        box-shadow: unset !important;
       }
       .image-login {
-        display: none!important;
+        display: none !important;
       }
     }
     .image-login {
@@ -39,10 +49,11 @@
       vertical-align: middle;
       box-sizing: border-box;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
     }
   }
-
+  .row {
+    margin: 0;
+  }
   h3 {
     font-size: 50px;
     font-weight: bold;

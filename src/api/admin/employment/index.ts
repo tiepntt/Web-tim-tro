@@ -8,6 +8,9 @@ const approveApartment = (id?: number) => {
 const getUserOfEmployment = (input: ConditionDto) => {
   return API.get(`${baseUrl}/getUsers/`, { params: input });
 };
+const getMaxApartment = (input: { take: number }) => {
+  return API.get(`${baseUrl}/max/`, { params: input });
+};
 const getAllApartmentApproveYet = () => {};
 const getAllReviewApartmentApproveYet = () => {};
 const getAllReviewApproveYetByApartmentId = () => {};
@@ -28,4 +31,5 @@ export const EmploymentAPI = {
   removeApartment,
   getAllApartmentApproveByUser,
   restoreApartment,
+  getMaxApartment,
 };

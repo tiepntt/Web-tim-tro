@@ -53,6 +53,13 @@ export const ApproveApartment = (props: Props) => {
       }
     });
   };
+  const getApartmentHobby = () => {
+    ApartmentApi.getHobby({ ...conditionSearch }).then((res) => {
+      if (res.data.status === 200) {
+        setApartments(res.data.result);
+      }
+    });
+  };
   const getApartmentOwner = (isApprove: boolean) => {
     ApartmentApi.getAllApartmentByUserId({
       ...conditionSearch,
@@ -94,6 +101,7 @@ export const ApproveApartment = (props: Props) => {
         getApartmentAdmin(false);
         break;
       case STATUS_APARTMENT.LOVE:
+        getApartmentHobby();
         break;
       default:
         break;
@@ -108,6 +116,7 @@ export const ApproveApartment = (props: Props) => {
         getApartmentOwner(false);
         break;
       case STATUS_APARTMENT.LOVE:
+        getApartmentHobby();
         break;
       default:
         break;
@@ -127,6 +136,7 @@ export const ApproveApartment = (props: Props) => {
         getApartmentForOwner();
         break;
       case RoleAdmin.RENTER:
+        getApartmentHobby();
         break;
       default:
         return;

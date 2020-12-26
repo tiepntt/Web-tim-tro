@@ -1,4 +1,5 @@
 // @flow
+import { Grid } from "@material-ui/core";
 import * as React from "react";
 import { useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
@@ -82,15 +83,14 @@ export const HomePage = (props: Props) => {
   };
   return (
     <div className={"Home"}>
-      <HeaderItem />
       <SearchHeader
         filter={searchCondition}
         onChangeCondition={onChangeCondition}
         onChangeFilter={onChangeState}
       />
       <Container className="content">
-        <Row>
-          <div className="col-lg-8 col-12">
+        <Grid container spacing={3}>
+          <Grid item lg={8} xl={8} xs={12} md={12}>
             <Apartment
               page={searchCondition.page || condition.page}
               count={count}
@@ -98,14 +98,14 @@ export const HomePage = (props: Props) => {
               take={searchCondition.take || condition.take}
               apartments={apartments}
             />
-          </div>
-          <div className="col-lg-4 col-12">
+          </Grid>
+          <Grid item lg={4} xl={4} xs={12} md={12}>
             <SideBar />
-          </div>
-        </Row>
+          </Grid>
+        </Grid>
       </Container>
 
-      <Footer />
+ 
     </div>
   );
 };

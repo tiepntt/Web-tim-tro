@@ -1,0 +1,55 @@
+.navbar-mobile {
+    position: fixed;
+    padding-top: 8px;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    background-color: #009177;
+    height: 58px;
+    .item-nav {
+        padding: 0 !important;
+    }
+
+    .name-web {
+        font-size: 1.7rem;
+        padding-right: 15px;
+        color: white;
+        font-family: "Times New Roman", Times, serif;
+        span {
+            font-weight: bolder;
+            font-size: 2rem;
+        }
+    }
+    .togle-btn {
+        display: inline-block;
+    }
+    .MuiSvgIcon-fontSizeLarge {
+        font-size: 45px;
+        color: white;
+        margin-left: 5px;
+        border-radius: 5px;
+        padding: 5px;
+    }
+}
+.userInfo {
+    padding: 5px 0;
+    text-align: center;
+    .MuiAvatar-circle {
+        background-color: #fff;
+        border: 2px solid #dee2e6;
+        width: 50px;
+        height: 50px;
+        margin: auto;
+        position: relative;
+        text-align: center;
+        img {
+            margin: auto;
+        }
+    }
+    .name {
+        display: inline-block;
+        font-weight: bold;
+        font-size: 1.05rem;
+        font-family: "Times New Roman", Times, serif;
+    }
+}

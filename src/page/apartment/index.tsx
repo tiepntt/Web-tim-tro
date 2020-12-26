@@ -11,6 +11,7 @@ import { useHistory, useRouteMatch } from "react-router-dom";
 import { ApartmentGetDto } from "../../api/apartment/apartment/dto";
 import { ApartmentDetailItem } from "../../components/apartment-detail-item";
 import { ApartmentDetailApi } from "../../api/apartment/apartmentDetail";
+import { CommentComponent } from "../../components/comment";
 
 interface Props {}
 
@@ -36,7 +37,6 @@ export const ApartmentDetail = (props: Props) => {
   };
   return (
     <div className={"apartment-detail"}>
-      <HeaderItem />
       <Container className="content">
         <Row>
           <div className="col-lg-8 col-12">
@@ -47,16 +47,12 @@ export const ApartmentDetail = (props: Props) => {
           </div>
         </Row>
         <hr />
-        <CommentItem />
-        <CommentItem />
-        <CommentInput />
+        
         <div>
           <div className="title">Bất động sản tương tự</div>
           <CarausolFooter />
         </div>
       </Container>
-
-      <Footer />
     </div>
   );
 };

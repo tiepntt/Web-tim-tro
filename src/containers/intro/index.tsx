@@ -15,7 +15,6 @@ export const IntroPage = (props: Props) => {
   return (
     <div>
       <Container className={"Intro"}>
-        <HeaderItem />
         <div className="content">
           <div className="col-12">
             <div className="news-detail">

@@ -86,6 +86,8 @@ export class UserTitleDto {
   isBlock?: boolean;
 
   isApprove?: boolean;
+
+  create_at?: Date;
 }
 export class UserAssignDto {
   userId?: number;

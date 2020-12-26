@@ -53,7 +53,6 @@ export const ChangePassword = (props: Props) => {
   }, [account]);
   return (
     <div className={"change-password"}>
-      <HeaderItem />
       <Container className="content">
         <div className="login-box ">
           <h3>Đổi mật khẩu</h3>
@@ -115,7 +114,6 @@ export const ChangePassword = (props: Props) => {
           </button>
         </div>
       </Container>
-      <Footer />
     </div>
   );
 };
