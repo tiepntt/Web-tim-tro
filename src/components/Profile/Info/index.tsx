@@ -250,7 +250,6 @@ export const InfoProfile = (props: Props) => {
                             </button>
                         </div>
                     </Row>
-                    <hr/>
                 </div>
             </div>
         </>

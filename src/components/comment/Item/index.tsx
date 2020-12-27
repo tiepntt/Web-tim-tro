@@ -21,6 +21,7 @@ export const CommentItem = (props: Props) => {
             {convertDateTime(comment?.create_at)}
           </div>
         </div>
+        <hr/>
       </div>
       <div className="content-comment">{comment?.content}</div>
     </div>
