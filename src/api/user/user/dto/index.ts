@@ -88,6 +88,7 @@ export class UserTitleDto {
   isApprove?: boolean;
 
   create_at?: Date;
+  avatar?: AvatarDto;
 }
 export class UserAssignDto {
   userId?: number;

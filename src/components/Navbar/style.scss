@@ -9,6 +9,13 @@
   .navbar-custom {
     padding: 0 !important;
     background-color: wheat !important;
+    .notification-icon {
+      margin-right: 20px !important;
+      margin-top: 4px;
+    }
+    .dropdown-toggle.nav-link {
+      padding: 0.5rem 8px !important;
+    }
   }
   .name-app {
     font-family: "Times New Roman", Times, serif;
@@ -38,6 +45,7 @@
       margin-right: 10px;
     }
   }
+
   @media only screen and (max-width: 800px) {
     .avatar-group {
       margin-left: 43%;

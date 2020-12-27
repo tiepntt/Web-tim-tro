@@ -1,0 +1,32 @@
+.reviews-list-item {
+    // line-height: 10px;
+    li {
+        padding: 3px 8px 0 13px;
+    }
+    .apartment-name {
+        font-size: 13px;
+        font-weight: normal;
+        font-style: italic;
+    }
+    .comment-item-dashboard {
+        margin-left: 70px;
+        padding-bottom: 10px;
+    }
+    .accept {
+        font-size: 15px;
+        border-radius: 5px;
+        border: solid 1px green;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+    .remove {
+        border-radius: 5px;
+        font-size: 15px;
+        border: solid 1px red;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+    .icon-remove {
+        margin-left: 10px;
+    }
+}

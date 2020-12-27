@@ -34,12 +34,6 @@ const apartmentTab = [
     component: <ApproveApartment type={STATUS_APARTMENT.LOVE} />,
     icon: FavoriteIcon,
   },
-  {
-    label: <LabelIcon label="Bài đăng của tôi" icon={<HomeIcon />} />,
-    component: "Bài đăng của tôi",
-    icon: <ApproveApartment type={STATUS_APARTMENT.MY_APARTMENT} />,
-    private: [RoleAdmin.ADMIN, RoleAdmin.MANAGER],
-  },
 ];
 export const ApartmentDashboard = (props: Props) => {
   return (

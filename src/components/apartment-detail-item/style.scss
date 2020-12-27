@@ -1,4 +1,7 @@
 .apartment-detail-item {
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px 5px;
   text-align: left;
   box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
     0px 1px 3px 0px rgba(0, 0, 0, 0.12);
@@ -40,6 +43,9 @@
         color: gray;
       }
     }
+    .icon-share {
+      margin-top: -7px;
+    }
     .info-title {
       .title {
         font-size: 1.2rem;
@@ -72,6 +78,12 @@
   .review-share {
     border-bottom: 1px gray dashed;
   }
+  .content-post {
+    p > span {
+      font-family: Arial, Helvetica, sans-serif !important;
+      font-size: 15px;
+    }
+  }
   .user-info {
     width: 100%;
     height: 100%;
@@ -82,7 +94,7 @@
 
     display: flex;
     .user {
-      margin-left: 15px;
+      margin-left: 10px;
       vertical-align: middle;
       margin-top: 5px;
       .name {
@@ -97,16 +109,16 @@
       position: relative;
       .contact-box {
         display: inline-block;
+        margin-top: 6px;
       }
       .contact,
       .reviewStar {
         display: inline-block;
-        padding: 10px 10px;
-        height: 50px;
+        padding: 7px 10px;
+        height: 45px;
         border-radius: 5px;
         border: 1px solid #c9c9c9;
         justify-content: center;
-        padding-top: 11px;
         text-align: center;
         margin-left: 4px;
         span {
@@ -158,6 +170,13 @@
       ul {
         display: unset;
       }
+    }
+  }
+}
+@media only screen and (max-width: 850px) {
+  .apartment-detail-item {
+    .contact-box {
+      display: none !important;
     }
   }
 }

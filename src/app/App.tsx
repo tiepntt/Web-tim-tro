@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 import "./App.scss";
 import { createBrowserHistory } from "history";
-import { Redirect, Route, Router, Switch } from "react-router-dom";
+import { Redirect, Route, Router, Switch, useLocation } from "react-router-dom";
 import { HomePage } from "../page/homepage";
 import { ApartmentDetail } from "../page/apartment";
 import { Login } from "../page/Login";
@@ -25,6 +25,7 @@ import Footer from "../components/Footer";
 export const history = createBrowserHistory();
 function App() {
   const store = useStore();
+
 
   useEffect(() => {
     loader(store);

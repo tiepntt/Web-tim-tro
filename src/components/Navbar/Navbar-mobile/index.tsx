@@ -60,6 +60,9 @@ const postNav = [
 const Login = [{ name: "Đăng nhập", href: "/login", icon: <BookmarkIcon /> }];
 
 export const NavbarMobile = (props: Props) => {
+  const notifications = useSelector(
+    (state: RootState) => state.Notification as { count: number }
+  );
   const history = useHistory();
   const user = useSelector((state: RootState) => state.UserReducer.account);
   const dispatch = useDispatch();

@@ -1,5 +1,8 @@
 .app {
-  text-align: center;
+  // text-align: center;
+  .row {
+    margin: 0;
+  }
   .main-content {
     margin-top: 58px;
     display: block;

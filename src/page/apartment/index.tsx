@@ -43,15 +43,9 @@ export const ApartmentDetail = (props: Props) => {
             <ApartmentDetailItem apartment={apartment} />
           </div>
           <div className="col-lg-4 col-12 sidebar-component">
-            <SideBarApartment />
+            <SideBarApartment user={apartment?.user} />
           </div>
         </Row>
-        <hr />
-        
-        <div>
-          <div className="title">Bất động sản tương tự</div>
-          <CarausolFooter />
-        </div>
       </Container>
     </div>
   );

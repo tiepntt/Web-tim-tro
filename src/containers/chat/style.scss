@@ -10,7 +10,6 @@
   grid-row-gap: 1px;
 }
 
-
 .scrollable {
   position: relative;
   overflow-y: scroll;
@@ -24,8 +23,6 @@
 }
 
 .content {
-  background: white;
   grid-row-start: 1;
   grid-row-end: span 3;
 }
-

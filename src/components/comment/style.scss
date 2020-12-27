@@ -3,9 +3,15 @@
     .list-comment {
         max-height: 400px;
         overflow-y: auto;
+        padding-left: 10px;
     }
     .input-comment {
-        border-top: gray 1px solid;
+        border: rgba(0, 0, 0, 0.03) 1px solid;
+        box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+            0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+        .input-comment-text {
+            padding-left: 0;
+        }
     }
     .icon-send {
         cursor: pointer;
@@ -17,5 +23,21 @@
         svg {
             margin-top: 10px;
         }
+    }
+    .icon-comment {
+        cursor: pointer;
+        width: 50px;
+        text-align: center;
+        // border: 1px solid red;
+        color: white;
+        svg {
+            margin-top: 10px;
+        }
+    }
+    .see-more {
+        text-align: left;
+        font-size: 14px;
+        cursor: pointer;
+        color: #009177;
     }
 }

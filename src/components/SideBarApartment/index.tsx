@@ -1,9 +1,16 @@
 import { Avatar, makeStyles } from "@material-ui/core";
 import { EmailOutlined, Phone } from "@material-ui/icons";
 import React from "react";
+import { UserTitleDto } from "../../api/user/user/dto";
+import {
+  convertDate,
+  NumberDateJoin,
+} from "../../libs/constants/function/time";
 import "./style.scss";
 
-interface Props {}
+interface Props {
+  user?: UserTitleDto;
+}
 const useStyles = makeStyles((theme) => ({
   large: {
     width: theme.spacing(6),
@@ -11,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 export const SideBarApartment = (props: Props) => {
+  const { user } = props;
   const classes = useStyles();
   return (
     <div className="sibar-apartment">
@@ -19,6 +27,7 @@ export const SideBarApartment = (props: Props) => {
           <div className="avatar">
             <Avatar
               src={
+                user?.avatar?.url ||
                 "https://cloud.mogi.vn/images/2020/11/21/581/537107b650a3455abcaa6396570f0217.jpg"
               }
               className={classes.large}
@@ -31,9 +40,12 @@ export const SideBarApartment = (props: Props) => {
               data-rb-event-key="/profileUser"
               className="nav-link"
             >
-              <div className="name"> Nguyễn Thái Tiệp</div>
+              <div className="name"> {user?.name}</div>
             </a>
-            <div className="time">Đã tham gia 2 năm 10 tháng</div>
+            <div className="time">
+              {" "}
+              Đã tham gia {NumberDateJoin(user?.create_at)}
+            </div>
           </div>
         </div>
         <div className="contact row">

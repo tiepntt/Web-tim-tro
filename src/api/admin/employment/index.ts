@@ -11,12 +11,36 @@ const getUserOfEmployment = (input: ConditionDto) => {
 const getMaxApartment = (input: { take: number }) => {
   return API.get(`${baseUrl}/max/`, { params: input });
 };
+const getAllReviewApartmentApproveYet = (input?: {
+  take: number;
+  skip: number;
+  key: string;
+}) => {
+  return API.get(`${baseUrl}/reviews`, { params: input });
+};
 const getAllApartmentApproveYet = () => {};
-const getAllReviewApartmentApproveYet = () => {};
-const getAllReviewApproveYetByApartmentId = () => {};
-const approveReview = () => {};
 
-const getReportByUserId = () => {};
+const getAllReviewApproveYetByApartmentId = () => {};
+const approveReview = (reviewId: number) => {
+  return API.post(`${baseUrl}/reviews/approve`, { reviewId: reviewId });
+};
+const removeReview = (reviewId: number) => {
+  return API.delete(`${baseUrl}/reviews/remove/${reviewId}`);
+};
+const approveReport = (reportId: number) => {
+  return API.post(`${baseUrl}/report/approve`, { reportId: reportId });
+};
+const removeReport = (reportId: number) => {
+  return API.delete(`${baseUrl}/report/remove/${reportId}`);
+};
+
+const getAllReportApartmentApproveYet = (input?: {
+  take: number;
+  skip: number;
+  key: string;
+}) => {
+  return API.get(`${baseUrl}/reports`, { params: input });
+};
 const removeApartment = () => {};
 const getAllApartmentApproveByUser = () => {};
 const restoreApartment = () => {};
@@ -25,9 +49,12 @@ export const EmploymentAPI = {
   getAllApartmentApproveYet,
   approveApartment,
   getAllReviewApartmentApproveYet,
+  getAllReportApartmentApproveYet,
   getAllReviewApproveYetByApartmentId,
+  approveReport,
+  removeReport,
   approveReview,
-  getReportByUserId,
+  removeReview,
   removeApartment,
   getAllApartmentApproveByUser,
   restoreApartment,

@@ -49,6 +49,13 @@ const removeHobby = (apartmentId?: number) => {
 const getHobby = (input: { take: number; skip: number; key: string }) => {
   return API.get(`${baseUrl}/hobby`, { params: input });
 };
+const getReview = (input: {
+  take: number;
+  skip: number;
+  apartmentId: number;
+}) => {
+  return API.get(`${baseUrl}/reviews`, { params: input });
+};
 export const ApartmentApi = {
   removeHobby,
   removeImg,
@@ -60,6 +67,7 @@ export const ApartmentApi = {
   remove,
   restore,
   getRemoved,
+  getReview,
   update,
   getAllApartmentByUserId,
   changeStatus,

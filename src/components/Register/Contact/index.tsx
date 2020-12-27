@@ -56,7 +56,6 @@ export const Contact = (props: Props) => {
             <Form.Control
               type="text"
               placeholder="VD : số 144 Xuân Thủy, Cầu Giấy, Hà Nội"
-              maxLength={20}
               onChange={(e) => {
                 setContact({ ...contact, address: e.target.value });
               }}

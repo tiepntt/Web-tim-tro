@@ -2,6 +2,7 @@ import React from "react";
 import "./style.scss";
 import { ApartmentItemUser } from "../../../../../../containers/apartment/apartment.user";
 import { ApartmentGetDto } from "../../../../../../api/apartment/apartment/dto";
+import { Divider } from "@material-ui/core";
 interface Props {
   apartments?: ApartmentGetDto[];
   type?: string;
@@ -15,11 +16,14 @@ export const ListApartment = (props: Props) => {
       <div className="list">
         {apartments
           ? apartments.map((item) => (
-              <ApartmentItemUser
-                apartment={item}
-                type={type}
-                openModel={props.openModel}
-              />
+              <>
+                <ApartmentItemUser
+                  apartment={item}
+                  type={type}
+                  openModel={props.openModel}
+                />
+                <Divider />
+              </>
             ))
           : null}
       </div>

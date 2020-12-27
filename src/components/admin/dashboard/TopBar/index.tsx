@@ -24,10 +24,13 @@ import {
 import MenuIcon from "@material-ui/icons/Menu";
 import NotificationsIcon from "@material-ui/icons/NotificationsOutlined";
 import InputIcon from "@material-ui/icons/Input";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ActionUserLogout } from "../../../../service/store/userStore/action";
 import { AuthApi } from "../../../../api/admin/authenticate";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
+import { RootState } from "../../../../store";
+import { Notifications } from "./Notification";
+import { RoleAdmin } from "../../../../libs/constants/role";
 
 const useStyles = makeStyles((theme: any) => ({
   root: {
@@ -118,6 +121,10 @@ interface Props {
 const TopBar = (props: Props) => {
   const classes = useStyles();
   const [notifications] = useState([]);
+  const notification = useSelector(
+    (state: RootState) => state.Notification as { count: number }
+  );
+  const user = useSelector((state: RootState) => state.UserReducer.account);
   const [openNotification, setOpenNotification] = React.useState(null);
   const { className, onMobileNavOpen, ...rest } = props;
   const history = useHistory();
@@ -142,189 +149,11 @@ const TopBar = (props: Props) => {
     <AppBar className={clsx(classes.root, className)} elevation={0} {...rest}>
       <Toolbar>
         <RouterLink to="/">
-          <span className={classes.title}>TIMTRO.vn</span>
+          <span className={"title-logo"}>TIMTRO.vn</span>
         </RouterLink>
         <Box flexGrow={1} />
         <Hidden mdDown>
-          <IconButton color="inherit">
-            <Badge badgeContent={10} color="error" variant="standard">
-              <MailOutlineIcon />
-            </Badge>
-          </IconButton>
-          <IconButton color="inherit" onClick={handleClickNotification}>
-            <Badge badgeContent={10} color="error" variant="standard">
-              <NotificationsIcon />
-            </Badge>
-            <Poppers
-              open={Boolean(openNotification)}
-              anchorEl={openNotification}
-              transition
-              disablePortal
-              className={
-                classNames({ [classes.popperClose]: !openNotification }) +
-                " " +
-                classes.popperNav +
-                "paper"
-              }
-            >
-              {({ TransitionProps, placement }) => (
-                <Grow
-                  {...TransitionProps}
-                  style={{
-                    transformOrigin:
-                      placement === "bottom" ? "center top" : "center bottom",
-                  }}
-                >
-                  <Paper className={classes.paper}>
-                    <ClickAwayListener onClickAway={handleCloseNotification}>
-                      <MenuList role="menu">
-                        <MenuItem
-                          onClick={handleCloseNotification}
-                          className={classes.dropdownItem}
-                        >
-                          Mike John responded to your email
-                        </MenuItem>
-                        <Divider />
-                        <MenuItem
-                          onClick={handleCloseNotification}
-                          className={classes.dropdownItem}
-                        >
-                          Mike John responded to your email
-                        </MenuItem>
-                        <Divider />
-                        <MenuItem
-                          onClick={handleCloseNotification}
-                          className={classes.dropdownItem}
-                        >
-                          Mike John responded to your email
-                        </MenuItem>
-                        <Divider />
-                        <MenuItem
-                          onClick={handleCloseNotification}
-                          className={classes.dropdownItem}
-                        >
-                          Mike John responded to your email
-                        </MenuItem>
-                        <Divider />
-                        <MenuItem
-                          onClick={handleCloseNotification}
-                          className={classes.dropdownItem}
-                        >
-                          Mike John responded to your email
-                        </MenuItem>
-                        <Divider />
-                        <MenuItem
-                          onClick={handleCloseNotification}
-                          className={classes.dropdownItem}
-                        >
-                          Mike John responded to your email
-                        </MenuItem>
-                        <Divider />
-                        <MenuItem
-                          onClick={handleCloseNotification}
-                          className={classes.dropdownItem}
-                        >
-                          Mike John responded to your email
-                        </MenuItem>
-                        <Divider />
-                        <MenuItem
-                          onClick={handleCloseNotification}
-                          className={classes.dropdownItem}
-                        >
-                          Mike John responded to your email
-                        </MenuItem>
-                        <Divider />
-                        <MenuItem
-                          onClick={handleCloseNotification}
-                          className={classes.dropdownItem}
-                        >
-                          Mike John responded to your email
-                        </MenuItem>
-                        <Divider />
-                        <MenuItem
-                          onClick={handleCloseNotification}
-                          className={classes.dropdownItem}
-                        >
-                          Mike John responded to your email
-                        </MenuItem>
-                        <Divider />
-                        <MenuItem
-                          onClick={handleCloseNotification}
-                          className={classes.dropdownItem}
-                        >
-                          Mike John responded to your email
-                        </MenuItem>
-                        <Divider />
-                        <MenuItem
-                          onClick={handleCloseNotification}
-                          className={classes.dropdownItem}
-                        >
-                          Mike John responded to your email
-                        </MenuItem>
-                        <Divider />
-                        <MenuItem
-                          onClick={handleCloseNotification}
-                          className={classes.dropdownItem}
-                        >
-                          Mike John responded to your email
-                        </MenuItem>
-                        <Divider />
-                        <MenuItem
-                          onClick={handleCloseNotification}
-                          className={classes.dropdownItem}
-                        >
-                          Mike John responded to your email
-                        </MenuItem>
-                        <Divider />
-                        <MenuItem
-                          onClick={handleCloseNotification}
-                          className={classes.dropdownItem}
-                        >
-                          Mike John responded to your email
-                        </MenuItem>
-                        <Divider />
-                        <MenuItem
-                          onClick={handleCloseNotification}
-                          className={classes.dropdownItem}
-                        >
-                          Mike John responded to your email
-                        </MenuItem>
-                        <Divider />
-                        <MenuItem
-                          onClick={handleCloseNotification}
-                          className={classes.dropdownItem}
-                        >
-                          Mike John responded to your email
-                        </MenuItem>
-                        <Divider />
-                        <MenuItem
-                          onClick={handleCloseNotification}
-                          className={classes.dropdownItem}
-                        >
-                          Mike John responded to your email
-                        </MenuItem>
-                        <Divider />
-                        <MenuItem
-                          onClick={handleCloseNotification}
-                          className={classes.dropdownItem}
-                        >
-                          Mike John responded to your email
-                        </MenuItem>
-                        <Divider />
-                        <MenuItem
-                          onClick={handleCloseNotification}
-                          className={classes.dropdownItem}
-                        >
-                          Mike John responded to your email
-                        </MenuItem>
-                        <Divider />
-                      </MenuList>
-                    </ClickAwayListener>
-                  </Paper>
-                </Grow>
-              )}
-            </Poppers>
-          </IconButton>
+          {user?.role?.code !== RoleAdmin.RENTER && <Notifications />}
           <IconButton color="inherit" onClick={logOut}>
             <InputIcon />
           </IconButton>

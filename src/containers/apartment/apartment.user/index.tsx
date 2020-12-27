@@ -161,6 +161,7 @@ export const ApartmentItemUser = (props: Props) => {
             );
 
           case STATUS_APARTMENT.LOVE:
+            return getLove();
             break;
         }
         break;
@@ -216,6 +217,7 @@ export const ApartmentItemUser = (props: Props) => {
             );
 
           case STATUS_APARTMENT.LOVE:
+            return getLove();
             break;
         }
         break;
