@@ -40,7 +40,7 @@ export const Employment = (props: Props) => {
     setShow(true);
   };
   const onSelectFilter = (index: number) => {
-
+    console.log(index);
 
     setFilter({
       ...conditionFilter,
@@ -55,7 +55,7 @@ export const Employment = (props: Props) => {
     setFilter({ ...conditionFilter, page: page, skip: (page - 1) * old.take });
   };
   const onSearch = (key: string) => {
-
+    console.log(key);
 
     setFilter({
       ...conditionFilter,
