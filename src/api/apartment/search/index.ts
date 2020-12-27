@@ -10,7 +10,7 @@ const getCountByType = () => {
 const getCountByDistrict = () => {
   return API.get(baseUrl + "/listCountByDistrict");
 };
-const getApartmentForUser = (userId:number) => {
-  return API.get(`${baseUrl}/user`, {params: { userId:userId}});
+const getApartmentForUser = (conditionSearch:any) => {
+  return API.get(`${baseUrl}/user`, {params: conditionSearch});
 };
 export const SearchAPI = { search, getApartmentForUser, getCountByType, getCountByDistrict };

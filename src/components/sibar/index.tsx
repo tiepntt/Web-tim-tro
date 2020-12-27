@@ -41,7 +41,7 @@ export const SideBar = (props: Props) => {
   return (
     <div className="side-bar">
       <div className="img-side-bar ">
-        <Image src={process.env.PUBLIC_URL + "/assets/poster.gif"} />
+        <Image src={process.env.PUBLIC_URL + "/assets/logo.gif"} />
       </div>
       <div className="item">
         <Similar
