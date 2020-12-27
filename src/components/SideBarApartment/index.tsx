@@ -53,7 +53,7 @@ export const SideBarApartment = (props: Props) => {
         <div className="contact row">
           <div className="col-6 contact-item">
             <Phone color="primary" /> {"  "}
-            <span>0819200620</span>
+            <span>{user?.contactUser?.phone}</span>
           </div>
           <div className="col-6 contact-item">
             <EmailOutlined color="primary" /> {"  "}

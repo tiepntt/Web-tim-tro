@@ -83,6 +83,9 @@ export class UserTitleDto {
 
   email?: string;
 
+  @Type(() => ContactDto, {})
+  contactUser?: ContactDto;
+
   isBlock?: boolean;
 
   isApprove?: boolean;

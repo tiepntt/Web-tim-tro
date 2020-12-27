@@ -248,7 +248,7 @@ export const ApartmentDetailItem = (props: Props) => {
       <div className="d-flex user-info ">
         <div className=" user-item" style={{ flexGrow: 1 }}>
           <Avatar
-            src="https://scontent.fhan5-5.fna.fbcdn.net/v/t1.0-9/74607660_532630757561738_5938117982679990272_o.jpg?_nc_cat=101&ccb=2&_nc_sid=174925&_nc_ohc=dgBa5uDDRi8AX-OrKVV&_nc_ht=scontent.fhan5-5.fna&oh=b11b1f1315c58f43c04fe5a8b7e680ef&oe=5FEC4744"
+            src={apartment?.user?.avatar?.url ??""}
             className={classes.large}
           />
           <div className="user">
@@ -262,7 +262,7 @@ export const ApartmentDetailItem = (props: Props) => {
           <div className="contact-box">
             <div className="contact">
               <FontAwesomeIcon icon={faPhoneAlt} color={"#009177"} />
-              <span> 0819 *** 620</span>
+              <span>{apartment?.user?.contactUser?.phone}</span>
             </div>
             <div className="reviewStar">
               <FontAwesomeIcon icon={faStar} color={"#009177"} />
