@@ -119,7 +119,9 @@ const HeaderItem = () => {
         <Container>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Brand href="/home" className={"name-app"}>
-            TIMTRO.<small>vn</small>
+            <div className={"text-navbar"}>
+              TIMTRO.<small>vn</small>
+            </div>
           </Navbar.Brand>
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
@@ -127,19 +129,25 @@ const HeaderItem = () => {
                 onClick={() => history.push("/home")}
                 active={active === "/home"}
               >
-                Trang chủ
+                <div className={"text-navbar"}>
+                  Trang chủ
+                </div>
               </Nav.Link>
               <Nav.Link
                 onClick={() => history.push("/link")}
                 active={active === "/link"}
               >
-                Giới thiệu
+                <div className={"text-navbar"}>
+                  Giới thiệu
+                </div>
               </Nav.Link>
               <Nav.Link
                 onClick={() => history.push("/terms")}
                 active={active === "/terms"}
               >
-                Điều khoản
+                <div className={"text-navbar"}>
+                  Điều khoản
+                </div>
               </Nav.Link>
             </Nav>
             {user?.account?.id &&

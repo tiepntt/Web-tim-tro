@@ -1,5 +1,5 @@
 import { Avatar, makeStyles } from "@material-ui/core";
-import { EmailOutlined, Phone } from "@material-ui/icons";
+import { CheckCircleRounded, EmailOutlined, Phone} from "@material-ui/icons";
 import React from "react";
 import { UserTitleDto } from "../../api/user/user/dto";
 import {

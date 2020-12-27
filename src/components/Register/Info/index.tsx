@@ -32,12 +32,12 @@ export const InfoInput = (props: Props) => {
     if (stateChange) stateChange(userInfo);
   }, [userInfo]);
   return (
-    <>
+    <div className={"info-registration"}>
       <div className="title">
         <div className="title-task"> Thông tin cá nhân</div>
       </div>
       <div className="infoInput row panel">
-        <div className="col-md-8 col-12 ">
+        <div className="col-md-12 col-12 ">
           <div className="form-input">
             <Form>
               <Form.Control
@@ -74,13 +74,10 @@ export const InfoInput = (props: Props) => {
             </Form>
           </div>
         </div>
-        <div className="col-md-4 col-12 img">
-          <img src="https://image.freepik.com/free-photo/blue-minimalist-home-background_149197-2.jpg" />
-        </div>{" "}
       </div>
       <Button onClick={Next} style={{ flexGrow: 2 }} className="btnNext">
         Tiếp
       </Button>
-    </>
+    </div>
   );
 };

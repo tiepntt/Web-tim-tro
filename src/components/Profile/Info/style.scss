@@ -1,4 +1,44 @@
 .info-profile {
+  .title-info-header{
+    font-size: 30px;
+    color: #009177;
+    font-weight: bold;
+    margin-left: 50px;
+  }
+  .main-info-detail {
+    background-color: white;
+    padding: 30px;
+    margin: 20px;
+    box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.1);
+    .title {
+      color: #009177;
+      font-size: 20px;
+      margin-top: 15px;
+      margin-bottom: 30px;
+    }
+    button {
+      alignment: bottom;
+      background-color: #009177;
+      margin-top: 30px;
+    }
+  }
+  .main-info-contact {
+    background-color: white;
+    padding: 30px;
+    margin: 20px;
+    box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.1);
+    .title {
+      color: #009177;
+      font-size: 20px;
+      margin-top: 15px;
+      margin-bottom: 30px;
+    }
+    button {
+      alignment: bottom;
+      background-color: #009177;
+      margin-top: 30px;
+    }
+  }
   .d-flex {
     margin-top: 6px;
   }
@@ -13,6 +53,7 @@
     margin-bottom: 20px;
     .avatar {
       display: flex;
+      alignment: center;
       vertical-align: middle;
       margin-right: 20px;
       margin-bottom: 20px;

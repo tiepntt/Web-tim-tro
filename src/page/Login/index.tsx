@@ -73,7 +73,7 @@ export const Login = (props: Props) => {
             <img
               className={"image-login"}
               src={
-                "https://images.unsplash.com/photo-1550147760-44c9966d6bc7?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1000&q=80"
+                "https://lh3.googleusercontent.com/proxy/3GP4eau2a6LhitKTbSK289RstYJXrAnTHBAJrzxdl8yziW0_Ehsy0rup5bo78_tkz-8qWXYk2M-qq-p0LpVO-BU0a-b8Tu_f"
               }
               alt={"login"}
             />

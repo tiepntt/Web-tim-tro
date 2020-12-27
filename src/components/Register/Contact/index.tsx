@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { ContactDto } from "../../../api/user/contactUser/dto";
 import { handleToast } from "../../../service/Toast";
+import "./style.scss";
 
 interface Props {
   role?: string;
@@ -24,8 +25,8 @@ export const Contact = (props: Props) => {
     if (onNext) onNext();
   };
   return (
-    <>
-      <div className="title">
+    <div className={"contact-register"}>
+      <div className="title-contact">
         <div className="title-task"> Liên hệ</div>
       </div>
       <div>
@@ -64,6 +65,6 @@ export const Contact = (props: Props) => {
           <Button onClick={Next}>Xong</Button>
         </Form>
       </div>
-    </>
+    </div>
   );
 };

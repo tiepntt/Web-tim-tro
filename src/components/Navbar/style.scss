@@ -7,8 +7,12 @@
   // display: block;-webkit-box-shadow: 0px 2px 0px 0px rgba(138,138,138,1);
   z-index: 100;
   .navbar-custom {
+    .text-navbar {
+      color: white;
+    }
     padding: 0 !important;
-    background-color: wheat !important;
+    background-color: #009177 !important;
+    color: white;
     .notification-icon {
       margin-right: 20px !important;
       margin-top: 4px;
