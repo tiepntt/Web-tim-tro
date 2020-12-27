@@ -43,7 +43,7 @@ export const EditorComponent = (props: Props) => {
       <div className="main">
         <Editor
           toolbarHidden
-          placeholder="Viết một bài thật hay nào"
+          placeholder="Viết một bài thật hay nào !!!"
           editorState={stateEdit}
           toolbarClassName="toolbarClassName"
           wrapperClassName="wrapperClassName"

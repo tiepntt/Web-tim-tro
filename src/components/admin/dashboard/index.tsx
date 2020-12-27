@@ -67,7 +67,7 @@ const DashboardLayout = () => {
       />
       <div className={classes.wrapper}>
         <div className={classes.contentContainer}>
-          <div className={classes.content}>
+          <div className={classes.content} style={{ minHeight: 850 }}>
             <Switch>
               <Route exact path="/admin/apartment">
                 <ApartmentDashboard />

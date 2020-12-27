@@ -100,12 +100,12 @@ const HeaderItem = () => {
           </NavDropdown.Item>
           <NavDropdown.Item onClick={clear}>Đăng xuất</NavDropdown.Item>
         </NavDropdown>
-        <Button
-          className={"post-button"}
-          onClick={(e) => history.push("/admin")}
+        {user.account?.role?.isCreateApartment ? <Button
+            className={"post-button"}
+            onClick={(e) => history.push("/apartment/add")}
         >
           Đăng Tin
-        </Button>
+        </Button> : null}
       </div>
     ) : (
       <Button className={"post-button"} onClick={(e) => history.push("/login")}>

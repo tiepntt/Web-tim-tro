@@ -3,9 +3,6 @@ import * as React from "react";
 import { useEffect } from "react";
 import { Container } from "react-bootstrap";
 
-import Footer from "../../components/Footer";
-import HeaderItem from "../../components/Navbar";
-
 import "./style.scss";
 type Props = {};
 export const IntroPage = (props: Props) => {

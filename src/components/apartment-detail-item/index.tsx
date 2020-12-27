@@ -6,7 +6,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Avatar, Chip, makeStyles } from "@material-ui/core";
-import React, { useState } from "react";
+import React, {useState} from "react";
 import { Carousel, Col, Image, Row } from "react-bootstrap";
 import ReactHtmlParser from "react-html-parser";
 import {

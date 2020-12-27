@@ -11,6 +11,9 @@ const getById = () => {};
 const getInfo = () => {
   return API.get(`${baseUrl}/profile`);
 };
+const getUserProfileById = (userId: number) => {
+  return API.get(`/search/profileUser/${userId}`);
+};
 const getAccount = (userId: number) => {
   return API.get(`${baseUrl}/account`, { params: { userId } });
 };
@@ -29,6 +32,7 @@ export const UserApi = {
   changeAvatar,
   update,
   getInfo,
+  getUserProfileById,
   getAccount,
   changePassword,
 };

@@ -5,27 +5,32 @@ import React from "react";
 import "./style.scss";
 import { faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-interface Props {}
+import {UserDetailDto} from "../../api/user/user/dto";
+import {NumberDateJoin} from "../../libs/constants/function/time";
+interface Props {
+  user: UserDetailDto
+}
 
-export const ProfileUserInfo = (props: Props) => {
+export const ProfileUserInfo = (props: Props ) => {
+  const {user} = props;
   return (
     <div className={"Info"}>
       <Row>
         <div className="avatarUser">
-          {/*<img  src="https://i.vietgiaitri.com/2018/9/12/hoi-ca-hani-exid-lai-co-them-khoanh-khac-de-doi-khi-bi-dan-em-hu-6c37af.jpg"  alt={"avatar"}/>*/}
+          <img  src={user?.avatar?.url ?? "https://www.avatarins.com/image/homesmall.png"}  alt={"avatar"}/>
         </div>
         <div className="remark">
-          <div className="name">NGUYỄN THÁI TIỆP</div>
-          <div className="email">Nhà đầu tư</div>
+          <div className="name">{user?.name}</div>
+          <div className="email">{user?.email}</div>
           <div className="">
             Đã tham gia
-            <span className="time"> 1 năm 3 tháng</span>
+            <span className="time">{NumberDateJoin(user?.create_at)}</span>
           </div>
-          <div className="page">20 tin BĐS đang đăng</div>
+          {/*<div className="page">20 tin BĐS đang đăng</div>*/}
           <div className="phone">
             <FontAwesomeIcon icon={faPhoneAlt} color={"#009177"} />
             {"     "}
-            <span>08192003431</span>
+            <span>{user?.contactUser?.phone}</span>
           </div>
         </div>
       </Row>
