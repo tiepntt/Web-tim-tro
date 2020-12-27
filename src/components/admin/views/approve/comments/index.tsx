@@ -68,7 +68,7 @@ export const CommentDashBoard = (props: Props) => {
     setFilter({ ...conditionFilter, page: page, skip: (page - 1) * old.take });
   };
   const onSearch = (key: string) => {
-    console.log(key);
+
 
     setFilter({
       ...conditionFilter,

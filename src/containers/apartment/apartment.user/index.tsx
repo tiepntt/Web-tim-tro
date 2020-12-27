@@ -116,7 +116,18 @@ export const ApartmentItemUser = (props: Props) => {
             );
 
           case STATUS_APARTMENT.NO_APPROVED:
-            break;
+            return (
+              <div className="detail-fast row">
+                <div className="col-6"></div>
+                <div className=" col-6">
+                  {!approve && (
+                    <div className="report active" onClick={approveApartment}>
+                      Duyệt
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
           case STATUS_APARTMENT.LOVE:
             return getLove();
             break;
@@ -252,7 +263,14 @@ export const ApartmentItemUser = (props: Props) => {
       </div>
       <div className="col-sm-8 col-12">
         <div className="info">
-          <div className="title-post">{apartment?.title}</div>
+          <div
+            className="title-post"
+            onClick={() => {
+              history.push("/apartment/" + apartment?.id);
+            }}
+          >
+            {apartment?.title}
+          </div>
           <div className="address">{getAddress(apartment)}</div>
           <ul className={"icon-info"}>
             <li>

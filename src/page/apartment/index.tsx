@@ -11,7 +11,6 @@ import { useHistory, useRouteMatch } from "react-router-dom";
 import { ApartmentGetDto } from "../../api/apartment/apartment/dto";
 import { ApartmentDetailItem } from "../../components/apartment-detail-item";
 import { ApartmentDetailApi } from "../../api/apartment/apartmentDetail";
-import { CommentComponent } from "../../components/comment";
 
 interface Props {}
 
