@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="10a5876c-0b97-4fbe-ba31-0c8342b71602" name="Default Changelist" comment="">
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Profile/Info/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/Info/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Register/selectRole/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Register/selectRole/style.scss" afterDir="false" />
@@ -9,8 +10,43 @@
       <change beforePath="$PROJECT_DIR$/src/components/comment/Item/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/comment/Item/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/comment/Item/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/comment/Item/style.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/comment/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/comment/style.scss" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/src/components/Register/Contact/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/apartment/search/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/apartment/search/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/user/user/dto/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/user/user/dto/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Footer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navbar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navbar/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/Info/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/Info/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/chart/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/chart/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Register/Contact/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Register/Contact/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Register/Info/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Register/Info/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Register/Info/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Register/Info/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Register/selectRole/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Register/selectRole/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SideBarApartment/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SideBarApartment/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SideBarApartment/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SideBarApartment/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/addApartment/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/addApartment/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/dashboard/TopBar/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/dashboard/TopBar/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/apartment-detail-item/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/apartment-detail-item/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/profile-user/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/profile-user/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/profile-user/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/profile-user/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sibar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sibar/index.tsx" afterDir="false" />
+>>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/src/components/terms/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/terms/style.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/intro/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/intro/style.scss" afterDir="false" />
+<<<<<<< Updated upstream
+=======
+      <change beforePath="$PROJECT_DIR$/src/page/Login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/Login/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/page/apartment/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/apartment/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/page/changePassword/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/changePassword/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/page/changePassword/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/changePassword/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/page/profile-user/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/profile-user/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/page/profile-user/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/profile-user/style.scss" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

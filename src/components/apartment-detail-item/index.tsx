@@ -6,8 +6,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Avatar, Chip, makeStyles } from "@material-ui/core";
-import React, { useState } from "react";
-import { Carousel, Col, Image, Row, Table, Button } from "react-bootstrap";
+import React, {useState} from "react";
+import { Carousel, Col, Image, Row } from "react-bootstrap";
 import ReactHtmlParser from "react-html-parser";
 import {
   FacebookIcon,
@@ -26,11 +26,6 @@ import { CommentComponent } from "../comment";
 import { ApartmentApi } from "../../api/apartment/apartment";
 import { handleToast } from "../../service/Toast";
 import { ApartmentReportApi } from "../../api/apartment/apartmentReport";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store";
-import { AccountDto } from "../../api/user/user/dto";
-import { EmploymentAPI } from "../../api/admin/employment";
-import { useHistory } from "react-router";
 interface Props {
   apartment: ApartmentGetDto;
 }
@@ -75,7 +70,6 @@ export const FormatNumber = (n?: number, suffix = "", prefix = "") => {
 };
 export const ApartmentDetailItem = (props: Props) => {
   const classes = useStyles();
-  const history = useHistory();
   const { apartment } = props;
   const getAddress = () => {
     return `${apartment?.streetNo ? apartment?.streetNo + "," : ""}
@@ -84,9 +78,7 @@ export const ApartmentDetailItem = (props: Props) => {
     ${apartment?.district?.name ? apartment?.district?.name : ""} `;
   };
   const [canComment, setCanComment] = useState(false);
-  const user = useSelector(
-    (state: RootState) => state.UserReducer.account as AccountDto
-  );
+
   const addToHobby = () => {
     ApartmentApi.saveToHobby(apartment.id).then((res) => {
       handleToast(res.data);
@@ -99,14 +91,6 @@ export const ApartmentDetailItem = (props: Props) => {
   };
   const getYesNo = (e?: boolean) => {
     return e ? "Có" : "Không";
-  };
-  const approve = () => {
-    EmploymentAPI.approveApartment(apartment?.id).then((res) => {
-      handleToast(res.data);
-      if (res.data.status === 200) {
-        history.push("/apartment/" + apartment.id);
-      }
-    });
   };
   return (
     <div className="apartment-detail-item">
@@ -287,93 +271,63 @@ export const ApartmentDetailItem = (props: Props) => {
           </div>
         </div>
       </div>
-      {apartment.isApprove ? (
-        <>
-          <div className="row review-share ">
-            <div className="col-md-9 col-12 review ">
-              <ul>
-                <li>
-                  <Chip
-                    className={classes.location}
-                    label="Lưu"
-                    component="a"
-                    onClick={addToHobby}
-                    clickable
-                    variant="outlined"
-                  />
-                </li>
-                <li>
-                  <Chip
-                    className={classes.location}
-                    label="Bình luận"
-                    component="a"
-                    clickable
-                    variant="outlined"
-                    color="primary"
-                    onClick={() => setCanComment(!canComment)}
-                  />
-                </li>
-                <li>
-                  <Chip
-                    className={classes.location}
-                    label="Báo cáo "
-                    component="a"
-                    clickable
-                    onClick={report}
-                    variant="outlined"
-                    color="secondary"
-                  />
-                </li>
-              </ul>
-            </div>
-            <div className="col-md-3 col-12 icon-share">
-              <FacebookShareButton
-                url="https://github.com/NguyenThaiTiep"
-                quote={"Nguyen Thai Tiep"}
-                className="share"
-              >
-                <FacebookIcon size={48} round={true} />
-              </FacebookShareButton>
-              <FacebookMessengerShareButton
-                url={"https://github.com/NguyenThaiTiep"}
-                title={"please click me"}
-                appId="100008957765110"
-              >
-                <FacebookMessengerIcon size={48} round />
-              </FacebookMessengerShareButton>
-            </div>
-          </div>
-          <div className="comment">
-            {canComment && <CommentComponent apartmentId={apartment.id} />}
-          </div>
-        </>
-      ) : (
-        <>
-          {apartment.pricePost && user && user.role?.isApproveApartment ? (
-            <div className="info-price">
-              <Table striped bordered hover className="user-table">
-                <thead>
-                  <tr className={"text-center"}>
-                    {["Mã gói", "Thời gian", "Giá tiền"].map((item) => (
-                      <th>{item}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className={"text-center"}>
-                    <td>{apartment.pricePost.code}</td>
-                    <td>{apartment.pricePost.name}</td>
-                    <td>{FormatNumber(apartment.pricePost.price, " vnđ")}</td>
-                  </tr>
-                </tbody>
-              </Table>
-              <Button variant="outline-success" block onClick={approve}>
-                Duyệt bài đăng
-              </Button>
-            </div>
-          ) : null}
-        </>
-      )}
+      <div className="row review-share ">
+        <div className="col-md-9 col-12 review ">
+          <ul>
+            <li>
+              <Chip
+                className={classes.location}
+                label="Lưu"
+                component="a"
+                onClick={addToHobby}
+                clickable
+                variant="outlined"
+              />
+            </li>
+            <li>
+              <Chip
+                className={classes.location}
+                label="Bình luận"
+                component="a"
+                clickable
+                variant="outlined"
+                color="primary"
+                onClick={() => setCanComment(!canComment)}
+              />
+            </li>
+            <li>
+              <Chip
+                className={classes.location}
+                label="Báo cáo không đúng sự thật"
+                component="a"
+                clickable
+                onClick={report}
+                variant="outlined"
+                color="secondary"
+              />
+            </li>
+          </ul>
+        </div>
+        <div className="col-md-3 col-12 icon-share">
+          <FacebookShareButton
+            url="https://github.com/NguyenThaiTiep"
+            quote={"Nguyen Thai Tiep"}
+            className="share"
+          >
+            <FacebookIcon size={48} round={true} />
+          </FacebookShareButton>
+          <FacebookMessengerShareButton
+            url={"https://github.com/NguyenThaiTiep"}
+            title={"please click me"}
+            appId="100008957765110"
+          >
+            <FacebookMessengerIcon size={48} round />
+          </FacebookMessengerShareButton>
+        </div>
+      </div>
+      <div className="comment">
+        {canComment && <CommentComponent apartmentId={apartment.id} />}
+      </div>
     </div>
   );
 };

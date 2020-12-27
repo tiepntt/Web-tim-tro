@@ -31,13 +31,6 @@ export const Login = (props: Props) => {
     });
   };
   useEffect(() => {}, [user]);
-  const forgetPassword = () => {
-    if (!account.email)
-      return handleToast({ status: 500, message: "Bạn cần nhập email" });
-    AuthApi.forgetPassWord(account.email).then((res) => {
-      return handleToast(res.data);
-    });
-  };
   return (
     <div className={"Login"}>
       <Container className="content">
@@ -73,12 +66,7 @@ export const Login = (props: Props) => {
               <Button className="btn btn-success btn-block" href="/register">
                 Đăng ký
               </Button>
-              <p
-                className="forgot-password text-right"
-                onClick={forgetPassword}
-              >
-                Quên mật khẩu?
-              </p>
+              <p className="forgot-password text-right">Quên mật khẩu?</p>
             </div>
             <img
               className={"image-login"}

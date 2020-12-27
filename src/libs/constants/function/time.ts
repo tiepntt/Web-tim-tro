@@ -35,7 +35,7 @@ export const compareDateNumber = (date?: Date, date2 = new Date()) => {
 
   var duration = moment.duration(dateMoment.diff(moment(date2)));
   var days = duration.days();
-
+  console.log(days);
 
   return days + 1;
 };

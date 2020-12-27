@@ -148,11 +148,9 @@ const TopBar = (props: Props) => {
   return (
     <AppBar className={clsx(classes.root, className)} elevation={0} {...rest}>
       <Toolbar>
-        <div className="title-logo-a">
-          <RouterLink to="/">
-            <span className={"title-logo"}>TIMTRO.vn</span>
-          </RouterLink>
-        </div>
+        <RouterLink to="/">
+          <span className={"title-logo"}>TIMTRO.vn</span>
+        </RouterLink>
         <Box flexGrow={1} />
         <Hidden mdDown>
           {user?.role?.code !== RoleAdmin.RENTER && <Notifications />}

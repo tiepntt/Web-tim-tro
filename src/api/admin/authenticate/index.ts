@@ -13,7 +13,4 @@ const logout = () => {
 const resigter = (input: UserInputDto) => {
   return API.post(`${baseUrl}/register`, { account: input });
 };
-const forgetPassWord = (email: string) => {
-  return API.put(`${baseUrl}/resetPassword`, { email: email });
-};
-export const AuthApi = { login, logout, resigter, forgetPassWord };
+export const AuthApi = { login, logout, resigter };

@@ -27,7 +27,6 @@ import AccountBoxIcon from "@material-ui/icons/AccountBox";
 import LockIcon from "@material-ui/icons/Lock";
 import PostAddIcon from "@material-ui/icons/PostAdd";
 import { Avatar } from "@material-ui/core";
-import { AccountDto } from "../../../api/user/user/dto";
 const useStyles = makeStyles({
   list: {
     width: 250,
@@ -48,7 +47,7 @@ const navbarData = [
 ];
 
 const userNav = [
-  { name: "Thông tin", href: "/admin/info", icon: <AccountBoxIcon /> },
+  { name: "Thông tin", href: "/admin/user", icon: <AccountBoxIcon /> },
   { name: "Đổi mật khẩu", href: "/changePassword", icon: <LockIcon /> },
 ];
 const postNav = [
@@ -65,9 +64,7 @@ export const NavbarMobile = (props: Props) => {
     (state: RootState) => state.Notification as { count: number }
   );
   const history = useHistory();
-  const user = useSelector(
-    (state: RootState) => state.UserReducer.account as AccountDto
-  );
+  const user = useSelector((state: RootState) => state.UserReducer.account);
   const dispatch = useDispatch();
   const { className } = props;
   const classes = useStyles();
@@ -168,7 +165,7 @@ export const NavbarMobile = (props: Props) => {
       <Divider />
       {user?.id ? (
         <>
-          {user && user?.role?.isCreateApartment && (
+          {user && user?.role?.code !== RoleAdmin.RENTER && (
             <ListItem
               button
               onClick={() => {
