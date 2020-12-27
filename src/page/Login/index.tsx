@@ -66,15 +66,12 @@ export const Login = (props: Props) => {
               <Button className="btn btn-success btn-block" href="/register">
                 Đăng ký
               </Button>
-              <p className="forgot-password text-right">
-                Forgot <a href="#">password?</a>
-              </p>
+              <p className="forgot-password text-right">Quên mật khẩu?</p>
             </div>
             <img
               className={"image-login"}
-              src={
-                "https://lh3.googleusercontent.com/proxy/3GP4eau2a6LhitKTbSK289RstYJXrAnTHBAJrzxdl8yziW0_Ehsy0rup5bo78_tkz-8qWXYk2M-qq-p0LpVO-BU0a-b8Tu_f"
-              }
+              width={300}
+              src={process.env.PUBLIC_URL + "/assets/login.gif"}
               alt={"login"}
             />
           </Row>

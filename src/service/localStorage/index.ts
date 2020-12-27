@@ -14,4 +14,11 @@ const remove = (key: string) => {
     console.log(e);
   }
 };
-export const LocalStorageService = { save, remove };
+const clear = () => {
+  try {
+    localStorage.clear();
+  } catch (e) {
+    console.log(e);
+  }
+};
+export const LocalStorageService = { save, remove, clear };

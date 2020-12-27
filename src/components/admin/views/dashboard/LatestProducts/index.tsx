@@ -32,6 +32,7 @@ const useStyles = makeStyles(() => ({
 }));
 interface Props {
   className?: string;
+  list?: { id: number; name: string; count: number }[];
 }
 
 export const ListProduct = (props: Props) => {
@@ -49,147 +50,24 @@ export const ListProduct = (props: Props) => {
           className={classes.root}
           aria-label="mailbox folders"
         >
-          <ListItem button>
-            <ListItemText
-              primary={
-                <div className="d-flex">
-                  <div className="title-item" style={{ flexGrow: 1 }}>
-                    Ba Đình
-                  </div>
-                  <div className="amount-item">5</div>
-                </div>
-              }
-            />
-          </ListItem>
-          <Divider />
-          <ListItem button>
-            <ListItemText
-              primary={
-                <div className="d-flex">
-                  <div className="title-item" style={{ flexGrow: 1 }}>
-                    Bắc Từ Liêm
-                  </div>
-                  <div className="amount-item">5</div>
-                </div>
-              }
-            />
-          </ListItem>
-          <ListItem button>
-            <ListItemText
-              primary={
-                <div className="d-flex">
-                  <div className="title-item" style={{ flexGrow: 1 }}>
-                    Cầu Giấy
-                  </div>
-                  <div className="amount-item">5</div>
-                </div>
-              }
-            />
-          </ListItem>
-          <Divider light />
-          <ListItem button>
-            <ListItemText
-              primary={
-                <div className="d-flex">
-                  <div className="title-item" style={{ flexGrow: 1 }}>
-                    Đống Đa
-                  </div>
-                  <div className="amount-item">5</div>
-                </div>
-              }
-            />
-          </ListItem>{" "}
-          <Divider light />
-          <ListItem button>
-            <ListItemText
-              primary={
-                <div className="d-flex">
-                  <div className="title-item" style={{ flexGrow: 1 }}>
-                    Hà Đông
-                  </div>
-                  <div className="amount-item">5</div>
-                </div>
-              }
-            />
-          </ListItem>{" "}
-          <Divider light />
-          <ListItem button>
-            <ListItemText
-              primary={
-                <div className="d-flex">
-                  <div className="title-item" style={{ flexGrow: 1 }}>
-                    Hai Bà Trưng
-                  </div>
-                  <div className="amount-item">5</div>
-                </div>
-              }
-            />
-          </ListItem>{" "}
-          <Divider light />
-          <ListItem button>
-            <ListItemText
-              primary={
-                <div className="d-flex">
-                  <div className="title-item" style={{ flexGrow: 1 }}>
-                    Hoàn Kiếm
-                  </div>
-                  <div className="amount-item">5</div>
-                </div>
-              }
-            />
-          </ListItem>{" "}
-          <Divider light />
-          <ListItem button>
-            <ListItemText
-              primary={
-                <div className="d-flex">
-                  <div className="title-item" style={{ flexGrow: 1 }}>
-                    Hoàng Mai
-                  </div>
-                  <div className="amount-item">5</div>
-                </div>
-              }
-            />
-          </ListItem>{" "}
-          <Divider light />
-          <ListItem button>
-            <ListItemText
-              primary={
-                <div className="d-flex">
-                  <div className="title-item" style={{ flexGrow: 1 }}>
-                    Long Biên
-                  </div>
-                  <div className="amount-item">5</div>
-                </div>
-              }
-            />
-          </ListItem>{" "}
-          <Divider light />
-          <ListItem button>
-            <ListItemText
-              primary={
-                <div className="d-flex">
-                  <div className="title-item" style={{ flexGrow: 1 }}>
-                    Tây Hồ
-                  </div>
-                  <div className="amount-item">5</div>
-                </div>
-              }
-            />
-          </ListItem>{" "}
-          <Divider light />
-          <ListItem button>
-            <ListItemText
-              primary={
-                <div className="d-flex">
-                  <div className="title-item" style={{ flexGrow: 1 }}>
-                    Thanh Xuân
-                  </div>
-                  <div className="amount-item">5</div>
-                </div>
-              }
-            />
-          </ListItem>{" "}
+          {props.list?.map((item) => (
+            <>
+              <ListItem button>
+                <ListItemText
+                  primary={
+                    <div className="d-flex">
+                      <div className="title-item" style={{ flexGrow: 1 }}>
+                        {item.name}
+                      </div>
+                      <div className="amount-item">{item.count}</div>
+                    </div>
+                  }
+                />
+              </ListItem>
+              <Divider />
+            </>
+          ))}
+
           <Divider light />
         </List>
       </CardContent>

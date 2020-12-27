@@ -38,13 +38,21 @@
       }
     }
     .image-login {
-      width: auto;
       height: 420px;
       margin-right: auto;
       vertical-align: middle;
       box-sizing: border-box;
+      object-fit: cover;
+      object-position: center;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
+  }
+  .forgot-password {
+    font-size: 15px;
+    font-style: italic;
+    color: blue;
+    display: block;
+    cursor: pointer;
   }
   .row {
     margin: 0;

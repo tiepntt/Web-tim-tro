@@ -33,7 +33,9 @@ const approveReport = (reportId: number) => {
 const removeReport = (reportId: number) => {
   return API.delete(`${baseUrl}/report/remove/${reportId}`);
 };
-
+const getListNew = () => {
+  return API.get(baseUrl + "/listnew");
+};
 const getAllReportApartmentApproveYet = (input?: {
   take: number;
   skip: number;
@@ -46,6 +48,7 @@ const getAllApartmentApproveByUser = () => {};
 const restoreApartment = () => {};
 export const EmploymentAPI = {
   getUserOfEmployment,
+  getListNew,
   getAllApartmentApproveYet,
   approveApartment,
   getAllReviewApartmentApproveYet,

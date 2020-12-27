@@ -206,9 +206,11 @@ export const Notifications = () => {
   };
   const seeAll = () => {
     notifications.forEach((item) => {
-      NotificationApi.seen(item?.id || 0).then((res) => {
-        if (res.data.status === 200) loadNotificationNews(store);
-      });
+      if (parseInt((item?.isSeen || 1).toString()) === 0) {
+        NotificationApi.seen(item?.id || 0).then((res) => {
+          if (res.data.status === 200) loadNotificationNews(store);
+        });
+      }
     });
   };
   return (
