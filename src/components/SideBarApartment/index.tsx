@@ -7,6 +7,7 @@ import {
   NumberDateJoin,
 } from "../../libs/constants/function/time";
 import "./style.scss";
+import {useHistory} from "react-router";
 
 interface Props {
   user?: UserTitleDto;
@@ -20,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
 export const SideBarApartment = (props: Props) => {
   const { user } = props;
   const classes = useStyles();
+  const history = useHistory();
   return (
     <div className="sibar-apartment">
       <div className="user-box">
@@ -36,7 +38,7 @@ export const SideBarApartment = (props: Props) => {
           </div>
           <div className="user-info-title">
             <a
-              href="/profileUser"
+              onClick={()=>history.push("/profileUser/" + user?.id)}
               data-rb-event-key="/profileUser"
               className="nav-link"
             >

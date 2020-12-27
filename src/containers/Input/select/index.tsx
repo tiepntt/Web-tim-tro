@@ -8,6 +8,7 @@ interface Props {
   disable?: boolean;
   value?: number;
   flex?: boolean;
+  margin?: boolean;
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -16,6 +17,10 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 0,
     marginTop: "-3px",
   },
+  selectMargin: {
+    marginTop: "18px",
+    marginBottom: "18px",
+  },
   selectLabel: {
     display: "block",
     fontSize: "18px",
@@ -23,6 +28,16 @@ const useStyles = makeStyles((theme) => ({
     minWidth: "100px",
     lineHeight: "8px",
     marginTop: "10px",
+    textAlign: "left",
+  },
+  selectMarginLabel: {
+    display: "block",
+    fontSize: "20px",
+    fontWeight: "bold",
+    minWidth: "100px",
+    lineHeight: "8px",
+    marginTop: "15px",
+    marginBottom: "15px",
     textAlign: "left",
   },
   selectFlex: {
@@ -46,11 +61,11 @@ export const InputSelect = (props: Props) => {
 
   const classes = useStyles();
   return (
-    <div className={props.flex ? classes.selectFlex : classes.select}>
+    <div className={props.flex ? classes.selectFlex : props.margin ? classes.selectMargin : classes.select}>
       {props.label && (
         <InputLabel
           id="demo-simple-select-helper-label"
-          className={classes.selectLabel}
+          className={props.margin ? classes.selectMarginLabel : classes.selectLabel}
         >
           {props.label}
         </InputLabel>

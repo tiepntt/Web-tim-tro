@@ -13,6 +13,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import HouseIcon from "@material-ui/icons/House";
 import ApartmentIcon from "@material-ui/icons/Apartment";
 import HomeWorkIcon from "@material-ui/icons/HomeWork";
+import Footer from "../../../Footer";
 import { SearchAPI } from "../../../../api/apartment/search";
 import { EmploymentAPI } from "../../../../api/admin/employment";
 const useStyles = makeStyles((theme: any) => ({

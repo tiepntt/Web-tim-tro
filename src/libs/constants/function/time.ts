@@ -48,6 +48,7 @@ export const NumberDateJoin = (date?: Date, date2 = new Date()) => {
   if (!dateMoment.isAfter(moment(date))) return 0;
 
   var duration = moment.duration(dateMoment.diff(moment(date)));
+  if(duration.days() === 0 ) return " 1 ngày";
   var days = duration.days() > 0 ? duration.days() + " ngày " : "";
   var year = duration.years() > 0 ? duration.years() + " năm " : "";
   var month = duration.months() > 0 ? duration.months() + " tháng " : "";

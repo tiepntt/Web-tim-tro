@@ -213,6 +213,8 @@ export const Notifications = () => {
       }
     });
   };
+  // @ts-ignore
+  // @ts-ignore
   return (
     <IconButton color="inherit" onClick={handleClickNotification}>
       {notification && notification.count !== 0 ? (

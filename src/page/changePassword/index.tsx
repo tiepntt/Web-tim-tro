@@ -42,7 +42,7 @@ export const ChangePassword = (props: Props) => {
   const getMessage = () => {
     let check = account.newPassword === account.newPasswordLoop;
     // setCallApi({ show: true, send: true });
-    return check ? "mật khẩu trùng khớp" : "mật khẩu không trùng khớp";
+    return check ? "Mật khẩu trùng khớp" : "Mật khẩu không trùng khớp";
   };
   useEffect(() => {
     let check =

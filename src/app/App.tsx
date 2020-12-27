@@ -51,7 +51,7 @@ function App() {
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <Route path="/changePassword" component={ChangePassword} />
-            <Route path="/profileUser" component={ProfileUser} />
+            <Route path="/profileUser/:id" component={ProfileUser} />
             <Route path="/404" component={PageNotFound} />
             <Route path="/terms" component={Term} />
             <Route path="/admin" component={DashboardLayout} />
