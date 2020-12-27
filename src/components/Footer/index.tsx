@@ -5,15 +5,22 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import "./style.scss";
+import {useLocation} from "react-router-dom";
 
 interface Props {}
 
 const Footer = (props: Props) => {
+  const location = useLocation();
+  const [hidden, setHidden] = useState(false);
+  useEffect(() =>{
+    let pathName = location.pathname;
+    let check = pathName.includes("admin");
+    setHidden((check))  }, [location])
   return (
-    <div className={"Footer"}>
+    <div className={"Footer"} hidden={hidden}>
       <Container>
         <Row>
           <Col md={4} sm={12}>

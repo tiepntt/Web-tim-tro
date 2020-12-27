@@ -54,7 +54,7 @@ export const ChangePassword = (props: Props) => {
   return (
     <div className={"change-password"}>
       <Container className="content">
-        <div className="login-box ">
+        <div className="change-box">
           <h3>Đổi mật khẩu</h3>
           <div className="form-group">
             <label>Mật khẩu cũ</label>

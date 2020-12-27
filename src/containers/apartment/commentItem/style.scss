@@ -1,13 +1,14 @@
 .comment {
   padding: 5px 5px;
+  border-bottom: 2px solid #f1f4f6;
+
   > .user-box {
     .avatar {
       margin-right: 10px;
     }
     line-height: 20px;
     .name {
-      font-weight: bold;
-      font-size: 18px;
+      font-size: 15px;
     }
     .time {
       color: gray;

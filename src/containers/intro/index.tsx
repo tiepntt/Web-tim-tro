@@ -19,7 +19,7 @@ export const IntroPage = (props: Props) => {
           <div className="col-12">
             <div className="news-detail">
               <div>
-                <h1 className="title">Về chúng tôi</h1>
+                <h1 className="title-intro">Về chúng tôi</h1>
               </div>
               <div className="summary"></div>
               <div className="body">
@@ -83,7 +83,6 @@ export const IntroPage = (props: Props) => {
           </div>
         </div>
       </Container>
-      <Footer />
     </div>
   );
 };
