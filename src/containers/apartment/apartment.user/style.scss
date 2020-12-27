@@ -1,5 +1,4 @@
 .apartment-user {
-   
     padding: 10px 0 !important;
     margin: 5px 0 !important;
 
@@ -14,6 +13,10 @@
     }
     .title-post {
         line-height: 25px;
+        cursor: pointer;
+        :hover {
+            color: #009177;
+        }
         max-height: 50px;
         font-size: 1rem;
         font-weight: bold;

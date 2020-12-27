@@ -25,7 +25,6 @@ export const ApproveApartment = (props: Props) => {
     count: 0,
   });
   const openModel = (e: number) => {
-    console.log("ad");
 
     setShow(true);
     setApartmentSelect(e);
@@ -176,7 +175,7 @@ export const ApproveApartment = (props: Props) => {
           </div>
         </div>
       </div>
-      {user?.role?.code == RoleAdmin.OWNER && (
+      {user?.role?.code === RoleAdmin.OWNER && (
         <ExtendApartmentModal
           show={showModel}
           handleClose={() => setShow(false)}
