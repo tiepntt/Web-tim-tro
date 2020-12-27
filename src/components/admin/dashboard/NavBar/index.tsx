@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { Link as RouterLink, useLocation } from "react-router-dom";
+import Badge from "@material-ui/core/Badge";
 
 import { RootState } from "../../../../store";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Avatar,
   Box,
@@ -12,6 +13,9 @@ import {
   List,
   Typography,
   makeStyles,
+  withStyles,
+  Theme,
+  createStyles,
 } from "@material-ui/core";
 import {
   BarChart as BarChartIcon,
@@ -23,6 +27,12 @@ import ChatIcon from "@material-ui/icons/Chat";
 import ApartmentIcon from "@material-ui/icons/Apartment";
 import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
 import { RoleAdmin } from "../../../../libs/constants/role";
+import { UserApi } from "../../../../api/user/user";
+import { handleToast } from "../../../../service/Toast";
+import {
+  ActionChangeAvatar,
+  ActionUserDispatch,
+} from "../../../../service/store/userStore/action";
 
 const items = [
   {
@@ -55,7 +65,7 @@ const items = [
   },
 ];
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme: Theme) => ({
   mobileDrawer: {
     width: 256,
   },
@@ -68,6 +78,12 @@ const useStyles = makeStyles(() => ({
     cursor: "pointer",
     width: 64,
     height: 64,
+    // border: `2px solid gray`,
+    boxShadow:
+      ": 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)",
+  },
+  input: {
+    display: "none",
   },
 }));
 
@@ -75,28 +91,77 @@ interface Props {
   onMobileClose: () => void;
   openMobile: boolean;
 }
+const SmallAvatar = withStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      width: 22,
+      height: 22,
+      border: `2px solid ${theme.palette.background.paper}`,
+      cursor: "pointer",
+    },
+  })
+)(Avatar);
 
 const NavBar = (props: Props) => {
   const classes = useStyles();
   const location = useLocation();
+
   const { onMobileClose, openMobile } = props;
   const user = useSelector((state: RootState) => state.UserReducer.account);
+  const dispatch = useDispatch();
   useEffect(() => {
     if (openMobile && onMobileClose) {
       onMobileClose();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
+  const changeAvatar = (file: any) => {
+    var formData = new FormData();
+    formData.append("avatar", file);
+    UserApi.changeAvatar(formData).then((res) => {
+      handleToast(res.data);
+      if (res.data.status === 200) {
+        dispatch(
+          ActionUserDispatch({
+            account: { ...user, avatar: res.data.result.avatar },
+          })
+        );
+      }
+    });
+  };
+  const inputFileChange = (e: any) => {
+    changeAvatar(e.target.files[0]);
+  };
 
   const content = (
     <Box height="100%" display="flex" flexDirection="column">
       <Box alignItems="center" display="flex" flexDirection="column" p={2}>
-        <Avatar
-          className={classes.avatar}
-          component={RouterLink}
-          src={user?.avatar?.url}
-          to="/app/account"
-        />
+        {/* <Avatar className={classes.avatar} src={user?.avatar?.url} /> */}
+        <Badge
+          overlap="circle"
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "right",
+          }}
+          badgeContent={
+            <>
+              <input
+                type="file"
+                onChange={inputFileChange}
+                className={classes.input}
+                id="icon-button-file"
+              />
+              <label htmlFor="icon-button-file">
+                <SmallAvatar
+                  alt="Remy Sharp"
+                  src={process.env.PUBLIC_URL + "/assets/edit-avatar.png"}
+                />
+              </label>
+            </>
+          }
+        >
+          <Avatar className={classes.avatar} src={user?.avatar?.url} />
+        </Badge>
         <Typography color="textPrimary" variant="h5">
           {user?.name}
         </Typography>

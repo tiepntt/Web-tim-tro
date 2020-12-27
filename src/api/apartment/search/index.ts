@@ -4,4 +4,10 @@ const baseUrl = "/search";
 const search = (input = condition as ConditionDto) => {
   return API.get(baseUrl, { params: input });
 };
-export const SearchAPI = { search };
+const getCountByType = () => {
+  return API.get(baseUrl + "/listCountByType");
+};
+const getCountByDistrict = () => {
+  return API.get(baseUrl + "/listCountByDistrict");
+};
+export const SearchAPI = { search, getCountByType, getCountByDistrict };

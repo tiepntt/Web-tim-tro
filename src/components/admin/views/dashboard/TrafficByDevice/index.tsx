@@ -32,6 +32,12 @@ const useStyles = makeStyles(() => ({
 }));
 interface Props {
   className?: string;
+  list: {
+    apartmentCount: number;
+    commentCount: number;
+    userCount: number;
+    deadlineCount: number;
+  };
 }
 
 export const TrafficByDevice = (props: Props) => {
@@ -56,7 +62,7 @@ export const TrafficByDevice = (props: Props) => {
                   <div className="title-item" style={{ flexGrow: 1 }}>
                     Bài đăng mới
                   </div>
-                  <div className="amount-item">5</div>
+                  <div className="amount-item">{props.list.apartmentCount}</div>
                 </div>
               }
             />
@@ -69,7 +75,7 @@ export const TrafficByDevice = (props: Props) => {
                   <div className="title-item" style={{ flexGrow: 1 }}>
                     Bình luận
                   </div>
-                  <div className="amount-item">5</div>
+                  <div className="amount-item">{props.list.commentCount}</div>
                 </div>
               }
             />
@@ -81,7 +87,7 @@ export const TrafficByDevice = (props: Props) => {
                   <div className="title-item" style={{ flexGrow: 1 }}>
                     Người dùng mới
                   </div>
-                  <div className="amount-item">5</div>
+                  <div className="amount-item">{props.list.userCount}</div>
                 </div>
               }
             />
@@ -94,7 +100,7 @@ export const TrafficByDevice = (props: Props) => {
                   <div className="title-item" style={{ flexGrow: 1 }}>
                     Bài đăng hết hạn
                   </div>
-                  <div className="amount-item">5</div>
+                  <div className="amount-item">{props.list.deadlineCount}</div>
                 </div>
               }
             />

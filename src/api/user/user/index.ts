@@ -20,7 +20,9 @@ const update = (input: UserUpdateDto) => {
 const changePassword = (input: ChangePasswordDto) => {
   return API.put(`${baseUrl}/changePassword`, input);
 };
-const changeAvatar = () => {};
+const changeAvatar = (input: any) => {
+  return API.put(baseUrl + "/changeAvatar", input);
+};
 export const UserApi = {
   getAll,
   getById,

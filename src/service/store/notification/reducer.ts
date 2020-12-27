@@ -12,6 +12,6 @@ export const NotificationReducer = (
     case NotificationType.NEW_NOTIFICATION:
       return action.payload;
     default:
-      return {};
+      return state;
   }
 };

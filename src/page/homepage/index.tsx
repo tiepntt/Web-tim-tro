@@ -19,6 +19,7 @@ import SearchHeader from "../../components/search-header";
 import { SideBar } from "../../components/sibar";
 import { getQuery, setQuery } from "../../libs/constants/function/getQuery";
 
+
 import "./style.scss";
 type Props = {};
 export const HomePage = (props: Props) => {
@@ -104,8 +105,6 @@ export const HomePage = (props: Props) => {
           </Grid>
         </Grid>
       </Container>
-
- 
     </div>
   );
 };
