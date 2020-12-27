@@ -4,7 +4,7 @@ export const handleToast = (input: { status?: number; message?: string }) => {
   switch (input.status) {
     case 100:
     case 200:
-      success();
+      success(input.message);
       break;
     case 300:
     case 302:
@@ -22,22 +22,22 @@ export const handleToast = (input: { status?: number; message?: string }) => {
   }
 };
 
-function success() {
-  toast.success("Thành công!");
+function success(message?: string) {
+  toast.success(message || "Thành công!");
 }
 
-function error(massage?: string) {
-  toast.error(massage || "Thất bại!");
+function error(message?: string) {
+  toast.error(message || "Thất bại!");
 }
 
-function warn(massage?: string) {
-  toast.warn(massage || "Cần nhập đầy đủ thông tin !");
+function warn(message?: string) {
+  toast.warn(message || "Cần nhập đầy đủ thông tin !");
 }
 
-function founded(massage?: string) {
-  toast.info(massage || "Sách hoặc mã sách đã tồn tại !");
+function founded(message?: string) {
+  toast.info(message || "Sách hoặc mã sách đã tồn tại !");
 }
 
-function notFounded(massage?: string) {
-  toast.info(massage || "Không tồn tại!");
+function notFounded(message?: string) {
+  toast.info(message || "Không tồn tại!");
 }

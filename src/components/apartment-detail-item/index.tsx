@@ -42,8 +42,10 @@ const useStyles = makeStyles((theme) => ({
     height: theme.spacing(3),
   },
   large: {
-    width: theme.spacing(7),
-    height: theme.spacing(7),
+    width: theme.spacing(6),
+    height: theme.spacing(6),
+    marginTop: 5,
+    marginLeft: 3,
   },
   location: {
     margin: theme.spacing(0.5),
@@ -224,7 +226,7 @@ export const ApartmentDetailItem = (props: Props) => {
         </div>
         <div className="info-detail">
           <div className="title">Mô tả chi tiết</div>
-          <div className="content">
+          <div className="content-post">
             {ReactHtmlParser(apartment?.apartmentDetail?.description || "")}
           </div>
         </div>

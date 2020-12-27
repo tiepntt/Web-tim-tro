@@ -158,7 +158,9 @@ export const Employment = (props: Props) => {
             <SideBarUser
               add={type === RoleAdmin.ADMIN}
               filter={
-                type === RoleAdmin.OWNER && user?.role?.code === RoleAdmin.ADMIN
+                type === RoleAdmin.OWNER &&
+                (user?.role?.code === RoleAdmin.ADMIN ||
+                  user?.role?.code === RoleAdmin.MANAGER)
               }
               filterData={filterData as []}
               onAdd={() => setShow(true)}

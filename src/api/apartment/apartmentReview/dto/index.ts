@@ -1,4 +1,6 @@
+import { AvatarUserDto } from "../../../image/avatarUser";
 import { UserTitleDto } from "../../../user/user/dto";
+import { ApartmentTitleDto } from "../../apartment/dto";
 
 export class ApartmentReviewInputDto {
   id?: number;
@@ -17,6 +19,9 @@ export class ApartmentReviewGetDto {
   create_at?: Date;
 
   user?: UserTitleDto;
+  avatar?: AvatarUserDto;
+
+  apartment?: ApartmentTitleDto;
 }
 export class ApartmentListGetDto {
   id?: number;

@@ -79,18 +79,9 @@ export const Apartment = (props: Props) => {
         Thuê nhà đất 2020 giá rẻ tại Việt Nam, giá thuê mới nhất
       </div>
       <ul>
-        <div className="result row">
-          <div className="col-lg-9  col-8 result-tag ">
+        <div className="result  ">
+          <div className="result-tag ">
             Kết quả : <b>{getAmount()}</b> trong <b>{count}</b>
-          </div>
-          <div className="filter col-lg-3 col-4 w-100   right">
-            <DropDownInput
-              input={filter}
-              label="Sắp xếp theo"
-              id="demo-customized-select"
-              labelId="demo-customized-select-label"
-              inputBootstrap={<BootstrapInput />}
-            />
           </div>
         </div>
 

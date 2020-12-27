@@ -60,6 +60,7 @@ export class ApartmentTitleDto {
   title?: string;
 
   price?: number;
+  user?: UserTitleDto;
 }
 export class ApartmentGetDto {
   constructor() {

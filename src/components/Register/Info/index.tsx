@@ -64,7 +64,7 @@ export const InfoInput = (props: Props) => {
                 }}
               />
               <Form.Control
-                type="text"
+                type="password"
                 placeholder="Mật khẩu"
                 maxLength={20}
                 onChange={(e: any) => {

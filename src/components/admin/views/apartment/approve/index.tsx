@@ -78,7 +78,12 @@ export const ApproveApartment = (props: Props) => {
       case STATUS_APARTMENT.NO_APPROVED:
         getApartmentAdmin(false);
         break;
+
       case STATUS_APARTMENT.LOVE:
+        getApartmentHobby();
+        break;
+      case STATUS_APARTMENT.MY_APARTMENT:
+        getApartmentHobby();
         break;
       default:
         break;
@@ -101,6 +106,9 @@ export const ApproveApartment = (props: Props) => {
         getApartmentAdmin(false);
         break;
       case STATUS_APARTMENT.LOVE:
+        getApartmentHobby();
+        break;
+      case STATUS_APARTMENT.MY_APARTMENT:
         getApartmentHobby();
         break;
       default:
@@ -147,7 +155,7 @@ export const ApproveApartment = (props: Props) => {
   }, [conditionSearch, type]);
   return (
     <>
-      <div className="apartment-list">
+      <div className="apartment--listdashboard">
         <div className="row page">
           <div className="col-lg-8 col-12">
             <ListApartment

@@ -48,16 +48,10 @@ const items = [
     private: [RoleAdmin.MANAGER, RoleAdmin.ADMIN],
   },
   {
-    href: "#",
+    href: "/admin/approve",
     icon: FormatListBulletedIcon,
     title: "Phê duyệt",
     private: [RoleAdmin.MANAGER, RoleAdmin.ADMIN],
-  },
-  {
-    href: "/admin/support",
-    icon: ChatIcon,
-    title: "Hỗ trợ",
-    private: [RoleAdmin.MANAGER, RoleAdmin.ADMIN, RoleAdmin.OWNER],
   },
 ];
 

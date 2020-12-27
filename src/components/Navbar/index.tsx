@@ -1,5 +1,6 @@
-import { Avatar } from "@material-ui/core";
-import React from "react";
+import { Avatar, Badge } from "@material-ui/core";
+import NotificationsIcon from "@material-ui/icons/NotificationsOutlined";
+import React, { useEffect, useState } from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
@@ -11,25 +12,76 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
-
+import io from "socket.io-client";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import "./style.scss";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector, useStore } from "react-redux";
 import { RootState } from "../../store";
 import { ActionUserLogout } from "../../service/store/userStore/action";
 import { NavbarMobile } from "./Navbar-mobile";
+import { dirServer } from "../../libs/dir";
+import { NotificationType } from "../../service/store/notification/action";
+import { loadLocation } from "../../loader/loaderLocation";
+import { loadNotificationNews } from "../../loader/loadNotification";
+import { RoleAdmin } from "../../libs/constants/role";
+import { Notifications } from "../admin/dashboard/TopBar/Notification";
+import { useHistory, useLocation } from "react-router";
+let socket;
+
 const HeaderItem = () => {
+  const notifications = useSelector(
+    (state: RootState) => state.Notification as { count: number }
+  );
+  const [active, setActive] = useState("/home");
+  const location = useLocation();
+  const history = useHistory();
+  useEffect(() => {
+    let path = location.pathname;
+
+    setActive(path);
+  }, [location]);
+
+  // just run the effect on pathname and/or search change
+  useEffect(() => {
+    try {
+      // trying to use new API - https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollTo
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
+    } catch (error) {
+      // just a fallback for older browsers
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
+    }
+  }, [location]);
+  const store = useStore();
   const user = useSelector((state: RootState) => state.UserReducer);
   const dispatch = useDispatch();
   const clear = () => {
     dispatch(ActionUserLogout());
   };
+  useEffect(() => {
+    socket = io(dirServer);
+    socket.on(NotificationType.NEW_NOTIFICATION, () => {
+      loadNotificationNews(store);
+    });
+  }, []);
+  useEffect(() => {
+    if (user && user.account?.id) {
+      loadNotificationNews(store);
+    }
+  }, [user]);
   const getName = () => {
     let name = { ...user }.account?.name as string;
     if (name) return name.split(" ").reverse().shift();
   };
   const HeaderUser = () => {
-    return user.account ? (
+    return user.account?.id ? (
       <div className="header-flex d-flex">
         <div className="avatar">
           <Avatar
@@ -40,20 +92,23 @@ const HeaderItem = () => {
           />
         </div>
         <NavDropdown className="name" title={getName()} id="basic-nav-dropdown">
-          <NavDropdown.Item href="/admin">Thông tin</NavDropdown.Item>
-          <NavDropdown.Item href="/changePassword">
+          <NavDropdown.Item onClick={(e) => history.push("/admin")}>
+            Thông tin
+          </NavDropdown.Item>
+          <NavDropdown.Item onClick={(e) => history.push("/changePassword")}>
             Đổi mật khẩu
           </NavDropdown.Item>
-          <NavDropdown.Item href="/login" onClick={clear}>
-            Đăng xuất
-          </NavDropdown.Item>
+          <NavDropdown.Item onClick={clear}>Đăng xuất</NavDropdown.Item>
         </NavDropdown>
-        <Button className={"post-button"} href="/apartment/add">
+        <Button
+          className={"post-button"}
+          onClick={(e) => history.push("/admin")}
+        >
           Đăng Tin
         </Button>
       </div>
     ) : (
-      <Button className={"post-button"} href="/login">
+      <Button className={"post-button"} onClick={(e) => history.push("/login")}>
         Đăng nhâp
       </Button>
     );
@@ -68,11 +123,27 @@ const HeaderItem = () => {
           </Navbar.Brand>
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="/home">Trang chủ</Nav.Link>
-              <Nav.Link href="/link">Giới thiệu</Nav.Link>
-              <Nav.Link href="/terms">Điều khoản</Nav.Link>
-              <Nav.Link href="/terms">Trang cá nhân</Nav.Link>
+              <Nav.Link
+                onClick={() => history.push("/home")}
+                active={active === "/home"}
+              >
+                Trang chủ
+              </Nav.Link>
+              <Nav.Link
+                onClick={() => history.push("/link")}
+                active={active === "/link"}
+              >
+                Giới thiệu
+              </Nav.Link>
+              <Nav.Link
+                onClick={() => history.push("/terms")}
+                active={active === "/terms"}
+              >
+                Điều khoản
+              </Nav.Link>
             </Nav>
+            {user?.account?.id &&
+              user.account.role?.code !== RoleAdmin.RENTER && <Notifications />}
             <HeaderUser />
           </Navbar.Collapse>
         </Container>

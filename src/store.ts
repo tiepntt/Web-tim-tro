@@ -12,6 +12,7 @@ import { DistrictReducer } from "./service/store/adress/district/reducer";
 import { WardReducer } from "./service/store/adress/wards/reducer";
 import { StreetReducer } from "./service/store/adress/street/reducer";
 import { LocationReducer } from "./service/store/adress/location/reducer";
+import { NotificationReducer } from "./service/store/notification/reducer";
 const RootReducer = combineReducers({
   UserReducer: UserReducer,
   Apartment: ApartmentReducer,
@@ -21,6 +22,7 @@ const RootReducer = combineReducers({
   Ward: WardReducer,
   Street: StreetReducer,
   Location: LocationReducer,
+  Notification : NotificationReducer
 });
 const persistConfig = {
   key: "root",

@@ -5,6 +5,20 @@ export const convertDate = (date?: Date) => {
   let today = moment(Date()).format("DD/MM/YYYY");
   return dateConvert === today ? "Hôm nay" : dateConvert;
 };
+const convertVN = (str: string, hours: number) => {
+  return str
+    .replaceAll("AM", "sáng")
+    .replaceAll("PM", hours > 18 ? "tối" : "chiều");
+};
+export const convertDateTime = (date?: Date) => {
+  if (!date) return 1;
+  // console.log(date
+
+  return convertVN(
+    moment(date).format(" h:mm A  DD/MM/YY "),
+    moment(date).hour()
+  );
+};
 export const compareDate = (date?: Date, date2 = Date()) => {
   let date1 = moment(date);
   let date2Moment = moment(date2);

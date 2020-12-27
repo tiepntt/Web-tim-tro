@@ -18,6 +18,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
 import { DashboardView } from "../views/dashboard";
 import { Chat } from "../views/Chat";
+import { ApproveDashboard } from "../views/approve";
 const useStyles = makeStyles((theme: any) => ({
   root: {
     backgroundColor: "#F4F6F8",
@@ -30,7 +31,6 @@ const useStyles = makeStyles((theme: any) => ({
     display: "flex",
     flex: "1 1 auto",
     overflow: "hidden",
-    paddingTop: 64,
     [theme.breakpoints.up("lg")]: {
       paddingLeft: 256,
     },
@@ -84,11 +84,14 @@ const DashboardLayout = () => {
                   <Route exact path="/admin">
                     <DashboardView />
                   </Route>
+                  <Route exact path="/admin/approve">
+                    <ApproveDashboard />
+                  </Route>
                 </>
               )}
 
               <Route exact path="/admin/support">
-                <Chat/>
+                <Chat />
               </Route>
               <Route exact path="/admin/support/messenger">
                 <Messenger />
@@ -96,7 +99,7 @@ const DashboardLayout = () => {
               <Route path="/admin/support/messenger/:id">
                 <Messenger />
               </Route>
-              <Route exact path="/admin/contract">
+              <Route exact path="/admin/approve">
                 <Contract />
               </Route>
               {!user?.role?.isApproveUser && (
