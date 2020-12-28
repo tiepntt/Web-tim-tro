@@ -72,7 +72,8 @@ const HeaderItem = () => {
     });
   }, []);
   useEffect(() => {
-    if (user && user.account?.id) {
+    let token = localStorage.getItem("token");
+    if (user && user.account?.id&&token&&token!='') {
       loadNotificationNews(store);
     }
   }, [user]);

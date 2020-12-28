@@ -3,14 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="10a5876c-0b97-4fbe-ba31-0c8342b71602" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/Info/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/Info/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Register/selectRole/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Register/selectRole/style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/views/approve/comments/list/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/views/approve/comments/list/style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/comment/Item/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/comment/Item/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/comment/Item/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/comment/Item/style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/comment/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/comment/style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/terms/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/terms/style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/intro/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/intro/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navbar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/dashboard/TopBar/Notification/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/dashboard/TopBar/Notification/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/libs/dir.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/libs/dir.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +71,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="MTConfigurable" />
-    <property name="ts.external.directory.path" value="D:\WEB\client-test\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="D:\Code\client-test\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -92,6 +88,7 @@
       <workItem from="1608055390409" duration="998000" />
       <workItem from="1608056413792" duration="6086000" />
       <workItem from="1609001464917" duration="18000" />
+      <workItem from="1609110368068" duration="2132000" />
     </task>
     <servers />
   </component>

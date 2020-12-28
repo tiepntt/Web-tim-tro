@@ -253,7 +253,7 @@ export const Notifications = () => {
             <Paper className={classes.paper}>
               <div className="notification-li">
                 <div className="notification-header">Thông báo</div>
-                <div className="notification-list" ref={scrollRef}>
+                <div className="notification-list">
                   <div className="inner-scroll-example">
                     {notifications.map((item) => (
                       <>
