@@ -91,7 +91,6 @@ export const ApartmentDetailItem = (props: Props) => {
   useEffect(() => {
     if (!apartment.user) {
       apartment.user = user;
-      console.log("hi");
     }
   }, [apartment]);
   const addToHobby = () => {
