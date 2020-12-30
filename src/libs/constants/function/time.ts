@@ -36,7 +36,6 @@ export const compareDateNumber = (date?: Date, date2 = new Date()) => {
   var duration = moment.duration(dateMoment.diff(moment(date2)));
   var days = duration.days();
 
-
   return days + 1;
 };
 export const NumberDateJoin = (date?: Date, date2 = new Date()) => {
@@ -45,10 +44,10 @@ export const NumberDateJoin = (date?: Date, date2 = new Date()) => {
 
   let dateMoment = moment(date2);
 
-  if (!dateMoment.isAfter(moment(date))) return 0;
+  if (!dateMoment.isAfter(moment(date))) return "1 ngày";
 
   var duration = moment.duration(dateMoment.diff(moment(date)));
-  if(duration.days() === 0 ) return " 1 ngày";
+  if (duration.days() === 0) return " 1 ngày";
   var days = duration.days() > 0 ? duration.days() + " ngày " : "";
   var year = duration.years() > 0 ? duration.years() + " năm " : "";
   var month = duration.months() > 0 ? duration.months() + " tháng " : "";
